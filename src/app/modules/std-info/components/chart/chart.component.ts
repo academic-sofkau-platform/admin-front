@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Chart} from 'node_modules/chart.js';
 
 @Component({
-  selector: 'app-std-info',
-  templateUrl: './std-info.component.html',
-  styleUrls: ['./std-info.component.css']
+  selector: 'app-chart',
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.css']
 })
-export class StdInfoComponent implements OnInit {
+export class ChartComponent implements OnInit {
 
   constructor() { }
 
