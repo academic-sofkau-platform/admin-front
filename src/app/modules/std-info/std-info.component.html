@@ -1,3 +1,16 @@
-<div id="divChart">
-  <canvas id="stdChart"></canvas>
+<div class="std-data-display">
+  <h1>Información del aprendiz</h1>
+
+  <div class="std-data">
+    <img src="{{ std.photo }}" alt="std-photo" />
+
+    <div class="pinfo">
+      <h2>{{ std.name }} {{ std.lastname }}</h2>
+      <h4>{{ std.city }}</h4>
+    </div>
+  </div>
+
+  <div id="divChart">
+    <canvas id="stdChart"></canvas>
+  </div>
 </div>
