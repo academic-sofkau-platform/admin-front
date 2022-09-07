@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Chart} from 'node_modules/chart.js';
+import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-std-info',
