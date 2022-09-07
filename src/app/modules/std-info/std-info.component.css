@@ -1,5 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
+.std-data-display{
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.std-data{
+    display: flex;
+}
+
+.pinfo{
+    display: block;
+    text-align: left;
+}
+
 #divChart{
     display: block;
-    width: 400px;
-    height: 400px;
+    width: 1000px;
+    height: 1000px;
 }
