@@ -1,0 +1,37 @@
+h1 {
+  font-family: "DM Sans";
+  text-align: center;
+}
+
+.bd-example {
+  padding: 1.5rem;
+  margin-right: 0;
+  margin-left: 0;
+  border-width: 0.2rem;
+}
+
+.form-group {
+  margin-top: 1.5%;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+}
+
+div.form-group{
+  padding-right: 1%;
+}
+
+#crear{
+  margin-top: 1.5%;
+}
+
+#agregar{
+  margin-top: 29px;
+}
+
+label{
+  margin-bottom: 5px;
+}

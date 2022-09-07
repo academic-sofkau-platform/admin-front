@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StdInfoModule } from './modules/std-info/std-info.module';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { StdInfoModule } from './modules/std-info/std-info.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StdInfoModule
+    StdInfoModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
