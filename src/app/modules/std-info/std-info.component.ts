@@ -26,16 +26,25 @@ export class StdInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    const grades = [0, 65, 59, 80, 81, 56, 55, 40, 100, 77, 75 ,45,115, 30,90];
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
     const stdChart = new Chart("stdChart", {
       type: 'line',
       data: {
-          labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+          labels: monthNames,
           datasets: [{
-              label: 'Notas',
-              data: [0, 65, 59, 80, 81, 56, 55, 40, 100],
-              fill: false,
-              borderColor: 'rgb(255, 140, 0)',
-              tension: 0.1
+              label: 'Nota',
+              data: grades,
+              fill: true,
+              borderColor: 'rgba(28,45,161,255)',
+              hoverBorderColor: 'green',
+              backgroundColor: 'rgba(193,240,2400,0.5)',
+              pointBackgroundColor: 'rgba(28,45,161,255)',
+              pointHoverBackgroundColor: 'white',
+              pointHoverRadius: 10,
+              pointRadius: 5,
           }]
       }
   });
