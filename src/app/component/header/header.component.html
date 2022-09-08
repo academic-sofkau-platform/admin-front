@@ -1,32 +1,19 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-<nav class="navbar navbar-expand">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+<mat-toolbar color="black">
+
+  <span>Sofka</span>
+  <span class="example-spacer"></span>
+
+  <button *ngIf="auth.isLoggedIn;" [matMenuTriggerFor]="menu" mat-icon-button class="main-icono favorite-icon"
+    title="Menú" aria-label="Example icon-button with heart icon">
+    <img class="img-round" src={{auth.user.photoURL}} referrerpolicy="no-referrer" alt="Avatar">
+  </button>
+
+  <mat-menu class="menu-icon" #menu="matMenu">
+    <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.displayName}}</mat-card-title>
+    <!-- <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.email}}</mat-card-title> -->
+    <button *ngIf="auth.isLoggedIn;" mat-menu-item>
+      <mat-icon (click)="auth.signOut()">logout</mat-icon>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </mat-menu>
+</mat-toolbar>

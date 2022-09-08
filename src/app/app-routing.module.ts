@@ -10,13 +10,13 @@ import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendiz
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate:[AuthGuard] },
-  { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
-  { path: 'std-info', component: StdInfoComponent, canActivate:[AuthGuard] },
-  { path: 'cursos', component:CursosComponent, canActivate:[AuthGuard] },
+  { path: 'login', component: LoginComponent},
+  { path: 'home', component: HomeComponent},
+  { path: 'std-info', component: StdInfoComponent},
+  { path: 'cursos', component:CursosComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
 ];
-
+//, canActivate: [AuthGuard]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

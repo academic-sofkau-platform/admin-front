@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
 .contenedor {
     color: #fff;
     display: flex;
@@ -6,13 +8,32 @@
     text-align: center;
 }
 
+.btn-google {
+    font-family: 'DM Sans', sans-serif;
+    color: #4285f4;
+    background-color: #ffffff;
+    font-size: 30px;
+    font-weight: 500;
+    border: 10px solid rgb(255, 255, 255);
+    padding: 9px;
+    padding-top: 12px;
+    border-radius: 7px;
+    
+}
+
+.btn-google:hover {
+    cursor: pointer;
+    color: #ff7e06;
+    background-color: white;
+}
+
+
 .cont {
     position: absolute;
     bottom: 0;
     top: 0;
     margin-top: 15%;
     color: #fff;
-    padding: 1rem;
     font-family: Avenir, Helvetica, sans-serif;
 }
 
@@ -21,49 +42,38 @@ h1 {
     font-size: 100px;
     font-weight: 600;
     text-shadow: 0px 0px 7px black;
+    margin: 30px;
+    padding: 15px;
 }
 
 p {
+    height: 200px;
     color: azure;
     font-size: 70px;
     text-align: center;
     text-shadow: 0px 0px 7px black;
     font-weight: 600;
+    margin-top: 90px;
 }
 
 .cont-bienvenida span {
     color: #ff7e06;
-
-}
-
-.cont-bienvenida {
     margin: 15px;
 }
 
-.btn-gg {
-    font-size: 25px;
-    padding-top: 20px;
-}
 
 .iframe {
-    background: #000;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
+    background: #000000;
     box-sizing: border-box;
+    top: -60px;
+    pointer-events: none;
 
 }
 
-.iframe-cont,
-.iframe iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+iframe {
+    background: #000000;
+    box-sizing: border-box;
+    top: -50px;
     pointer-events: none;
-    min-width: 100%;
-    min-height: 100%;
 
 }
