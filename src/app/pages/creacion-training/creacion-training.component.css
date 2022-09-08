@@ -1,0 +1,31 @@
+.conteiner{
+    margin: auto;
+}
+
+
+.inputs{
+    padding-left: 200px;
+    padding-top: 200px
+}
+
+mat-form-field{
+    
+    margin:10px
+}
+
+.selects{
+
+    padding:100px
+}
+
+button{
+    margin:30px
+}
+/* 
+.aprendicesbutton{
+    margin: 120px
+}
+
+.crearbutton{
+    margin-top: 200px
+} */

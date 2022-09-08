@@ -18,23 +18,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTableModule } from '@angular/material/table';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomeComponent } from './pages/home/home.component';
-import { AuthService } from './shared/services/auth.service';
 import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { ListaTrainingActivosComponent } from './pages/lista-training-activos/lista-training-activos.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
-import { TrainingComponent } from './pages/training/training.component';
-import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { MatSelect, MatSelectModule } from '@angular/material/select';
     ListaAprendicesComponent,
     ListaTrainingActivosComponent,
     RutaAprendizajeComponent,
-    TrainingComponent
+    CreacionTrainingComponent
 
   ],
   imports: [
@@ -76,8 +77,8 @@ import { MatSelect, MatSelectModule } from '@angular/material/select';
     LoginModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
