@@ -6,15 +6,18 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
+import { TrainingComponent } from './pages/training/training.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate:[AuthGuard] },
+  { path: 'login', component: LoginComponent,canActivate:[AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
   { path: 'std-info', component: StdInfoComponent, canActivate:[AuthGuard] },
   { path: 'cursos', component:CursosComponent, canActivate:[AuthGuard] },
-  { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
+  { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent,canActivate:[AuthGuard]},
+  { path: 'training', component: TrainingComponent,canActivate:[AuthGuard]},
+  
 ];
 
 @NgModule({
