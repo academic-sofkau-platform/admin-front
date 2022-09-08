@@ -1,5 +1,5 @@
 .conteiner{
-    margin: auto;
+    margin: 160px
 }
 
 
@@ -9,23 +9,21 @@
 }
 
 mat-form-field{
-    
+
     margin:10px
 }
 
 .selects{
-
-    padding:100px
+    padding-top:80px;
+    padding-left:200px
 }
 
 button{
-    margin:30px
-}
-/* 
-.aprendicesbutton{
-    margin: 120px
+    margin-top:50px;
+    margin-left:340px
 }
 
 .crearbutton{
-    margin-top: 200px
-} */
+    /* margin-top:50px; */
+    margin-left:450px
+}
