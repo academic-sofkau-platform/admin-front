@@ -16,7 +16,7 @@ ejs-heatmap{
 .std-data{
     display: flex;
     margin: auto;
-    padding-left: 260px;
+    padding-left: 240px;
     color: black;
 }
 .std-data img{

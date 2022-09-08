@@ -78,7 +78,7 @@ export class StdInfoComponent implements OnInit {
         city: "Montevideo",
         gender: "M",
         email: "giannib@gmail.com",
-        phoneNumber: 1234,
+        phoneNumber: 59899123456,
         photo:"urldefoto",
         bilingual: true
     };
