@@ -35,23 +35,23 @@ export class StdInfoComponent implements OnInit {
 
   dataSource = [
  
-    [73, 39, 26, 39, 94, 0],
+    [73, 39, 26, 39, 94, 0, 23],
  
-    [93, 58, 53, 38, 26, 68],
+    [93, 58, 53, 38, 26, 68, 72],
  
-    [99, 28, 22, 4, 66, 90],
+    [99, 28, 22, 4, 66, 90, 91],
  
-    [14, 26, 97, 69, 69, 3],
+    [14, 26, 97, 69, 69, 3, 53],
  
-    [7, 46, 47, 47, 88, 6],
+    [7, 46, 47, 47, 88, 6, 12],
  
-    [41, 55, 73, 23, 3, 79],
+    [41, 55, 73, 23, 3, 79, 7],
  
-    [56, 69, 21, 86, 3, 33],
+    [56, 69, 21, 86, 3, 33, 28],
  
-    [45, 7, 53, 81, 95, 79],
+    [45, 7, 53, 81, 95, 79, 49],
  
-    [60, 77, 74, 68, 88, 51]
+    [60, 77, 74, 68, 88, 51, 9]
  
   ];
   xAxis = {
@@ -64,7 +64,7 @@ export class StdInfoComponent implements OnInit {
  
   yAxis = {
  
-    labels: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'],
+    labels: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
  
   }
 
@@ -73,11 +73,11 @@ export class StdInfoComponent implements OnInit {
   constructor() { 
     this.std = {
         id: "007",
-        name: "Gianni",
-        lastname: "Baccino",
-        city: "Montevideo",
+        name: "Nombre",
+        lastname: "Apellido",
+        city: "Ciudad",
         gender: "M",
-        email: "giannib@gmail.com",
+        email: "example@mail.com",
         phoneNumber: 59899123456,
         photo:"urldefoto",
         bilingual: true
