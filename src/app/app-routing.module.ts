@@ -6,7 +6,7 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
-import { CreacionTrainingComponent } from './modules/creacion-training/creacion-training.component';
+import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
