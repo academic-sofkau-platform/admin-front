@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
 
+ejs-heatmap{
+    margin: auto;
+    display: block;
+    width: 1500px;
+}
+
 .std-data-display{
     margin: auto;
     text-align: center;
     font-family: 'DM Sans', sans-serif;
+    color: #111979
 }
 
 .std-data{
     display: flex;
     margin: auto;
-    padding-left: 200px;
+    padding-left: 260px;
+    color: black;
 }
 .std-data img{
     width: 130px;
@@ -25,6 +33,6 @@
 #divChart{
     margin: auto;
     display: block;
-    width: 1500px;
-    height: 1500px;
+    width: 1400px;
+    height: 1400px;
 }

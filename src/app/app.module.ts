@@ -39,8 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    NgbModule
-
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

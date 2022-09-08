@@ -10,9 +10,9 @@ import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendiz
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate:[AuthGuard] },
+  { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent, canActivate:[AuthGuard] },
-  { path: 'std-info', component: StdInfoComponent, canActivate:[AuthGuard] },
+  { path: 'std-info', component: StdInfoComponent},//canActivate:[AuthGuard]},
   { path: 'cursos', component:CursosComponent, canActivate:[AuthGuard] },
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
 ];
