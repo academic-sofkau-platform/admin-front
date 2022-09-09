@@ -2,5 +2,11 @@ export interface RutaAprendizajeModel {
   id: string;
   nombre: string;
   descripcion: string;
-  aprobacion: number;
+  rutas: RutaModel[];
+}
+
+export interface RutaModel{
+  nivel: number;
+  curso: string;
+  prerrequisitos: string[];
 }
