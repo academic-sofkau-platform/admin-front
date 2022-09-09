@@ -7,7 +7,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StdInfoModule } from './modules/std-info/std-info.module';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -39,6 +38,9 @@ import { ApiService } from './shared/services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { HeatMapAllModule } from '@syncfusion/ej2-angular-heatmap';
+import { StdInfoComponent } from './pages/std-info/std-info.component';
+
 
 @NgModule({
   declarations: [
@@ -51,13 +53,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListaTrainingActivosComponent,
     RutaAprendizajeComponent,
     CreacionTrainingComponent,
-    CursosComponent
+    CursosComponent,
+    StdInfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StdInfoModule,
     LoginModule,
     FormsModule,
     ReactiveFormsModule,
@@ -85,8 +87,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatMenuModule,
     MatTabsModule,
-    MatButtonModule
-
+    MatButtonModule,
+    HeatMapAllModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
