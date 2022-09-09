@@ -27,12 +27,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HeaderComponent } from './component/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeatMapAllModule } from '@syncfusion/ej2-angular-heatmap';
+import { StdInfoComponent } from './pages/std-info/std-info.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    StdInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatToolbarModule,
     MatCardModule,
     MatMenuModule,
-
+    HeatMapAllModule
   ],
   providers: [],
   bootstrap: [AppComponent]

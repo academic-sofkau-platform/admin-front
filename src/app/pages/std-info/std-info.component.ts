@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js/auto';
 import { Student } from 'src/app/shared/models/student';
 
 @Component({
@@ -78,24 +77,24 @@ export class StdInfoComponent implements OnInit {
       fecha: new Date('2022-09-07'),
       puntaje: 0
     },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-23'),
-    //   puntaje: 33
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-30'),
-    //   puntaje: 33
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-10-15'),
-    //   puntaje: 24
-    // },
+    {
+      cursoId: "12312",
+      aprendizId: "rauuuuuul",
+      fecha: new Date('2022-09-23'),
+      puntaje: 33
+    },
+    {
+      cursoId: "12312",
+      aprendizId: "rauuuuuul",
+      fecha: new Date('2022-09-30'),
+      puntaje: 33
+    },
+    {
+      cursoId: "12312",
+      aprendizId: "rauuuuuul",
+      fecha: new Date('2022-10-15'),
+      puntaje: 24
+    },
   ];
 
   dataSourceSettings = {
