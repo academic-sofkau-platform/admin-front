@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-creacion-training',
   templateUrl: './creacion-training.component.html',
   styleUrls: ['./creacion-training.component.css']
 })
-export class CreacionTrainingComponent implements OnInit {
+export class CreacionTrainingComponent  {
 
-  constructor() { }
+  @ViewChild("csvFile", {
+    read: ElementRef
+  }) InputFile!: ElementRef;
 
-  ngOnInit() {
+  csvFile: any;
+
+  public miFormulario: FormGroup = this.formBuilder.group({
+    nombre: [, [Validators.required, Validators.minLength(3)], []],
+  })
+
+  constructor(private formBuilder: FormBuilder) {}
+
+
+  convertToBase64() {
+    this.csvFile = this.InputFile.nativeElement.files[0];
+  }
+
+  enviarFormulario() {
+    console.log(this.csvFile);
+    console.log(this.miFormulario.value);
+    console.log(this.miFormulario.valid);
   }
 
 }

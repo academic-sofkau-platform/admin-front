@@ -35,6 +35,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
+import { MaterialModule } from './modules/material/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { CreacionTrainingComponent } from './pages/creacion-training/creacion-tr
 
   ],
   imports: [
+    ReactiveFormsModule,
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     StdInfoModule,

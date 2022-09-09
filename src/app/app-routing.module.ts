@@ -9,14 +9,17 @@ import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendiz
 import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },//borrar por ser reduntante ++
+
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
   { path: 'std-info', component: StdInfoComponent},
   { path: 'cursos', component:CursosComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
   { path: 'creacion-training', component: CreacionTrainingComponent},
-
+  //cualquier otra cosa me redirectea a 404
+  { path: '**', redirectTo:'login'}, //++
 ];
 //, canActivate: [AuthGuard]
 @NgModule({
