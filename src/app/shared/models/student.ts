@@ -9,3 +9,8 @@ export interface Student {
     photo: string;
     bilingual: boolean
 }
+export interface Aprendiz{
+    name:string;
+    lastname:string;
+    email:string;
+}

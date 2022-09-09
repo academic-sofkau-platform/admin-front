@@ -6,7 +6,8 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
-import { CreacionTrainingComponent } from './modules/creacion-training/creacion-training.component';
+import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,8 +15,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'std-info', component: StdInfoComponent},
   { path: 'cursos', component:CursosComponent},
+  { path: 'list-aprendices', component:ListaAprendicesComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
-  { path: 'creacion-training', component: CreacionTrainingComponent},
+
 ];
 //, canActivate: [AuthGuard]
 @NgModule({
