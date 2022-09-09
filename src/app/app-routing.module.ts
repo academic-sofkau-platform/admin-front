@@ -7,6 +7,7 @@ import { CursosComponent } from './pages/cursos/cursos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
+import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'cursos', component:CursosComponent},
   { path: 'list-aprendices', component:ListaAprendicesComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
+  { path: 'creacion-training', component: CreacionTrainingComponent},
 
 ];
 //, canActivate: [AuthGuard]
