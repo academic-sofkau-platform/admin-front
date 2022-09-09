@@ -1,20 +1,44 @@
 <div class="cursos-data-display">
   <h1>Creación de Curso</h1>
-<!--Nombre-->
-  <div class="form__group field">
-    <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' required />
-    <label for="nombre" class="form__label">Nombre</label>
-  </div>
-<!--Descripción-->
-  <div class="form__group field">
-  <input type="input" class="form__field" placeholder="Descripción" name="descripcion" id='descripcion' required />
-  <label for="descripcion" class="form__label">Descripción</label>
-  </div>
-<!--Valor Aprobación-->
-  <div class="form__group field">
-  <input type="input" class="form__field" placeholder="Valor Aprobación" name="valorAprobacion" id='valorAprobacion' required />
-  <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
-  </div>
-<!--Guardar-->
-  <button class="button-64" role="button"><span class="text">Guardar</span></button>
+  <form [formGroup]="cursoForm" (ngSubmit)="crearCurso()">
+  <!--Nombre-->
+    <div class="form__group field">
+      <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' formControlName="nombre" required/>
+      <label for="nombre" class="form__label">Nombre</label>
+    </div>
+  <!--Descripción-->
+    <div class="form__group field">
+    <input type="input" class="form__field" placeholder="Descripción" name="descripcion" id='descripcion' formControlName="descripcion" required  />
+    <label for="descripcion" class="form__label">Descripción</label>
+    </div>
+  <!--Valor Aprobación-->
+    <div class="form__group field" >
+    <input type="number" class="form__field" placeholder="Valor Aprobación" name="valorAprobacion" id='valorAprobacion' formControlName="valorAprobacion" required/>
+    <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
+    </div>
+  <!--Guardar-->
+    <button class="button-64" role="button" type="submit"><span class="text">Guardar</span></button>
+  </form>
+
+  <table >
+  <tr>
+    <th><p>Nombre</p></th>
+    <th><p>Descripción</p></th>
+    <th><p>Valor Aprobación</p></th>
+    <th class="acciones"><p>Modificar</p></th>
+    <th class="acciones"><p>Eliminar</p></th>
+  </tr>
+  <tr *ngFor="let Curso of dataSource">
+    <td><p>{{Curso.nombre}}</p></td>
+    <td><p>{{Curso.descripcion}}</p></td>
+    <td><p>{{Curso.aprobacion}}</p></td>
+    <td class="accion">
+      <button class="button-64 accion" role="button"><span class="text">Modificar</span></button>
+    </td>
+    <td class="accion">
+      <button class="button-64 accion" role="button" (click)="eliminar(Curso.id)"><span class="text">Eliminar</span></button>
+    </td>
+  </tr>
+  </table>
+  
 </div>
