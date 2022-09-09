@@ -11,7 +11,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StdInfoModule } from './modules/std-info/std-info.module';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -40,7 +39,6 @@ import { StdInfoComponent } from './pages/std-info/std-info.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StdInfoModule,
     LoginModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
