@@ -10,25 +10,24 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class CursosComponent implements OnInit {
   dataSource: CursoModel[] = [];
-  uuid: any;
   cursoForm: FormGroup;
   constructor(
     public api: ApiService,
-    
-  ) { 
+
+  ) {
     this.cursoForm = new FormGroup({
       nombre: new FormControl(),
       descripcion: new FormControl(),
       valorAprobacion: new FormControl(Validators.max(100), Validators.min(0))
     })
-  
+
    }
 
   ngOnInit() {
     this.api.getCursos().subscribe((elements) => {
       this.dataSource = elements;
     });
-  
+
   }
 
   crearCurso() {
@@ -37,7 +36,7 @@ export class CursosComponent implements OnInit {
       descripcion:this.cursoForm.value.descripcion,
       aprobacion:this.cursoForm.value.valorAprobacion
     }
-    ).subscribe() 
+    ).subscribe()
   }
 
 
