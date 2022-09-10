@@ -1,47 +1,51 @@
-
 <div class="conteiner">
   <div class="inputs">
-    <mat-form-field appearance="legacy">
-      <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Placeholder">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Fecha de Inicio</mat-label>
-      <input matInput placeholder="Placeholder">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Fecha Final</mat-label>
-      <input matInput placeholder="Placeholder">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Descripcion</mat-label>
-      <input matInput placeholder="Descripcion">
-    </mat-form-field>
+    <div class="form__group field">
+      <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' formControlName="nombre" required/>
+      <label for="nombre" class="form__label">Nombre</label>
+    </div>
+    <div class="form__group field">
+      <input type="input" class="form__field" placeholder="Fecha Inicio" name="nombre" id='nombre' formControlName="nombre" required/>
+      <label for="nombre" class="form__label">Fecha Inicio</label>
+    </div>
+    <div class="form__group field">
+      <input type="input" class="form__field" placeholder="Fecha Final" name="nombre" id='nombre' formControlName="nombre" required/>
+      <label for="nombre" class="form__label">Fecha Final</label>
+    </div>
+
   </div>
-  <div class="selects">
-    <mat-form-field appearance="fill">
-        <mat-label>Responsable (Coach)</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Ruta</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-        </mat-select>
-      </mat-form-field>
-  </div>
-  <div class="cargarbutton"><button mat-flat-button color="primary">Carga Aprendices</button>
-  </div>
+
+  <div class="inputs2">
+    <div class="form__group field">
+      <input type="input" class="form__field" placeholder="Descripcion" name="nombre" id='nombre' formControlName="nombre" required/>
+      <label for="nombre" class="form__label">Descripcion</label>
+    </div>
   
-  <div class="crearbutton">
-    <button class="crearbutton" mat-flat-button color="primary">CREAR</button>
+    <div class="form-group col-md-2">
+      <select id="" class="form-control">
+        <option value="1">Raul</option>
+        <option value="2">Eddie</option>
+        <option value="3">Adryan</option>
+        <option value="4">Santiago</option>
+      </select>
+    </div>
+
   </div>
+  <div class="selectbuton">
+    <div class="form-group col-md-2">
+      <select id="" class="form-control">
+        <option value="1">Ruta 1</option>
+        <option value="2">Ruta 2</option>
+        <option value="3">Ruta 3</option>
+        <option value="4">Ruta 4</option>
+        <option value="5">Ruta 5</option>
+        <option value="6">Ruta 6</option>
+      </select>
+      <div class="cargarbutton">
+        <button mat-flat-button color="primary">Carga Aprendices</button>
+      </div>
+    </div>
+    <button class="button-64" role="button" type="submit"><span class="text">Crear</span></button>
+  </div>
+
 </div>
-
-
