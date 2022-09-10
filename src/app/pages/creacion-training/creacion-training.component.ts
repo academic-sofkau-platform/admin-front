@@ -21,8 +21,10 @@ export class CreacionTrainingComponent  {
   constructor(private formBuilder: FormBuilder) {}
 
 
-  convertToBase64() {
+  convertToBase64() {//capturar
     this.csvFile = this.InputFile.nativeElement.files[0];
+
+    console.log(this.csvFile);
   }
 
   enviarFormulario() {
@@ -32,3 +34,4 @@ export class CreacionTrainingComponent  {
   }
 
 }
+
