@@ -1,53 +1,62 @@
-<h1>CREACIÓN DE RUTA DE APRENDIZAJE</h1>
-<div class="bd-example justify-content-center">
+<div class="cursos-data-display">
+  <h1>Creación de Ruta de Aprendizaje</h1>
   <form>
-    <div class="form-group">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Nombre</label>
-        <input
-          type="email"
-          class="form-control"
-          id="inputEmail4"
-          placeholder="Ingrese nombre"
-        />
+    <!--Nombre-->
+    <div class="form-group1">
+      <div class="cont-name-description">
+        <div class="form__group field">
+          <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre'
+            formControlName="nombre" required />
+          <label for="nombre" class="form__label">Nombre</label>
+        </div>
+        <!--Descripción-->
+        <div class="form__group field">
+          <input type="input" class="form__field" placeholder="Descripción" name="descripcion" id='descripcion'
+            formControlName="descripcion" required />
+          <label for="descripcion" class="form__label">Descripción</label>
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Descripcion</label>
-        <input
-          type="password"
-          class="form-control"
-          id="inputPassword4"
-          placeholder="Ingrese descripción"
-        />
+      <div class="cont-btn">
+        <!--Guardar-->
+        <button class="button-64" role="button" type="submit"><span class="text">CREAR</span></button>
       </div>
     </div>
-    <div class="form-row ">
+
+    <!-- Seleccione curso -->
+    <div class="form-row">
       <div class="form-group col-md-2">
-        <label for="nivel">Nivel</label>
-        <input type="number" class="form-control" id="nivel" />
+        <select id="" class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
       </div>
       <div class="form-group col-md-2">
-        <label for="curso">Curso</label>
         <select id="curso" class="form-control">
-          <option selected>Seleccione un curso...</option>
+          <option selected>Curso</option>
           <option>...</option>
           <option>...</option>
           <option>...</option>
         </select>
       </div>
       <div class="form-group col-md-2">
-        <label for="inputState">Prerrequisitos</label>
         <select id="inputState" class="form-control">
-          <option selected>Seleccione prerrequisitos...</option>
+          <option selected>Prerrequisitos</option>
           <option>...</option>
           <option>...</option>
           <option>...</option>
         </select>
       </div>
       <div class="form-group col-md-2">
-        <button type="submit" id="agregar" class="btn btn-primary">+</button>
+        <button type="submit" id="agregar" (click)="addRow()" class="btn btn-primary">+</button>
       </div>
     </div>
-    <button type="submit" id="crear" class="btn btn-primary">CREAR</button>
+
+
+
+
   </form>
 </div>
