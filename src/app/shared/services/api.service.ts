@@ -38,5 +38,10 @@ crearRutaAprendizaje(command: CrearRutaAprendizajeCommand) {
   return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
 }
 
+//ACTIVIDAD
+getActividad(cursoId: string, aprendizId: string) : Observable<CursoModel[]> {
+  return this.http.get<any[]>(environment.apiBase + '/find-specific/' + cursoId + '/' + aprendizId);
+}
+
 }
 
