@@ -5,7 +5,9 @@ import { CursoModel } from '../models/curso';
 import { environment } from 'src/environments/environment';
 import { CrearCursoCommand } from '../commands/crearCursoCommand';
 import { EliminarCursoCommand } from '../commands/eliminarCursoCommand';
-import { CrearRutaAprendizajeCommand } from '../commands/CrearRutaAprendizajeCommand';
+import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCommand';
+import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ constructor(private http: HttpClient) { }
 
 //CURSOS
 getCursos(): Observable<CursoModel[]> {
-  return this.http.get<CursoModel[]>(environment.apiBase + '/curso');
+  return this.http.get<any[]>(environment.apiBase + '/curso');
 }
 
 crearCurso(command: CrearCursoCommand) {
@@ -25,6 +27,10 @@ crearCurso(command: CrearCursoCommand) {
 
 deleteCurso(command: EliminarCursoCommand){
   return this.http.post(environment.apiBase + '/curso/delete/', command);
+}
+
+modificarCurso(command: ModificarCursoCommand , cursoId: string){
+  return this.http.post(environment.apiBase + '/curso/update/' + cursoId , command);
 }
 
 //RUTAS DE APRENDIZAJE

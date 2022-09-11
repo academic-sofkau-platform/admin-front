@@ -33,7 +33,7 @@
     <td><p>{{Curso.descripcion}}</p></td>
     <td><p>{{Curso.aprobacion}}</p></td>
     <td class="accion">
-      <button class="button-64 accion" role="button"><span class="text">Modificar</span></button>
+      <button class="button-64 accion" role="button" (click)="modificarCurso(Curso.id)"><span class="text">Modificar</span></button>
     </td>
     <td class="accion">
       <button class="button-64 accion" role="button" (click)="eliminar(Curso.id)"><span class="text">Eliminar</span></button>

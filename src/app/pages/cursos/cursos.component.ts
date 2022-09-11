@@ -11,6 +11,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class CursosComponent implements OnInit {
   dataSource: CursoModel[] = [];
   cursoForm: FormGroup;
+  elementos: any 
+
   constructor(
     public api: ApiService,
 
@@ -36,12 +38,20 @@ export class CursosComponent implements OnInit {
       descripcion:this.cursoForm.value.descripcion,
       aprobacion:this.cursoForm.value.valorAprobacion
     }
+  
     ).subscribe()
   }
-
-
+  
   eliminar(id:string) {
     this.api.deleteCurso({ cursoId: id }).subscribe();
+  }
+
+  modificarCurso(id:string) {
+    this.api.modificarCurso({
+      nombre:this.cursoForm.value.nombre,
+      descripcion:this.cursoForm.value.descripcion,
+      aprobacion:this.cursoForm.value.valorAprobacion
+    }, id)
   }
 
 }
