@@ -50,6 +50,6 @@ export class ApiService {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
-  
+
 
 }

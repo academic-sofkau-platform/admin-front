@@ -28,24 +28,26 @@ export class RutaAprendizajeComponent implements OnInit {
   }
 
   addRutas(){
-    const rutasFormGroup = this.formBuilder.group({
-      nivel:'',
-      curso:'',
-      prerrequisitos:''
-    });
-    this.getRutas.push(rutasFormGroup);
+    const control = <FormArray>this.miFormulario.controls['rutas']
+    control.push(this.formBuilder.group({
+      rutas:[]
+    }));
+  }
+
+  removeRuta(indice: number) {
+    this.getRutas.removeAt(indice);
   }
 
   ngOnInit() {}
 
-  crearRutaAprendizaje(){
-    this.api.crearRutaAprendizaje({
-      nombre: this.miFormulario.value.nombre,
-      descripcion: this.miFormulario.value.descripcion,
-      rutas: []
-    })
-    .subscribe()
-  }
+  // crearRutaAprendizaje(){
+  //   this.api.crearRutaAprendizaje({
+  //     nombre: this.miFormulario.value.nombre,
+  //     descripcion: this.miFormulario.value.descripcion,
+  //     rutas: []
+  //   })
+  //   .subscribe()
+  // }
  
 
  
