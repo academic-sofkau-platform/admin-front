@@ -37,7 +37,6 @@ import { CursosComponent } from './pages/cursos/cursos.component';
 import { ApiService } from './shared/services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HeatMapAllModule } from '@syncfusion/ej2-angular-heatmap';
 import { StdInfoComponent } from './pages/std-info/std-info.component';
 

@@ -1,7 +1,5 @@
-import { ContentObserver } from '@angular/cdk/observers';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { max } from 'rxjs';
 import { CursoModel } from 'src/app/shared/models/curso';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -27,8 +25,10 @@ export class CursosComponent implements OnInit {
     this.cursoForm = new FormGroup({
       nombre: new FormControl(),
       descripcion: new FormControl(),
-      //valorAprobacion: new FormControl(Validators.max(100), Validators.min(0))
-      valorAprobacion: new FormControl()
+      valorAprobacion: new FormControl(),
+      name: new FormControl(),
+      description: new FormControl(),
+      aprobacion: new FormControl()
     })
 
    }
@@ -45,54 +45,57 @@ export class CursosComponent implements OnInit {
       nombre:this.cursoForm.value.nombre,
       descripcion:this.cursoForm.value.descripcion,
       aprobacion:this.cursoForm.value.valorAprobacion
-    }
-    ).subscribe()
-    this.api.getCursos().subscribe((elements) => {
-      this.dataSource = elements;
-    });
-    window.scrollTo(0, document.body.scrollHeight);
+    }).subscribe((elementos:any)=> {
+      this.dataSource.push(elementos)
+    })
+    this.nombre = ""
+    this.descripcion = ""
+    this.valorAprobacion = 0
+    window.location.reload()
   }
 
   
   eliminar(id:string) {
-    this.api.deleteCurso({ cursoId: id }).subscribe();
-    this.api.getCursos().subscribe((elements) => {
-      this.dataSource = elements;
-    });
+    this.api.deleteCurso(id).subscribe();
+    this.dataSource = this.dataSource.filter(cursos => cursos.id !== id)
   }
 
 
   llevarDatos(id:string) {
-    let curso:any
-    curso = this.dataSource.filter(curso => curso.id == id)
-    this.cursoId = id
-    this.nombre = curso[0].nombre
-    this.descripcion = curso[0].descripcion
-    this.valorAprobacion = curso[0].aprobacion
     this.modificando = true
+
+    setTimeout(()=> { let curso:any
+      curso = this.dataSource.filter(curso => curso.id === id)
+      this.cursoId = id
+      
+      this.nombre = curso[0].nombre
+      this.cursoForm.value.name = curso[0].nombre
+  
+      this.descripcion = curso[0].descripcion
+      this.cursoForm.value.description = curso[0].descripcion
+  
+      this.valorAprobacion = curso[0].aprobacion
+      this.cursoForm.value.aprobacion = curso[0].aprobacion},0)
     window.scroll({
       top: 0, 
       left: 0, 
       behavior: 'smooth' 
      });
   }
-  
 
-  modificarCurso(id:string) {
+  modificarCurso(cursoId:string) {
+    this.api.modificarCurso(cursoId,{
+      nombre:this.cursoForm.value.name,
+      descripcion:this.cursoForm.value.description,
+      aprobacion:this.cursoForm.value.aprobacion
+    }).subscribe((elementos:any)=> {
+      this.dataSource = this.dataSource.filter(elementos => elementos.id !== cursoId)
+      this.dataSource.push(elementos)
+    })
     this.nombre = ""
     this.descripcion = ""
     this.valorAprobacion = 0
     this.modificando = false
-    this.api.modificarCurso({
-      nombre:this.cursoForm.value.nombre,
-      descripcion:this.cursoForm.value.descripcion,
-      aprobacion:this.cursoForm.value.valorAprobacion
-    }, id).subscribe()
-    console.log(this.cursoForm.value.nombre)
-   
-    this.api.getCursos().subscribe((elements) => {
-      this.dataSource = elements;
-    });
   }
  
 
