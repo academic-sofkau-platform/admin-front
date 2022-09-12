@@ -1,4 +1,24 @@
-table thead{
-    background-color: #111979;
-    color: white;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
+
+.container-fluid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+  }
+  th,td,button{
+    font-size:20px;
+    font-family: serif;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .h2{
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 45px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .inner-adjust{
+    margin-top: 30px;
+    width: 1500px;
+  }

@@ -12,8 +12,10 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class ListaTrainingActivosComponent implements OnInit {
   trainings:TrainingModel[]=[];
   
+  
   displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
   dataSource: TrainingModel[] = this.getTrainings();
+  
 
   constructor(private api:ApiService, private router:Router) { }
 
@@ -25,6 +27,7 @@ export class ListaTrainingActivosComponent implements OnInit {
     this.api.getActiveTrainings()
     .subscribe(data =>{
       console.log(data)
+      console.log("desplegando trainings2");
       this.trainings=data;
     })
     return this.trainings;
