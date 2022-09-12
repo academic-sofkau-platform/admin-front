@@ -1,6 +1,6 @@
 <div class="cursos-data-display">
   <h1>Creación de Ruta de Aprendizaje</h1>
-  <form>
+  <form [formGroup]="miFormulario">
     <!--Nombre-->
     <div class="form-group1">
       <div class="cont-name-description">
@@ -23,36 +23,40 @@
     </div>
 
     <!-- Seleccione curso -->
-    <div class="form-row">
-      <div class="form-group col-md-2">
-        <select id="" class="form-control">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
+    <div formArrayName="rutas" *ngFor="let ruta of getRutas.controls; let i = index" >
+      <div [formGroupName]="i" class="form-row">
+        <div class="form-group col-md-2">
+          <select  class="form-control" formControlName="nivel">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <select id="curso" class="form-control" formControlName="curso">
+            <option selected>Curso</option>
+            <option>Angular</option>
+            <option>Arquitectura</option>
+            <option>React</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <select id="inputState" class="form-control" formControlName="prerrequisitos">
+            <option selected>Prerrequisitos</option>
+            <option>Angular</option>
+            <option>Arquitectura</option>
+            <option>React</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <button type="submit" id="agregar" (click)="addRutas()" class="btn btn-primary">+</button>
+          
+        </div>
       </div>
-      <div class="form-group col-md-2">
-        <select id="curso" class="form-control">
-          <option selected>Curso</option>
-          <option>...</option>
-          <option>...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <select id="inputState" class="form-control">
-          <option selected>Prerrequisitos</option>
-          <option>...</option>
-          <option>...</option>
-          <option>...</option>
-        </select>
-      </div>
-      <div class="form-group col-md-2">
-        <button type="submit" id="agregar" (click)="addRow()" class="btn btn-primary">+</button>
-      </div>
+
     </div>
 
 
