@@ -36,24 +36,19 @@
           </select>
         </div>
         <div class="form-group col-md-2">
-          <select id="curso" class="form-control" formControlName="curso">
-            <option selected>Curso</option>
-            <option>Angular</option>
-            <option>Arquitectura</option>
-            <option>React</option>
+          <select id="curso" class="form-control" ControlName="curso">
+            <option selected>Seleccione curso</option>
+            <option *ngFor="let curso of listaCursos">{{curso.nombre}}</option>
           </select>
         </div>
         <div class="form-group col-md-2">
           <select id="inputState" class="form-control" formControlName="prerrequisitos">
             <option selected>Prerrequisitos</option>
-            <option>Angular</option>
-            <option>Arquitectura</option>
-            <option>React</option>
+            <option *ngFor="let curso of listaCursos">{{curso.nombre}}</option>
           </select>
         </div>
         <div class="form-group col-md-2">
           <button type="submit" id="agregar" (click)="addRutas()" class="btn btn-primary">+</button>
-          
         </div>
       </div>
 

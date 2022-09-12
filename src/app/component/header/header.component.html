@@ -12,8 +12,12 @@
   <mat-menu class="menu-icon" #menu="matMenu">
     <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.displayName}}</mat-card-title>
     <!-- <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.email}}</mat-card-title> -->
+    <button mat-menu-item>
+      <mat-icon routerLink="home">home</mat-icon>
+    </button>
     <button *ngIf="auth.isLoggedIn;" mat-menu-item>
       <mat-icon (click)="auth.signOut()">logout</mat-icon>
     </button>
+
   </mat-menu>
 </mat-toolbar>
