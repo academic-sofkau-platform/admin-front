@@ -1,6 +1,8 @@
-export class Training {
-    idCard:string="id"
-    nombre:string="nombre"
-    periodo:string="periodo"
-    aprendices:int=0
+export interface Training {
+    trainingId:string;
+    name:string;
+    startDate:string;
+    endDate:string;
 }
+
+

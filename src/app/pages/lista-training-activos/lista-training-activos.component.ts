@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { DataTableComponent } from 'src/app/component/data-table/data-table.component';
+import { Training } from 'src/app/shared/models/training';
 
 @Component({
   selector: 'app-lista-training-activos',
@@ -9,18 +9,23 @@ import { DataTableComponent } from 'src/app/component/data-table/data-table.comp
   styleUrls: ['./lista-training-activos.component.css']
 })
 export class ListaTrainingActivosComponent implements OnInit {
-  //training: Training[];
+  trainings:Training[]=[];
+  
+  displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
+  dataSource: Training[] = this.getTrainings();
 
-  constructor(private api:ApiService, private router: Router) { }
+  constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit() {
+    this.getTrainings()
   }
 
-  /*refreshGame(){
-    this.api.getTraining()
-    .subscribe(data=>{
+  getTrainings(){
+    this.api.getActiveTrainings()
+    .subscribe(data =>{
       console.log(data)
-      this.training=data;
+      this.trainings=data;
     })
-  }*/
+    return this.trainings;
+  }
 }

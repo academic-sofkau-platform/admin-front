@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { DataTableDataSource, DataTableItem } from './data-table-datasource';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-table',
@@ -16,9 +18,9 @@ export class DataTableComponent implements AfterViewInit {
   dataSource: DataTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  displayedColumns = ['Name', 'Período', 'Aprendices'];
 
-  constructor() {
+  constructor(private api:ApiService, private router: Router) {
     this.dataSource = new DataTableDataSource();
   }
 
@@ -26,5 +28,13 @@ export class DataTableComponent implements AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  refreshTarinings(){
+    this.api.getActiveTrainings()
+    .subscribe(data => {
+      console.log(data)
+      this;
+    })
   }
 }
