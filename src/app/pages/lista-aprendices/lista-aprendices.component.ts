@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentModel } from 'src/app/shared/models/student';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-lista-aprendices',
@@ -9,13 +10,16 @@ import { StudentModel } from 'src/app/shared/models/student';
 export class ListaAprendicesComponent implements OnInit {
 
   displayedColumns: string[] = ['nombre', 'apellido', 'email', 'ver','eliminar'];
-  dataSource: StudentModel[] = 
-  [{id:"asd",name:'Matias',lastname:'Souza',city:"lp ñeri",gender:"no se", email:'matisouzafr@gmail.com',phoneNumber:1050,photo:"asd",bilingual:false},
-  {id:"23",name:'PEPE',lastname:'Souza',city:"lp ñeri",gender:"no se", email:'ASD@gmail.com',phoneNumber:1050,photo:"asd",bilingual:true}
-  ]
-  constructor() { }
+  dataSource: StudentModel[] = [];
+  
+  constructor(private api: ApiService) { 
+    this.api.aprendicesByTrainingId("4149bdc6-f0b4-4f94-a030-385c695a88a7").subscribe((element )=>{
+      this.dataSource = element;
+    });
+  }
 
   ngOnInit() {
+
   }
 
 }
