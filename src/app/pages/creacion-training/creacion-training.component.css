@@ -1,29 +1,126 @@
-.conteiner{
-    padding-top: 160px
+.container{
+    padding-top: 150px;
+    margin-left: 300px
 }
 
 
 .inputs{
-    padding-left: 200px;
-    padding-top: 200px
+
+    display: flex;
+    /* padding-left: 200px; */
+    /* padding-top: 50px; */
 }
 
-mat-form-field{
+.inputs2{
 
-    margin:10px
+    display: flex;
+    /* padding-left: 200px; */
+    /* padding-top: 80px */
 }
 
-.selects{
-    padding-top:80px;
-    padding-left:200px
+.selectbuton{
+    display: flex;
+    margin-left: 20px;
 }
 
-button{
-    margin-top:50px;
-    margin-left:340px
-}
+/* button{
+    margin-left: 200px;
+    margin-top: 120px;
+} */
+/* .inputs{
+    display: flex;
+} */
 
-.crearbutton{
-    /* margin-top:50px; */
-    margin-left:450px
-}
+
+.button-64 {
+    align-items: center;
+    background-image: linear-gradient(144deg,#111979, #1c2da1 50%,#7bdafc);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 25px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 5px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-top:10% ;
+    margin-left:35%;
+  }
+   .form__group {
+       margin-left:2%;
+       display: flex;
+       position: relative;
+       padding: 15px 0 0;
+       margin-top: 10px;
+       width: 20%;
+     }
+     
+     .form__field {
+       font-family: inherit;
+       width: 100px;
+       border: 0;
+       border-bottom: 2px solid #c1f0f0;
+       outline: 0;
+       font-size: 1.3rem;
+       color: rgb(0, 0, 0);
+       padding: 7px 0;
+       background: transparent;
+       transition: border-color 0.2s;
+       margin-top: 5px;
+     }
+     .form__field::placeholder {
+       color: transparent;
+     }
+     .form__field:placeholder-shown ~ .form__label {
+       font-size: 1.3rem;
+       cursor: text;
+       top: 20px;
+     }
+     
+     .form__label {
+       position: absolute;
+       top: 0;
+       display: block;
+       transition: 0.2s;
+       font-size: 1rem;
+       color: #5cd3fb;
+       margin-top: 10px;
+     }
+     
+     .form__field:focus {
+       padding-bottom: 6px;
+       font-weight: 200;
+       border-width: 3px;
+       border-image: linear-gradient(to right,  #1c2da1, #5cd3fb);
+       border-image-slice: 1;
+     }
+     .form__field:focus ~ .form__label {
+       position: absolute;
+       top: 0;
+       display: block;
+       transition: 0.2s;
+       font-size: 1rem;
+       color: #7bdafc;
+       font-weight: 200;
+     }
+     
+     /* reset input */
+     .form__field:required, .form__field:invalid {
+       box-shadow: none;
+     }
+
+     .form-control,.cargarbutton{
+        margin-top: 30px;
+     }
+
