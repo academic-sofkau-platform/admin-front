@@ -5,7 +5,7 @@ import { CursoModel } from '../models/curso';
 import { environment } from 'src/environments/environment';
 import { CrearCursoCommand } from '../commands/crearCursoCommand';
 import { EliminarCursoCommand } from '../commands/eliminarCursoCommand';
-import { CrearRutaAprendizajeCommand } from '../commands/CrearRutaAprendizajeCommand';
+import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCommand';
 
 @Injectable({
   providedIn: 'root'
