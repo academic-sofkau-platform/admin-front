@@ -16,6 +16,11 @@ export class CreacionTrainingComponent  {
 
   public miFormulario: FormGroup = this.formBuilder.group({
     nombre: [, [Validators.required, Validators.minLength(3)], []],
+    fechainicio: [, [Validators.required, Validators.minLength(3)], []],
+    fechafinal: [, [Validators.required, Validators.minLength(3)], []],
+    descripcion: [, [Validators.required, ], []],
+    //coach: [, [Validators.required, Validators.minLength(3), []],
+    //ruta: [, [Validators.required, Validators.minLength(3), []],
   })
 
   constructor(private formBuilder: FormBuilder) {}
