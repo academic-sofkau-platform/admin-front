@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Aprendiz } from 'src/app/shared/models/student';
+import { Student } from 'src/app/shared/models/student';
 
 @Component({
   selector: 'app-lista-aprendices',
@@ -9,9 +9,10 @@ import { Aprendiz } from 'src/app/shared/models/student';
 export class ListaAprendicesComponent implements OnInit {
 
   displayedColumns: string[] = ['nombre', 'apellido', 'email', 'ver','eliminar'];
-  dataSource: Aprendiz[] = 
-  [{name:'Matias',lastname:'Souza', email:'matisouzafr@gmail.com'},
-  {name:'Juan',lastname:'Sanchez', email:'juancho@gmail.com'}]
+  dataSource: Student[] = 
+  [{id:"asd",name:'Matias',lastname:'Souza',city:"lp ñeri",gender:"no se", email:'matisouzafr@gmail.com',phoneNumber:1050,photo:"asd",bilingual:false},
+  {id:"23",name:'PEPE',lastname:'Souza',city:"lp ñeri",gender:"no se", email:'ASD@gmail.com',phoneNumber:1050,photo:"asd",bilingual:true}
+  ]
   constructor() { }
 
   ngOnInit() {
