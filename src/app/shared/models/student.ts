@@ -1,4 +1,4 @@
-export interface Student {
+export interface StudentModel {
     id: string;
     name: string;
     lastname: string;
@@ -8,4 +8,9 @@ export interface Student {
     phoneNumber: number;
     photo: string;
     bilingual: boolean
+}
+export interface Aprendiz{
+    name:string;
+    lastname:string;
+    email:string;
 }

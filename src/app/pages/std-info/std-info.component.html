@@ -6,11 +6,10 @@
 
     <div class="pinfo">
       <h2>{{ std.name }} {{ std.lastname }}</h2>
-      <h4>{{ std.city }}</h4>
+      <p>{{std.email}} <br> +{{std.phoneNumber}} <br> {{std.city}}</p>
     </div>
   </div>
 
-  <div id="divChart">
-    <canvas id="stdChart"></canvas>
-  </div>
+  <ejs-heatmap [dataSourceSettings]="dataSourceSettings" [cellSettings]="cellSettings" [paletteSettings]="palleteSettings"  [titleSettings]='titleSettings' [dataSource]="dataSource" [xAxis]='xAxis' [yAxis]='yAxis'></ejs-heatmap>
+
 </div>

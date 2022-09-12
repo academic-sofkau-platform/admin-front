@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TrainingModel } from 'src/app/shared/models/training';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { Training } from 'src/app/shared/models/training';
+
 
 @Component({
   selector: 'app-lista-training-activos',
@@ -9,10 +10,10 @@ import { Training } from 'src/app/shared/models/training';
   styleUrls: ['./lista-training-activos.component.css']
 })
 export class ListaTrainingActivosComponent implements OnInit {
-  trainings:Training[]=[];
+  trainings:TrainingModel[]=[];
   
   displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
-  dataSource: Training[] = this.getTrainings();
+  dataSource: TrainingModel[] = this.getTrainings();
 
   constructor(private api:ApiService, private router:Router) { }
 

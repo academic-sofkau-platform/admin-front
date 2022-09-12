@@ -1,4 +1,4 @@
-export interface Training {
+export interface TrainingModel {
     trainingId:string;
     name:string;
     startDate:string;

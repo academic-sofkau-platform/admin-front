@@ -1,27 +1,15 @@
 <header>
-  <div class="iframe">
-    <div class="iframe-cont">
-
-      <iframe allowfullscreen src="https://www.youtube.com/embed/sAMMpZDKygE?autoplay=1&mute=1&loop=1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" width="2400"
-        height="1389" frameborder="0">
-      </iframe>
-    </div>
-  </div>
-</header>
-
-<div class="contenedor">
   <div class="cont">
-
     <div class="cont-bienvenida">
       <h1>Sistema de Gestión de Cursos</h1>
-      <p>we make <span>IT</span> more rancio</p>
+      <p>we make <span>IT</span> more simple</p>
     </div>
-    <div class="cont-bienvenida">
-      <cool-google-button color="dark" (click)="auth.googleAuth()">
-        <span class="btn-gg">Login with Google</span>
-      </cool-google-button>
-    </div>
-
+    <button type="button" class="btn-google" (click)="auth.googleAuth()">
+      <img src="../../../assets/Google__G__Logo.png" style="height:30px;width:30px;"> Login with Google
+    </button>
   </div>
-</div>
+  <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" width="640"
+    height="360"
+    src="https://www.youtube.com/embed/sAMMpZDKygE?autoplay=1&playlist=sAMMpZDKygE&loop=1&mute=1&enablejsapi=1&modestbranding=1&showinfo=0&controls=0"
+    frameborder="0"></iframe>
+</header>
