@@ -26,12 +26,12 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/curso/save', command);
   }
 
-  deleteCurso(command: EliminarCursoCommand) {
-    return this.http.post(environment.apiBase + '/curso/delete/', command);
+  deleteCurso(cursoId:string){
+    return this.http.post(environment.apiBase + '/curso/delete/', cursoId);
   }
 
-  modificarCurso(command: ModificarCursoCommand, cursoId: string) {
-    return this.http.post(environment.apiBase + '/curso/update/' + cursoId, command);
+  modificarCurso(cursoId:string, command: ModificarCursoCommand){
+    return this.http.post(environment.apiBase + '/curso/update/' +cursoId , command);
   }
 
   //RUTAS DE APRENDIZAJE
