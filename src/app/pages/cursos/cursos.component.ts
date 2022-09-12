@@ -65,17 +65,18 @@ export class CursosComponent implements OnInit {
     this.modificando = true
 
     setTimeout(()=> { let curso:any
-      curso = this.dataSource.filter(curso => curso.id === id)
+      curso = this.dataSource.filter(curso => curso.id == id)
       this.cursoId = id
       
-      this.nombre = curso[0].nombre
       this.cursoForm.value.name = curso[0].nombre
-  
-      this.descripcion = curso[0].descripcion
+      this.nombre = curso[0].nombre
+      
       this.cursoForm.value.description = curso[0].descripcion
-  
+      this.descripcion = curso[0].descripcion
+      
+      this.cursoForm.value.aprobacion = curso[0].aprobacion
       this.valorAprobacion = curso[0].aprobacion
-      this.cursoForm.value.aprobacion = curso[0].aprobacion},0)
+     },0)
     window.scroll({
       top: 0, 
       left: 0, 
@@ -84,6 +85,9 @@ export class CursosComponent implements OnInit {
   }
 
   modificarCurso(cursoId:string) {
+    if (this.cursoForm.value.name == null) {this.cursoForm.value.name = this.nombre }
+    if (this.cursoForm.value.description == null) {this.cursoForm.value.description = this.descripcion }
+    if (this.cursoForm.value.aprobacion == null) {this.cursoForm.value.aprobacion = this.valorAprobacion }
     this.api.modificarCurso(cursoId,{
       nombre:this.cursoForm.value.name,
       descripcion:this.cursoForm.value.description,
