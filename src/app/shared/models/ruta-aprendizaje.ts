@@ -7,6 +7,6 @@ export interface RutaAprendizajeModel {
 
 export interface RutaModel{
   nivel: number;
-  curso: string;
-  prerrequisitos: string[];
+  cursoId: string;
+  prerrequisitosId: string[];
 }
