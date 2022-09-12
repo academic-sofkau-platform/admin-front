@@ -19,8 +19,8 @@ export class CreacionTrainingComponent  {
     fechainicio: [, [Validators.required, Validators.minLength(3)], []],
     fechafinal: [, [Validators.required, Validators.minLength(3)], []],
     descripcion: [, [Validators.required, ], []],
-    //coach: [, [Validators.required, Validators.minLength(3), []],
-    //ruta: [, [Validators.required, Validators.minLength(3), []],
+    coach: [, [Validators.required ]],//select
+    ruta: [, [Validators.required ]]//select leer validators
   })
 
   constructor(private formBuilder: FormBuilder) {}
@@ -31,9 +31,9 @@ export class CreacionTrainingComponent  {
   }
 
   enviarFormulario() {
-    console.log(this.csvFile);
+    //console.log(this.csvFile);
     console.log(this.miFormulario.value);
-    console.log(this.miFormulario.valid);
+    //console.log(this.miFormulario.valid);
   }
 
 }
