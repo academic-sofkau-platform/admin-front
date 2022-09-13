@@ -8,7 +8,12 @@ import { EliminarCursoCommand } from '../commands/eliminarCursoCommand';
 import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCommand';
 import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
+<<<<<<< HEAD
 import { ActividadModel } from '../models/actividad';
+=======
+import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
+import { TrainingModel } from '../models/training';
+>>>>>>> main
 
 
 @Injectable({
@@ -41,6 +46,14 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
+  getRutasAprendizaje(): Observable<RutaAprendizajeModel[]>{
+    return this.http.get<RutaAprendizajeModel[]>(environment.apiBase + '/rutaAprendizaje/findAll');
+  }
+
+  eliminarRutaAprendizaje(id:string){
+    return this.http.post(environment.apiBase + '/rutaAprendizaje/delete', id);
+  }
+
   //ACTIVIDAD
   getActividad(trainingId: string, aprendizId: string): Observable <ActividadModel[]> {
     return this.http.get<any[]>(environment.apiBase + '/find-specific/' + trainingId + '/' + aprendizId);
@@ -56,6 +69,10 @@ export class ApiService {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
-
+//TRAININGS ACTIVOS
+getActiveTrainings():Observable<TrainingModel[]>{
+  console.log("desplegando trainings");
+  return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+}
 
 }

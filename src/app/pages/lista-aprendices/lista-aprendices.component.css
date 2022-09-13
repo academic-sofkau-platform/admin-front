@@ -21,3 +21,9 @@
     margin-top: 30px;
     width: 1500px;
   }
+  h1{
+    font-family: 'DM Sans', sans-serif;
+    color: #111979;
+    font-size: xx-large;
+    font-weight: bolder;
+  }

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
 
+/* Data */
 .cursos-data-display{
     text-align: center;
     font-family: 'DM Sans', sans-serif;
@@ -10,6 +11,8 @@ h1 {
  margin-bottom: 5%;
 }
 
+
+/* Form */
 .form__group {
     margin-left: 30%;
     display: flex;
@@ -68,10 +71,13 @@ h1 {
     font-weight: 700;
   }
   
+
   /* reset input */
   .form__field:required, .form__field:invalid {
     box-shadow: none;
   }
+
+  /* Button */
 
 .button-64 {
   align-items: center;
@@ -123,6 +129,8 @@ h1 {
     min-width: 196px;
   }
 }
+
+/* Table */
 
 tr {
   height: 150%;
