@@ -12,9 +12,13 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class ListaTrainingActivosComponent implements OnInit {
   trainings:TrainingModel[]=[];
   
-  
-  displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
-  dataSource: TrainingModel[] = this.getTrainings();
+  displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'inicio', 'fin', 'ver'];
+  //displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
+  //dataSource: TrainingModel[] = this.getTrainings();
+dataSource: TrainingModel[]=
+  [{id:"1", nombre:"asd", descripcion:"desc1", fechaInicio:10, fechaFinal:20},
+  {id:"2", nombre:"asd", descripcion:"desc2", fechaInicio:10, fechaFinal:20}
+  ]
   
 
   constructor(private api:ApiService, private router:Router) { }

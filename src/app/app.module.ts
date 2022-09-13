@@ -39,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeatMapAllModule } from '@syncfusion/ej2-angular-heatmap';
 import { StdInfoComponent } from './pages/std-info/std-info.component';
-
+import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { StdInfoComponent } from './pages/std-info/std-info.component';
     RutaAprendizajeComponent,
     CreacionTrainingComponent,
     CursosComponent,
-    StdInfoComponent
+    StdInfoComponent,
+    ListaRutaAprendizajeComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,8 @@ import { StdInfoComponent } from './pages/std-info/std-info.component';
     MatMenuModule,
     MatTabsModule,
     MatButtonModule,
-    HeatMapAllModule
+    HeatMapAllModule,
+    MatPaginatorModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

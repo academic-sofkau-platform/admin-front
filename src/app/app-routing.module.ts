@@ -9,6 +9,7 @@ import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendiz
 import { ListaTrainingActivosComponent } from './pages/lista-training-activos/lista-training-activos.component';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
+import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'list-aprendices', component:ListaAprendicesComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
   { path: 'creacion-training', component: CreacionTrainingComponent},
+  { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
   { path: 'lista-training-activos', component: ListaTrainingActivosComponent}
 ];
 //, canActivate: [AuthGuard]

@@ -1,8 +1,8 @@
+
 export interface TrainingModel {
-    trainingId:string;
-    name:string;
-    startDate:string;
-    endDate:string;
-}
-
-
+    id: string;
+    nombre: string;
+    descripcion: string;
+    fechaInicio: number;
+    fechaFinal: number;
+    }
