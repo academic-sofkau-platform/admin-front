@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { CursoModel } from 'src/app/shared/models/curso';
+import { RutaModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -48,16 +49,14 @@ export class RutaAprendizajeComponent implements OnInit {
 
   ngOnInit() {}
 
-  // crearRutaAprendizaje(){
-  //   this.api.crearRutaAprendizaje({
-  //     nombre: this.miFormulario.value.nombre,
-  //     descripcion: this.miFormulario.value.descripcion,
-  //     rutas: []
-  //   })
-  //   .subscribe()
-  // }
+   crearRutaAprendizaje(){
+    this.api.crearRutaAprendizaje({
+       nombre: this.miFormulario.value.nombre,
+       descripcion: this.miFormulario.value.descripcion,
+       rutas: this.miFormulario.value.rutas
+     })
+     .subscribe()
 
-
-
-
+     this.miFormulario.reset()
+   }
 }
