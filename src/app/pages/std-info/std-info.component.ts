@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentModel } from 'src/app/shared/models/student';
-import { CursoModel } from 'src/app/shared/models/curso';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { TrainingModel } from 'src/app/shared/models/training';
 
 @Component({
   selector: 'app-std-info',
@@ -9,11 +9,69 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./std-info.component.css'],
 })
 export class StdInfoComponent implements OnInit {
-
   std: StudentModel;
-  curso: CursoModel;
+  curso: TrainingModel;
   dataSource: any[] = [];
-  actividad: any[] = [];
+  actividad: any[] = [{
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-01'),
+    puntaje: 12
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-02'),
+    puntaje: 30
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-03'),
+    puntaje: 15
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-04'),
+    puntaje: 18
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-05'),
+    puntaje: 21
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-06'),
+    puntaje: 3
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-07'),
+    puntaje: 0
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-23'),
+    puntaje: 33
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-09-30'),
+    puntaje: 33
+  },
+  {
+    cursoId: "12312",
+    aprendizId: "raul",
+    fecha: new Date('2022-10-15'),
+    puntaje: 24
+  },];
 
   cellSettings = {
     border: {
@@ -51,7 +109,15 @@ export class StdInfoComponent implements OnInit {
 
   xAxis = {
     // TODO: Cantidad de semanas de duracion dado al crear el training (calcular o que ya vengan)
-    labels: ['Semana 1', 'Semana 2', 'Semana 3','Semana 4','Semana 5', 'Semana 6', 'Semana 7'],
+    labels: [
+      'Semana 1',
+      'Semana 2',
+      'Semana 3',
+      'Semana 4',
+      'Semana 5',
+      'Semana 6',
+      'Semana 7',
+    ],
 
     textStyle: {
       size: '14px',
@@ -62,7 +128,15 @@ export class StdInfoComponent implements OnInit {
   };
 
   yAxis = {
-    labels: ['Domingo', 'Sabado', 'Viernes', 'Jueves', 'Miercoles', 'Martes', 'Lunes'],
+    labels: [
+      'Domingo',
+      'Sabado',
+      'Viernes',
+      'Jueves',
+      'Miercoles',
+      'Martes',
+      'Lunes',
+    ],
 
     textStyle: {
       size: '14px',
@@ -72,15 +146,18 @@ export class StdInfoComponent implements OnInit {
     },
   };
 
-  constructor(private api:ApiService) {
+  constructor(private api: ApiService) {
+
+    api.getAprendiceByTrainingAndMail("7595fb82-db54-490b-91fc-ec0c8e7daaa1", "email333").subscribe(x => console.log(x))
 
     // TODO: Obtener el curso correspondiente
     this.curso = {
       id: 'curso001',
       nombre: 'Angular Destilado',
       descripcion: 'XXXXXXXXX',
-      aprobacion: 75,
-    }
+      fechaInicio: new Date('22-10-21'),
+      fechaFinal: new Date('22-11-20'),
+    };
 
     // TODO: Obtener la informacion correcta del estudiante que corresponde del backend
     this.std = {
@@ -100,13 +177,19 @@ export class StdInfoComponent implements OnInit {
       this.actividad = actividad;
     });
 
-    this.actividad.forEach(done => {
-      this.dataSource.push({'Labels': {'Xlabel': 'Semana ' + this.getWeeksDiff(new Date('2022-09-01'), done.fecha) , 'Ylabel': this.getDayOfWeek(done.fecha.getDay())}, 'data': {'value': done.puntaje}});
+    this.actividad.forEach((done) => {
+      this.dataSource.push({
+        Labels: {
+          Xlabel:
+            'Semana ' + this.getWeeksDiff(new Date('2022-09-01'), done.fecha),
+          Ylabel: this.getDayOfWeek(done.fecha.getDay()),
+        },
+        data: { value: done.puntaje },
+      });
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getWeeksDiff(startDate: Date, endDate: Date) {
     const msInWeek = 1000 * 60 * 60 * 24 * 7;
@@ -117,7 +200,7 @@ export class StdInfoComponent implements OnInit {
     );
   }
 
-  getDayOfWeek(day: number) : string {
+  getDayOfWeek(day: number): string {
     switch (day) {
       case 0:
         return 'Lunes';
@@ -139,64 +222,63 @@ export class StdInfoComponent implements OnInit {
   }
 }
 
-
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-01'),
-    //   puntaje: 12
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-02'),
-    //   puntaje: 30
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-03'),
-    //   puntaje: 15
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-04'),
-    //   puntaje: 18
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-05'),
-    //   puntaje: 21
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-06'),
-    //   puntaje: 3
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-07'),
-    //   puntaje: 0
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-23'),
-    //   puntaje: 33
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-09-30'),
-    //   puntaje: 33
-    // },
-    // {
-    //   cursoId: "12312",
-    //   aprendizId: "rauuuuuul",
-    //   fecha: new Date('2022-10-15'),
-    //   puntaje: 24
-    // },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-01'),
+//   puntaje: 12
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-02'),
+//   puntaje: 30
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-03'),
+//   puntaje: 15
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-04'),
+//   puntaje: 18
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-05'),
+//   puntaje: 21
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-06'),
+//   puntaje: 3
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-07'),
+//   puntaje: 0
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-23'),
+//   puntaje: 33
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-09-30'),
+//   puntaje: 33
+// },
+// {
+//   cursoId: "12312",
+//   aprendizId: "raul",
+//   fecha: new Date('2022-10-15'),
+//   puntaje: 24
+// },
