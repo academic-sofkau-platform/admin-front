@@ -42,7 +42,7 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
-  getRutasAprendizaje(): Observable<RutaAprendizajeModel[]>{
+  getRutasAprendizaje(): Observable<RutaAprendizajeModel[]> {
     return this.http.get<RutaAprendizajeModel[]>(environment.apiBase + '/rutaAprendizaje/findAll');
   }
 
@@ -60,10 +60,10 @@ export class ApiService {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
-//TRAININGS ACTIVOS
-getActiveTrainings():Observable<TrainingModel[]>{
-  console.log("desplegando trainings");
-  return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
-}
+  //TRAININGS ACTIVOS
+  getActiveTrainings(): Observable<TrainingModel[]> {
+    console.log("desplegando trainings");
+    return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+  }
 
 }

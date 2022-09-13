@@ -12,20 +12,22 @@ export class ListaAprendicesComponent implements OnInit {
 
   displayedColumns: string[] = ['nombre', 'apellido', 'email', 'ver','eliminar'];
   dataSource: StudentModel[] = [];
-  idTraining:string = "4149bdc6-f0b4-4f94-a030-385c695a88a7";
+  idTraining:string='';
   constructor(
     private api: ApiService,
     private router:Router,
     private route: ActivatedRoute
     ) { 
-    
+      
   }
 
   ngOnInit() {
     this.route.params.subscribe((params)=>{
+      console.log(params)
       this.idTraining = params['id']
-      this.api.aprendicesByTrainingId(this.idTraining).subscribe((element )=>{
+      this.api.aprendicesByTrainingId(this.idTraining).subscribe((element)=>{
         this.dataSource = element;
+        console.log(element)
       });
     })
   }

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'std-info', component: StdInfoComponent},
   { path: 'cursos', component:CursosComponent},
-  { path: 'list-aprendices', component:ListaAprendicesComponent},
+  { path: 'list-aprendices/:id', component:ListaAprendicesComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
   { path: 'creacion-training', component: CreacionTrainingComponent},
   { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
