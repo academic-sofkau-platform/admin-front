@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./lista-ruta-aprendizaje.component.scss']
 })
 export class ListaRutaAprendizajeComponent implements OnInit {
+
   displayedColumns: string[] = ['Nombre', 'Descripcion', 'Acciones'];
   dataSource: RutaAprendizajeModel[] = [];
   constructor(private api: ApiService) {
@@ -18,4 +19,11 @@ export class ListaRutaAprendizajeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  eliminarRutaAprendizaje(id:string){
+    this.api.eliminarRutaAprendizaje(id)
+      .subscribe(() =>
+        this.api.getRutasAprendizaje()
+          .subscribe((element) => this.dataSource = element)
+      );
+  }
 }
