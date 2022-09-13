@@ -13,6 +13,9 @@ export class CreacionTrainingComponent  {
   }) InputFile!: ElementRef;
 
   csvFile: any;
+  csvBase64: string | any = "";
+
+  constructor(private formBuilder: FormBuilder) {}
 
   public miFormulario: FormGroup = this.formBuilder.group({
     nombre: [, [Validators.required, Validators.minLength(3)], []],
@@ -20,14 +23,20 @@ export class CreacionTrainingComponent  {
     fechafinal: [, [Validators.required, Validators.minLength(3)], []],
     descripcion: [, [Validators.required, ], []],
     coach: [, [Validators.required ]],//select
-    ruta: [, [Validators.required ]]//select leer validators
+    ruta: [, [Validators.required ]],//select leer validators
+    csvFile: [, [Validators.required]]//file csv base64
   })
 
-  constructor(private formBuilder: FormBuilder) {}
-
   convertToBase64() {//capturar
+    //console.log(this.csvFile);
     this.csvFile = this.InputFile.nativeElement.files[0];
-    console.log(this.csvFile);
+    const myReader = new FileReader();
+    myReader.readAsDataURL(this.csvFile);
+    this.csvBase64 = myReader.onloadend = e => {
+      return myReader.result?.toString().split(',')[1];
+      console.log("Dentro: "+this.csvBase64);
+    };
+    console.log("Fuera: "+this.csvBase64);
   }
 
   enviarFormulario() {
@@ -35,6 +44,9 @@ export class CreacionTrainingComponent  {
     console.log(this.miFormulario.value);
     //console.log(this.miFormulario.valid);
   }
+//--------------------------------------------------------------//testing
+
+
 
 }
 
