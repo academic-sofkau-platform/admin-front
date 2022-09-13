@@ -40,6 +40,7 @@
     <button *ngIf="modificando" class="button-64" role="button" (click)="modificarCurso(cursoId)"><span class="text">Modificar</span></button>
   </form>
 
+  <!--Tabla títulos-->
   <table >
   <tr>
     <th><p>Nombre</p></th>
@@ -48,6 +49,8 @@
     <th class="acciones"><p>Modificar</p></th>
     <th class="acciones"><p>Eliminar</p></th>
   </tr>
+  
+  <!--Cursos-->
   <tr *ngFor="let Curso of dataSource">
     <td><p>{{Curso.nombre}}</p></td>
     <td><p>{{Curso.descripcion}}</p></td>
