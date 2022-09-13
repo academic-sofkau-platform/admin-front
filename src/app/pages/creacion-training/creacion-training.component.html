@@ -50,3 +50,51 @@
 </form>
 <!-------------------------------------------------------TESTING-->
 
+<div class="container">
+  <form [formGroup]="trainingForm">
+  <div class="inputs">
+      <div class="form__group field">
+        <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' formControlName="nombre" required/>
+        <label for="nombre" class="form__label">Nombre</label>
+      </div>
+      <div class="form__group field">
+        <input type="input" class="form__field" placeholder="Fecha Inicio" name="fechaInicio" id='fechaInicio' formControlName="fechaInicio" required/>
+        <label for="fechaInicio" class="form__label">Fecha Inicio</label>
+      </div>
+      <div class="form__group field">
+        <input type="input" class="form__field" placeholder="Fecha Final" name="fechaFinal" id='fechaFinal' formControlName="fechaFinal" required/>
+        <label for="fechaFinal" class="form__label">Fecha Final</label>
+      </div>
+  </div>
+  <div class="inputs2">
+    <div class="form__group field">
+      <input type="input" class="form__field" placeholder="Descripcion" name="descripcion" id='descripcion' formControlName="descripcion" required/>
+      <label for="descripcion" class="form__label">Descripcion</label>
+      </div>
+    <div class="form-group col-md-2">
+      <select id="" class="form-control">
+        <option value="1">Raul</option>
+        <option value="2">Eddie</option>
+        <option value="3">Adryan</option>
+        <option value="4">Santiago</option>
+      </select>
+    </div>
+  </div>
+  <div class="selectbuton">
+    <div class="form-group col-md-2">
+      <select id="" class="form-control">
+        <option value="1">Ruta 1</option>
+        <option value="2">Ruta 2</option>
+        <option value="3">Ruta 3</option>
+        <option value="4">Ruta 4</option>
+        <option value="5">Ruta 5</option>
+        <option value="6">Ruta 6</option>
+      </select>
+      <div class="cargarbutton">
+        <button mat-flat-button color="primary">Carga Aprendices</button>
+      </div>
+    </div>
+    <button class="button-64" role="button" type="submit"><span class="text">Crear</span></button>
+  </div>
+</form>
+</div>

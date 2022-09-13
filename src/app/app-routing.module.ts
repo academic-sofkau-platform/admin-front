@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
+import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,8 @@ const routes: Routes = [
   { path: 'creacion-training', component: CreacionTrainingComponent},
   //cualquier otra cosa me redirectea a 404
   { path: '**', redirectTo:'login'}, //++
+  { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
+
 ];
 //, canActivate: [AuthGuard]
 @NgModule({

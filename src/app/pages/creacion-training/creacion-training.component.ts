@@ -1,21 +1,36 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { TrainingModel } from 'src/app/shared/models/training';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-creacion-training',
   templateUrl: './creacion-training.component.html',
   styleUrls: ['./creacion-training.component.css']
 })
-export class CreacionTrainingComponent  {
+export class CreacionTrainingComponent {
 
   @ViewChild("csvFile", {
     read: ElementRef
   }) InputFile!: ElementRef;
 
+  dataSource: TrainingModel[] = [];
+  trainingForm: FormGroup;
+  constructor(
+    public api: ApiService,
+    private formBuilder: FormBuilder
+  ) {
+    this.trainingForm = new FormGroup({
+      nombre: new FormControl(),
+      descripcion: new FormControl(),
+      fechaInicio: new FormControl(),
+      fechaFinal: new FormControl(),
+    })
+
+  }
+
   csvFile: any;
   csvBase64: string | any = "";
-
-  constructor(private formBuilder: FormBuilder) {}
 
   public miFormulario: FormGroup = this.formBuilder.group({
     nombre: [, [Validators.required, Validators.minLength(3)], []],

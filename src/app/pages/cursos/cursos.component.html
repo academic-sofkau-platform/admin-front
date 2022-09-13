@@ -4,35 +4,35 @@
 
   <!--Nombre-->
       <div class="form__group field" *ngIf="!modificando" >
-          <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' formControlName="nombre"/>
+          <input type="input" class="form__field" placeholder="Nombre" name="nombre" formControlName="nombre" />
           <label for="nombre" class="form__label">Nombre</label >
       </div>
  
       <div class="form__group field" *ngIf="modificando">
-        <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' formControlName="nombre"/>
-        <label for="nombre" class="form__label">{{nombre}}</label>
+        <input type="input" class="form__field" placeholder="Nombre" name="nombre" formControlName="name" [value]="nombre"/>  
+        <label for="nombre" class="form__label">Nombre</label>
       </div>
 
   <!--Descripción-->
     <div class="form__group field" *ngIf="!modificando">
-    <input type="input" class="form__field" placeholder="Descripción" name="descripcion" id='descripcion' formControlName="descripcion"/>
+    <input type="input" class="form__field" placeholder="Descripción" name="descripcion" formControlName="descripcion"/>
     <label for="descripcion" class="form__label">Descripción</label>
     </div>
 
     <div class="form__group field" *ngIf="modificando">
-      <input type="input" class="form__field" placeholder="Descripción" name="descripcion" id='descripcion' formControlName="descripcion"/>
-      <label for="descripcion" class="form__label">{{descripcion}}</label>
+      <input type="input" class="form__field" placeholder="Descripción" name="description"  formControlName="description" [value]="descripcion"/>
+      <label for="descripcion" class="form__label">Descripción</label>
     </div>
 
   <!--Valor Aprobación-->
     <div class="form__group field" *ngIf="!modificando">
-    <input type="input" class="form__field" placeholder="Valor Aprobación" name="valorAprobacion" id='valorAprobacion' formControlName="valorAprobacion"/>
+    <input type="number" class="form__field" placeholder="Valor Aprobación" name="valorAprobacion"  formControlName="valorAprobacion"/>
     <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
     </div>
 
     <div class="form__group field" *ngIf="modificando">
-      <input type="input" class="form__field" placeholder="Valor Aprobación" name="valorAprobacion" id='valorAprobacion' formControlName="valorAprobacion"/>
-      <label for="valorAprobacion" class="form__label">{{valorAprobacion}}</label>
+      <input type="number" class="form__field"  placeholder="Valor Aprobación" name="aprobacion"  formControlName="aprobacion" [value]="valorAprobacion"/>
+      <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
     </div>
 
   <!--Guardar-->
