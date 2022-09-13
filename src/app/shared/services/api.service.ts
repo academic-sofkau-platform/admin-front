@@ -8,6 +8,7 @@ import { EliminarCursoCommand } from '../commands/eliminarCursoCommand';
 import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCommand';
 import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
+import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
 
 
 @Injectable({
@@ -38,6 +39,10 @@ export class ApiService {
   crearRutaAprendizaje(command: CrearRutaAprendizajeCommand) {
     console.log(command);
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
+  }
+
+  getRutasAprendizaje(): Observable<RutaAprendizajeModel[]>{
+    return this.http.get<RutaAprendizajeModel[]>(environment.apiBase + '/rutaAprendizaje/findAll');
   }
 
   //ACTIVIDAD

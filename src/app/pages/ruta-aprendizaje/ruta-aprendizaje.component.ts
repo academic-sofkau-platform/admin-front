@@ -56,6 +56,7 @@ export class RutaAprendizajeComponent implements OnInit {
        rutas: this.miFormulario.value.rutas
      })
      .subscribe()
-   }
 
+     this.miFormulario.reset()
+   }
 }
