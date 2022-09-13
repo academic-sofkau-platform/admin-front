@@ -60,6 +60,10 @@ export class ApiService {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
+  deleteAprendizByEmail(trainingId:string, email:string){
+    return this.http.post(environment.apiBase + '/trainings/deleteAprendiz/'+ trainingId, email);
+  }
+
   //TRAININGS ACTIVOS
   getActiveTrainings(): Observable<TrainingModel[]> {
     console.log("desplegando trainings");

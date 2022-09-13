@@ -31,6 +31,10 @@ export class ListaAprendicesComponent implements OnInit {
       });
     })
   }
+  eliminar(email:string){
+    this.api.deleteAprendizByEmail(this.idTraining, email).subscribe();
+    this.dataSource = this.dataSource.filter((aprendiz)=> aprendiz.email !== email)
+  }
 
   verAprendiz(email:string){
    this.router.navigate(['std-info',this.idTraining, email])
