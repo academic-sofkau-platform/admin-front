@@ -9,6 +9,7 @@ import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCom
 import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
 import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
+import { CrearTrainingCommand } from '../commands/crearTrainingCommand';
 
 
 @Injectable({
@@ -56,6 +57,10 @@ export class ApiService {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
-
+  //CREAR TRAINING
+  crearTraining(command: CrearTrainingCommand) {
+    console.log(command);
+    //return this.http.post(environment.apiBase + '/trainings/save', command)
+  }
 
 }

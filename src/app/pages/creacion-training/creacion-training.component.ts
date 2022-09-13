@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { TrainingModel } from 'src/app/shared/models/training';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -9,10 +9,6 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./creacion-training.component.css']
 })
 export class CreacionTrainingComponent {
-
-  @ViewChild("csvFile", {
-    read: ElementRef
-  }) InputFile!: ElementRef;
 
   dataSource: TrainingModel[] = [];
   trainingForm: FormGroup;
@@ -26,11 +22,11 @@ export class CreacionTrainingComponent {
       fechaInicio: new FormControl(),
       fechaFinal: new FormControl(),
     })
-
   }
 
-  csvFile: any;
+  csvFile: any;//?
   csvBase64: string | any = "";
+  csvFileName: string = "";
 
   public miFormulario: FormGroup = this.formBuilder.group({
     nombre: [, [Validators.required, Validators.minLength(3)], []],
@@ -42,26 +38,53 @@ export class CreacionTrainingComponent {
     csvFile: [, [Validators.required]]//file csv base64
   })
 
-  convertToBase64() {//capturar
-    //console.log(this.csvFile);
-    this.csvFile = this.InputFile.nativeElement.files[0];
-    const myReader = new FileReader();
-    myReader.readAsDataURL(this.csvFile);
-    this.csvBase64 = myReader.onloadend = e => {
-      return myReader.result?.toString().split(',')[1];
-      console.log("Dentro: "+this.csvBase64);
-    };
-    console.log("Fuera: "+this.csvBase64);
+  convertToBase64(event: any) {
+    const file:File = event.target.files[0];
+    this.csvFile = file;//?
+
+    if (file) {
+
+        this.csvFileName = file.name;
+
+        const formData = new FormData();
+
+        formData.append("thumbnail", file);
+
+        //const upload$ = this.http.post("/api/thumbnail-upload", formData);
+
+        // upload$.subscribe();
+        console.log(this.csvFileName);
+    }
   }
 
-  enviarFormulario() {
-    //console.log(this.csvFile);
-    console.log(this.miFormulario.value);
-    //console.log(this.miFormulario.valid);
+  enviarFormulario(): void {
+    console.log("enviado");
+    console.log(this.miFormulario);
+
+    //this.api.crearTraining();
   }
-//--------------------------------------------------------------//testing
+  //--------------------------------------------------------------//testing
+  // fileName:string = '';
 
+  // onFileSelected(event: any) {
 
+  //     const file:File = event.target.files[0];
 
+  //     if (file) {
+
+  //         this.fileName = file.name;
+
+  //         const formData = new FormData();
+
+  //         formData.append("thumbnail", file);
+
+  //         const upload$ = this.http.post("/api/thumbnail-upload", formData);
+
+  //         upload$.subscribe();
+  //     }
+  // }
 }
+
+
+
 

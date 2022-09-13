@@ -42,6 +42,7 @@ import { StdInfoComponent } from './pages/std-info/std-info.component';
 import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +92,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTabsModule,
     MatButtonModule,
     HeatMapAllModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule  
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

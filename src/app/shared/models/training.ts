@@ -1,8 +1,13 @@
+import { StudentModel } from './student';
+import { RutaAprendizajeModel } from './ruta-aprendizaje';
 
 export interface TrainingModel {
-    id: string;
-    nombre: string;
-    descripcion: string;
-    fechaInicio: number;
-    fechaFinal: number;
-    }
+    trainingId: string;
+    name: string;
+    description: string;
+    startDate: number;
+    endDate: number;
+    coach: string;
+    apprentices: StudentModel[];
+    rutaAprendizaje: RutaAprendizajeModel;
+}
