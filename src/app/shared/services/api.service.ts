@@ -26,12 +26,12 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/curso/save', command);
   }
 
-  deleteCurso(cursoId:string){
+  deleteCurso(cursoId: string) {
     return this.http.post(environment.apiBase + '/curso/delete/', cursoId);
   }
 
-  modificarCurso(cursoId:string, command: ModificarCursoCommand){
-    return this.http.post(environment.apiBase + '/curso/update/' +cursoId , command);
+  modificarCurso(cursoId: string, command: ModificarCursoCommand) {
+    return this.http.post(environment.apiBase + '/curso/update/' + cursoId, command);
   }
 
   //RUTAS DE APRENDIZAJE
@@ -44,6 +44,9 @@ export class ApiService {
     return this.http.get<any[]>(environment.apiBase + '/find-specific/' + cursoId + '/' + aprendizId);
   }
 
+  getAprendiceByTrainingAndMail(trainingId: string, aprendizEmail: string) {
+    return this.http.get(environment.apiBase + '/trainings/aprendices/' + trainingId + '/' + aprendizEmail);
+  }
 
   //APRENDICES
   aprendicesByTrainingId(trainingId: string): Observable<StudentModel[]> {

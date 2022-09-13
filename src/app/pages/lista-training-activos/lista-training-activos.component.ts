@@ -12,4 +12,5 @@ export class ListaTrainingActivosComponent implements OnInit {
   ngOnInit() {
   }
 
+
 }
