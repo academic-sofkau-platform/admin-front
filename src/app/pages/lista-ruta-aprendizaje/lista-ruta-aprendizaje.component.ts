@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-lista-ruta-aprendizaje',
@@ -20,10 +21,27 @@ export class ListaRutaAprendizajeComponent implements OnInit {
   }
 
   eliminarRutaAprendizaje(id:string){
-    this.api.eliminarRutaAprendizaje(id)
-      .subscribe(() =>
-        this.api.getRutasAprendizaje()
-          .subscribe((element) => this.dataSource = element)
-      );
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No se podrá revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar'
+    }).then((result:any) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'La ruta ha sido eliminada correctamente.',
+          'success'
+        )
+        this.api.eliminarRutaAprendizaje(id)
+        .subscribe(() =>
+          this.api.getRutasAprendizaje()
+            .subscribe((element) => this.dataSource = element)
+        );
+      }
+    })
   }
 }
