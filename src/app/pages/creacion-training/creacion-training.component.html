@@ -54,34 +54,36 @@
   <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
   <div class="inputs">
       <div class="form__group field">
-        <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' formControlName="nombre" required/>
+        <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre' formControlName="nombre"/>
         <label for="nombre" class="form__label">Nombre</label>
       </div>
       <div class="form__group field">
-        <input type="input" class="form__field" placeholder="Fecha Inicio" name="fechaInicio" id='fechaInicio' formControlName="fechainicio" required/>
+        <input type="date" class="form__field" placeholder="Fecha Inicio" name="fechaInicio" id='fechaInicio' formControlName="fechainicio"/>
         <label for="fechaInicio" class="form__label">Fecha Inicio</label>
       </div>
       <div class="form__group field">
-        <input type="input" class="form__field" placeholder="Fecha Final" name="fechaFinal" id='fechaFinal' formControlName="fechafinal" required/>
+        <input type="date" class="form__field" placeholder="Fecha Final" name="fechaFinal" id='fechaFinal' formControlName="fechafinal"/>
         <label for="fechaFinal" class="form__label">Fecha Final</label>
       </div>
   </div>
   <div class="inputs2">
     <div class="form__group field">
-      <input type="input" class="form__field" placeholder="Descripcion" name="descripcion" id='descripcion' formControlName="descripcion" required/>
+      <input type="input" class="form__field" placeholder="Descripcion" name="descripcion" id='descripcion' formControlName="descripcion"/>
       <label for="descripcion" class="form__label">Descripcion</label>
-      </div>
+    </div>
     <div class="form-group col-md-2">
-      <select id="" class="form-control" formControlName="coach">
-        <option value="1">Raul</option>
-        <option value="2">Eddie</option>
-        <option value="3">Adryan</option>
-        <option value="4">Santiago</option>
-      </select>
+      Coach
+        <select id="" class="form-control" formControlName="coach">
+          <option value="1">Raul</option>
+          <option value="2">Eddie</option>
+          <option value="3">Adryan</option>
+          <option value="4">Santiago</option>
+        </select>
     </div>
   </div>
   <div class="selectbuton">
     <div class="form-group col-md-2">
+      Ruta
       <select id="" class="form-control" formControlName="ruta">
         <option value="1">Ruta 1</option>
         <option value="2">Ruta 2</option>
@@ -90,19 +92,23 @@
         <option value="5">Ruta 5</option>
         <option value="6">Ruta 6</option>
       </select>
-
-      <input class="file-input" mat-flat-button color="primary"
-        type="file" accept=".csv" #csvFile (change)='convertToBase64($event)'/>
-      <div class="cargarbutton">
-        {{csvFileName || "No file uploaded yet."}}
-        <button mat-flat-button color="primary" type="button" (click)="csvFile.click()">
-          Carga Aprendices
-          <mat-icon>attach_file</mat-icon>
-        </button>
-      </div>
+    <input class="file-input" mat-flat-button color="primary"
+      type="file" accept=".csv" #csvFile (change)='onFileSelected($event)'/>
+    <input class="file-input2" type="text" [value]="csvBase64" formControlName="csvBase64input"/>
+      <!-- {{csvBase64}} -->
+    <div class="cargarbutton">
+      {{csvFileName || "No file uploaded yet."}}
+      <button mat-flat-button color="primary" type="button" (click)="csvFile.click()">
+        Carga Aprendices
+        <mat-icon>attach_file</mat-icon>
+      </button>
+  </div>
 
     </div>
-    <button [disabled]="!miFormulario.valid" class="button-64" role="button" type="submit"><span class="text">Crear</span></button>
+    <button class="button-64" role="button"
+      type="submit"><span class="text">Crear</span>
+    </button>
   </div>
 </form>
 </div>
+<!-- [disabled]="!miFormulario.valid" -->
