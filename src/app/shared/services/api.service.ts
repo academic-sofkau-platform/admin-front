@@ -8,12 +8,9 @@ import { EliminarCursoCommand } from '../commands/eliminarCursoCommand';
 import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCommand';
 import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
-<<<<<<< HEAD
 import { ActividadModel } from '../models/actividad';
-=======
 import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
 import { TrainingModel } from '../models/training';
->>>>>>> main
 
 
 @Injectable({
@@ -56,11 +53,11 @@ export class ApiService {
 
   //ACTIVIDAD
   getActividad(trainingId: string, aprendizId: string): Observable <ActividadModel[]> {
-    return this.http.get<any[]>(environment.apiBase + '/find-specific/' + trainingId + '/' + aprendizId);
+    return this.http.get<ActividadModel[]>(environment.apiBase + '/activity/find-specific/' + trainingId + '/' + aprendizId);
   }
 
-  getAprendiceByTrainingAndMail(trainingId: string, aprendizEmail: string) {
-    return this.http.get(environment.apiBase + '/trainings/aprendices/' + trainingId + '/' + aprendizEmail);
+  getAprendiceByTrainingAndMail(trainingId: string, aprendizEmail: string): Observable <any> {
+    return this.http.get<any>(environment.apiBase + '/trainings/aprendices/' + trainingId + '/' + aprendizEmail);
   }
 
 

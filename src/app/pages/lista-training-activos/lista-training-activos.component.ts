@@ -16,8 +16,8 @@ export class ListaTrainingActivosComponent implements OnInit {
   //displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
   //dataSource: TrainingModel[] = this.getTrainings();
 dataSource: TrainingModel[]=
-  [{id:"1", nombre:"asd", descripcion:"desc1", fechaInicio:10, fechaFinal:20},
-  {id:"2", nombre:"asd", descripcion:"desc2", fechaInicio:10, fechaFinal:20}
+  [{id:"1", nombre:"asd", descripcion:"desc1", fechaInicio:new Date('2022-10-21'), fechaFinal:new Date('2022-11-21')},
+  {id:"2", nombre:"asd", descripcion:"desc2", fechaInicio:new Date('2022-10-21'), fechaFinal:new Date('2022-11-21')}
   ]
   
 
