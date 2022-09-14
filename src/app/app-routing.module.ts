@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
   { path: 'creacion-training', component: CreacionTrainingComponent},
   { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
-  { path: 'lista-training-activos', component: ListaTrainingActivosComponent}
+  { path: 'lista-training-activos', component: ListaTrainingActivosComponent},
+  { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent}
 ];
 //, canActivate: [AuthGuard]
 @NgModule({
