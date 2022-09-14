@@ -8,8 +8,10 @@ import { EliminarCursoCommand } from '../commands/eliminarCursoCommand';
 import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCommand';
 import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
+import { ActividadModel } from '../models/actividad';
 import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
 import { TrainingModel } from '../models/training';
+import { ModificarRutaAprendizajeCommand } from '../commands/modificarRutaAprendizajeCommand';
 
 
 @Injectable({
@@ -38,7 +40,6 @@ export class ApiService {
 
   //RUTAS DE APRENDIZAJE
   crearRutaAprendizaje(command: CrearRutaAprendizajeCommand) {
-    console.log(command);
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
@@ -46,13 +47,25 @@ export class ApiService {
     return this.http.get<RutaAprendizajeModel[]>(environment.apiBase + '/rutaAprendizaje/findAll');
   }
 
-  //ACTIVIDAD
-  getActividad(cursoId: string, aprendizId: string): Observable<CursoModel[]> {
-    return this.http.get<any[]>(environment.apiBase + '/find-specific/' + cursoId + '/' + aprendizId);
+  eliminarRutaAprendizaje(id:string){
+    return this.http.post(environment.apiBase + '/rutaAprendizaje/delete', id);
   }
 
-  getAprendiceByTrainingAndMail(trainingId: string, aprendizEmail: string) {
-    return this.http.get(environment.apiBase + '/trainings/aprendices/' + trainingId + '/' + aprendizEmail);
+  getRutaAprendizaje(id:string): Observable<RutaAprendizajeModel>{
+    return this.http.get<RutaAprendizajeModel>(environment.apiBase + '/rutaAprendizaje/findById/' + id);
+  }
+
+  modificarRutaAprendizaje(id:string, rutaId:string , command: ModificarRutaAprendizajeCommand){
+    return this.http.post(environment.apiBase + '/rutaAprendizaje/delete/route/' + id + '/' + rutaId , command)
+  }
+
+  //ACTIVIDAD
+  getActividad(trainingId: string, aprendizId: string): Observable <ActividadModel[]> {
+    return this.http.get<ActividadModel[]>(environment.apiBase + '/activity/find-specific/' + trainingId + '/' + aprendizId);
+  }
+
+  getAprendiceByTrainingAndMail(trainingId: string, aprendizEmail: string): Observable <any> {
+    return this.http.get<any>(environment.apiBase + '/trainings/aprendices/' + trainingId + '/' + aprendizEmail);
   }
 
   //APRENDICES

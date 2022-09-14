@@ -5,20 +5,21 @@
     <div class="form-group1">
       <div class="cont-name-description">
         <div class="form__group field">
-          <input type="input" class="form__field" placeholder="Nombre" name="nombre" id='nombre'
-            formControlName="nombre" required />
-          <label for="nombre" class="form__label">Nombre</label>
+          <input class="form__field" placeholder="Nombre" name="nombre" id='nombre'
+            formControlName="nombre" [value] = "nombre" required />
+          <label for="nombre" class="form__label">Nombre  </label>
         </div>
         <!--Descripción-->
         <div class="form__group field">
           <input type="input" class="form__field" placeholder="Descripción" name="descripcion" id='descripcion'
-            formControlName="descripcion" required />
+            formControlName="descripcion" [value] = "descripcion" required  />
           <label for="descripcion" class="form__label">Descripción</label>
         </div>
       </div>
       <div class="cont-btn">
         <!--Guardar-->
-        <button class="button-64" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
+        <button *ngIf="rutaAprendizaje == null" class="button-64" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
+        <button *ngIf="rutaAprendizaje" class="button-64" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id, rutaAprendizaje.rutas.id)"><span class="text">MODIFICAR</span></button>
       </div>
     </div>
 
