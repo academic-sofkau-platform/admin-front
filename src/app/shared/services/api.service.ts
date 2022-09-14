@@ -50,6 +50,10 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/rutaAprendizaje/delete', id);
   }
 
+  getRutaAprendizaje(id:string): Observable<RutaAprendizajeModel>{
+    return this.http.get<RutaAprendizajeModel>(environment.apiBase + '/rutaAprendizaje/findById/' + id);
+  }
+
   //ACTIVIDAD
   getActividad(cursoId: string, aprendizId: string): Observable<CursoModel[]> {
     return this.http.get<any[]>(environment.apiBase + '/find-specific/' + cursoId + '/' + aprendizId);
