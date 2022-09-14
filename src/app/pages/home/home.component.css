@@ -11,6 +11,9 @@ body {
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
+  /* background-color: #080840f0; */
+  background-image: url(/assets/4884273.jpg);
+  background-size: cover;
 }
 ul {
   position: relative;
@@ -20,7 +23,7 @@ ul li {
   text-align: center;
 }
 ul li a {
-  color: #333;
+  color:rgba(255, 255, 255, 1);
   text-decoration: none;
   font-size: 3em;
   padding: 5px 20px;
@@ -30,10 +33,10 @@ ul li a {
   margin-top: 40px;
 }
 ul:hover li a {
-  color: #0002;
+  color: rgba(255, 255, 255, 1)
 }
 ul li:hover a {
-  color: #000;
+  color: rgba(255, 255, 255, 1);
   background: rgba(255, 255, 255, 1);
   background-color: rgb(247, 151, 56);
   border-radius: 9px;

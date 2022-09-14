@@ -1,64 +1,68 @@
-<div class="cursos-data-display">
-  <h1>Creación de Curso</h1>
-  <form [formGroup]="cursoForm" (ngSubmit)="crearCurso()">
-
-  <!--Nombre-->
-      <div class="form__group field" *ngIf="!modificando" >
-          <input type="input" class="form__field" placeholder="Nombre" name="nombre" formControlName="nombre" />
-          <label for="nombre" class="form__label">Nombre</label >
-      </div>
- 
-      <div class="form__group field" *ngIf="modificando">
-        <input type="input" class="form__field" placeholder="Nombre" name="nombre" formControlName="name" [value]="nombre"/>  
-        <label for="nombre" class="form__label">Nombre</label>
-      </div>
-
-  <!--Descripción-->
-    <div class="form__group field" *ngIf="!modificando">
-    <input type="input" class="form__field" placeholder="Descripción" name="descripcion" formControlName="descripcion"/>
-    <label for="descripcion" class="form__label">Descripción</label>
-    </div>
-
-    <div class="form__group field" *ngIf="modificando">
-      <input type="input" class="form__field" placeholder="Descripción" name="description"  formControlName="description" [value]="descripcion"/>
-      <label for="descripcion" class="form__label">Descripción</label>
-    </div>
-
-  <!--Valor Aprobación-->
-    <div class="form__group field" *ngIf="!modificando">
-    <input type="number" class="form__field" placeholder="Valor Aprobación" name="valorAprobacion"  formControlName="valorAprobacion"/>
-    <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
-    </div>
-
-    <div class="form__group field" *ngIf="modificando">
-      <input type="number" class="form__field"  placeholder="Valor Aprobación" name="aprobacion"  formControlName="aprobacion" [value]="valorAprobacion"/>
-      <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
-    </div>
-
-  <!--Guardar-->
-    <button *ngIf="!modificando" class="button-64" role="button" type="submit"><span class="text">Guardar</span></button>
-    <button *ngIf="modificando" class="button-64" role="button" (click)="modificarCurso(cursoId)"><span class="text">Modificar</span></button>
-  </form>
-
-  <table >
-  <tr>
-    <th><p>Nombre</p></th>
-    <th><p>Descripción</p></th>
-    <th><p>Valor Aprobación</p></th>
-    <th class="acciones"><p>Modificar</p></th>
-    <th class="acciones"><p>Eliminar</p></th>
-  </tr>
-  <tr *ngFor="let Curso of dataSource">
-    <td><p>{{Curso.nombre}}</p></td>
-    <td><p>{{Curso.descripcion}}</p></td>
-    <td><p>{{Curso.aprobacion}}</p></td>
-    <td class="accion">
-      <button class="button-64 accion" role="button" (click)="llevarDatos(Curso.id)"><span class="text">Modificar</span></button>
-    </td>
-    <td class="accion">
-      <button class="button-64 accion" role="button" (click)="eliminar(Curso.id)"><span class="text">Eliminar</span></button>
-    </td>
-  </tr>
-  </table>
+<div class="contenedorimagen">
+  <div class="cursos-data-display">
+    <h1>Creación de Curso</h1>
+    <form [formGroup]="cursoForm" (ngSubmit)="crearCurso()">
   
+    <!--Nombre-->
+        <div class="form__group field" *ngIf="!modificando" >
+            <input type="input" class="form__field" placeholder="Nombre" name="nombre" formControlName="nombre" />
+            <label for="nombre" class="form__label">Nombre</label >
+        </div>
+   
+        <div class="form__group field" *ngIf="modificando">
+          <input type="input" class="form__field" placeholder="Nombre" name="nombre" formControlName="name" [value]="nombre"/>  
+          <label for="nombre" class="form__label">Nombre</label>
+        </div>
+  
+    <!--Descripción-->
+      <div class="form__group field" *ngIf="!modificando">
+      <input type="input" class="form__field" placeholder="Descripción" name="descripcion" formControlName="descripcion"/>
+      <label for="descripcion" class="form__label">Descripción</label>
+      </div>
+  
+      <div class="form__group field" *ngIf="modificando">
+        <input type="input" class="form__field" placeholder="Descripción" name="description"  formControlName="description" [value]="descripcion"/>
+        <label for="descripcion" class="form__label">Descripción</label>
+      </div>
+  
+    <!--Valor Aprobación-->
+      <div class="form__group field" *ngIf="!modificando">
+      <input type="number" class="form__field" placeholder="Valor Aprobación" name="valorAprobacion"  formControlName="valorAprobacion"/>
+      <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
+      </div>
+  
+      <div class="form__group field" *ngIf="modificando">
+        <input type="number" class="form__field"  placeholder="Valor Aprobación" name="aprobacion"  formControlName="aprobacion" [value]="valorAprobacion"/>
+        <label for="valorAprobacion" class="form__label">Valor Aprobación</label>
+      </div>
+  
+    <!--Guardar-->
+      <button *ngIf="!modificando" class="button-64" role="button" type="submit"><span class="text">Guardar</span></button>
+      <button *ngIf="modificando" class="button-64" role="button" (click)="modificarCurso(cursoId)"><span class="text">Modificar</span></button>
+    </form>
+  
+    <table >
+    <tr>
+      <th><p>Nombre</p></th>
+      <th><p>Descripción</p></th>
+      <th><p>Valor Aprobación</p></th>
+      <th class="acciones"><p>Modificar</p></th>
+      <th class="acciones"><p>Eliminar</p></th>
+    </tr>
+    <tr *ngFor="let Curso of dataSource">
+      <td><p>{{Curso.nombre}}</p></td>
+      <td><p>{{Curso.descripcion}}</p></td>
+      <td><p>{{Curso.aprobacion}}</p></td>
+      <td class="accion">
+        <button class="button-64 accion" role="button" (click)="llevarDatos(Curso.id)"><span class="text">Modificar</span></button>
+      </td>
+      <td class="accion">
+        <button class="button-64 accion" role="button" (click)="eliminar(Curso.id)"><span class="text">Eliminar</span></button>
+      </td>
+    </tr>
+    </table>
+    
+  </div>
+  
+
 </div>

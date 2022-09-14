@@ -1,10 +1,14 @@
+.contenedorimagen{
+  background-image: url(/assets/897.jpg);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
 
 .container{
     padding-top: 150px;
-    margin-left: 300px
+    margin-left: 300px;
 }
-
-
 .inputs{
 
     display: flex;

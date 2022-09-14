@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
-
+.contenedorimagen{
+  background-image: url(/assets/897.jpg);
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
 
 .container-fluid{
     display: flex;
