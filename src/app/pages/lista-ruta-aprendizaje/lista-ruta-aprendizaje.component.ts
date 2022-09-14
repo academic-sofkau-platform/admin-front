@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
 import Swal from 'sweetalert2'
@@ -12,7 +13,7 @@ export class ListaRutaAprendizajeComponent implements OnInit {
 
   displayedColumns: string[] = ['Nombre', 'Descripcion', 'Acciones'];
   dataSource: RutaAprendizajeModel[] = [];
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
     this.api.getRutasAprendizaje()
       .subscribe((element) => this.dataSource = element);
   }
@@ -44,4 +45,9 @@ export class ListaRutaAprendizajeComponent implements OnInit {
       }
     })
   }
+
+  editarRutaAprendizaje(id:string){
+    this.router.navigate(['ruta-aprendizaje', id])
+  }
+
 }

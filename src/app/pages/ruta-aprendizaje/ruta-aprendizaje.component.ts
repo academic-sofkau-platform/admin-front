@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CursoModel } from 'src/app/shared/models/curso';
-import { RutaModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -10,7 +10,15 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./ruta-aprendizaje.component.css']
 })
 
-export class RutaAprendizajeComponent implements OnInit {
+export class RutaAprendizajeComponent implements OnInit{
+  rutaAprendizajeId: string = ""
+  rutaAprendizaje: any;
+  modificando:boolean = false;
+
+  //Cosas rancias
+  nombre: string = ""
+  descripcion: string = ""
+
   miFormulario:FormGroup = this.formBuilder.group({
     nombre: [, [Validators.required, Validators.minLength(3)]],
     descripcion: [, [Validators.required, Validators.min(1)]],
@@ -25,9 +33,8 @@ export class RutaAprendizajeComponent implements OnInit {
 
   //Cursos.
   listaCursos: CursoModel[] = [];
-  constructor(public api: ApiService, private formBuilder: FormBuilder) {
-    this.api.getCursos()
-    .subscribe((element) => this.listaCursos = element);
+  constructor(public api: ApiService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
+    this.api.getCursos().subscribe((element) => this.listaCursos = element);
   }
 
   get getRutas(){
@@ -47,9 +54,35 @@ export class RutaAprendizajeComponent implements OnInit {
     this.getRutas.removeAt(indice);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.rutaAprendizajeId = params['id'];
+      if(this.rutaAprendizajeId != null){
+        this.api.getRutaAprendizaje(this.rutaAprendizajeId).subscribe((element:any) => {
+          this.rutaAprendizaje = element;
+          this.nombre = this.rutaAprendizaje.nombre;
+          this.descripcion = this.rutaAprendizaje.descripcion;
+          this.removeRuta(0);
+          this.addRutasMod(this.rutaAprendizaje.rutas)
+        });
 
-   crearRutaAprendizaje(){
+      }
+    })
+  }
+
+  addRutasMod(rutas: any){
+    const control = <FormArray> this.miFormulario.controls['rutas']
+
+    rutas.forEach((ruta: any) => {
+      control.push(this.formBuilder.group({
+        nivel: ruta.nivel,
+        curso: ruta.curso,
+        prerrequisitos: [ruta.prerrequisitos]
+      }));
+    });
+  }
+
+  crearRutaAprendizaje(){
     this.api.crearRutaAprendizaje({
        nombre: this.miFormulario.value.nombre,
        descripcion: this.miFormulario.value.descripcion,
@@ -58,5 +91,9 @@ export class RutaAprendizajeComponent implements OnInit {
      .subscribe()
 
      this.miFormulario.reset()
-   }
+  }
+
+  modificarRutaAprendizaje(id:string){
+    console.log(this.miFormulario.value.rutas)
+  }
 }
