@@ -6,9 +6,11 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { CursosComponent } from './pages/cursos/cursos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
+import { ListaTrainingActivosComponent } from './pages/lista-training-activos/lista-training-activos.component';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
 import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
+
 
 
 const routes: Routes = [
@@ -25,7 +27,8 @@ const routes: Routes = [
   //cualquier otra cosa me redirectea a 404
   { path: '**', redirectTo:'login'}, //++
   { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
-
+  { path: 'lista-training-activos', component: ListaTrainingActivosComponent},
+  { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent}
 ];
 //, canActivate: [AuthGuard]
 @NgModule({

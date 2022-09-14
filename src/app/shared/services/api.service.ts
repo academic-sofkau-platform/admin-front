@@ -9,7 +9,11 @@ import { CrearRutaAprendizajeCommand } from '../commands/crearRutaAprendizajeCom
 import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
 import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
+<<<<<<< HEAD
 import { CrearTrainingCommand } from '../commands/crearTrainingCommand';
+=======
+import { TrainingModel } from '../models/training';
+>>>>>>> aae9b7f2866b374f026681d564d00cf5bc21b791
 
 
 @Injectable({
@@ -46,6 +50,14 @@ export class ApiService {
     return this.http.get<RutaAprendizajeModel[]>(environment.apiBase + '/rutaAprendizaje/findAll');
   }
 
+  eliminarRutaAprendizaje(id:string){
+    return this.http.post(environment.apiBase + '/rutaAprendizaje/delete', id);
+  }
+
+  getRutaAprendizaje(id:string): Observable<RutaAprendizajeModel>{
+    return this.http.get<RutaAprendizajeModel>(environment.apiBase + '/rutaAprendizaje/findById/' + id);
+  }
+
   //ACTIVIDAD
   getActividad(cursoId: string, aprendizId: string): Observable<CursoModel[]> {
     return this.http.get<any[]>(environment.apiBase + '/find-specific/' + cursoId + '/' + aprendizId);
@@ -57,10 +69,18 @@ export class ApiService {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
+<<<<<<< HEAD
   //CREAR TRAINING
   crearTraining(command: CrearTrainingCommand) {
     console.log(command);
     //return this.http.post(environment.apiBase + '/trainings/save', command)
   }
+=======
+//TRAININGS ACTIVOS
+getActiveTrainings():Observable<TrainingModel[]>{
+  console.log("desplegando trainings");
+  return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+}
+>>>>>>> aae9b7f2866b374f026681d564d00cf5bc21b791
 
 }
