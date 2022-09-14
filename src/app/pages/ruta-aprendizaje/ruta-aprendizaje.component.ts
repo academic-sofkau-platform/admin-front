@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CursoModel } from 'src/app/shared/models/curso';
 import { ApiService } from 'src/app/shared/services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ruta-aprendizaje',
@@ -64,6 +65,7 @@ export class RutaAprendizajeComponent implements OnInit{
           this.descripcion = this.rutaAprendizaje.descripcion;
           this.removeRuta(0);
           this.addRutasMod(this.rutaAprendizaje.rutas)
+          console.log(this.rutaAprendizaje)
         });
 
       }
@@ -83,6 +85,8 @@ export class RutaAprendizajeComponent implements OnInit{
   }
 
   crearRutaAprendizaje(){
+    //Controles para chequear que la ruta y los campos no vayan vacíos
+
     this.api.crearRutaAprendizaje({
        nombre: this.miFormulario.value.nombre,
        descripcion: this.miFormulario.value.descripcion,
@@ -90,10 +94,41 @@ export class RutaAprendizajeComponent implements OnInit{
      })
      .subscribe()
 
+     if(this.miFormulario.value.rutas.length > 1){
+      this.miFormulario.value.rutas.forEach((value:any, index:number) => {
+        console.log(value, index);
+        this.removeRuta(index)
+      });
+    }
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Se ha guardado la ruta correctamente',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
      this.miFormulario.reset()
   }
 
-  modificarRutaAprendizaje(id:string){
+  modificarRutaAprendizaje(id:string, rutaId:string){
+    //Cuando se modifica el nombre o demás (modificamos todo)
+    //Cuando se quita una ruta (o más)
+    //Cuando se agrega una ruta (o más)
+
+    /*this.api.modificarRutaAprendizaje(
+      id,
+      rutaId,
+      {
+        nombre:this.miFormulario.value.nombre,
+        descripcion: this.miFormulario.value.descripcion,
+        rutas: this.miFormulario.value.rutas
+      }
+    )
+    .subscribe()
+    */
     console.log(this.miFormulario.value.rutas)
   }
+
+
 }
