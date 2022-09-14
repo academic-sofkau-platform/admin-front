@@ -10,6 +10,7 @@ import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
 import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
 import { TrainingModel } from '../models/training';
+import { ModificarRutaAprendizajeCommand } from '../commands/modificarRutaAprendizajeCommand';
 
 
 @Injectable({
@@ -38,7 +39,6 @@ export class ApiService {
 
   //RUTAS DE APRENDIZAJE
   crearRutaAprendizaje(command: CrearRutaAprendizajeCommand) {
-    console.log(command);
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
@@ -52,6 +52,10 @@ export class ApiService {
 
   getRutaAprendizaje(id:string): Observable<RutaAprendizajeModel>{
     return this.http.get<RutaAprendizajeModel>(environment.apiBase + '/rutaAprendizaje/findById/' + id);
+  }
+
+  modificarRutaAprendizaje(id:string, rutaId:string , command: ModificarRutaAprendizajeCommand){
+    return this.http.post(environment.apiBase + '/rutaAprendizaje/delete/route/' + id + '/' + rutaId , command)
   }
 
   //ACTIVIDAD

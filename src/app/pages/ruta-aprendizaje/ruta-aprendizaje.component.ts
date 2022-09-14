@@ -93,7 +93,18 @@ export class RutaAprendizajeComponent implements OnInit{
      this.miFormulario.reset()
   }
 
-  modificarRutaAprendizaje(id:string){
+  modificarRutaAprendizaje(id:string, rutaId:string){
+    /*this.api.modificarRutaAprendizaje(
+      id,
+      rutaId,
+      {
+        nombre:this.miFormulario.value.nombre,
+        descripcion: this.miFormulario.value.descripcion,
+        rutas: this.miFormulario.value.rutas
+      }
+    )
+    .subscribe()
+    */
     console.log(this.miFormulario.value.rutas)
   }
 }
