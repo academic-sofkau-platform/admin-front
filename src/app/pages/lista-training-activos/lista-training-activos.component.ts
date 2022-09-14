@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { RangeValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TrainingModel } from 'src/app/shared/models/training';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
 
 
 @Component({
@@ -11,15 +13,14 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class ListaTrainingActivosComponent implements OnInit {
   trainings:TrainingModel[]=[];
-  
+
   displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'inicio', 'fin', 'ver'];
   //displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
   //dataSource: TrainingModel[] = this.getTrainings();
-dataSource: TrainingModel[]=
-  [{id:"1", nombre:"asd", descripcion:"desc1", fechaInicio:10, fechaFinal:20},
-  {id:"2", nombre:"asd", descripcion:"desc2", fechaInicio:10, fechaFinal:20}
+dataSource: TrainingModel[]=[
+  {trainingId:"1", name:"asd", description:"desc1", startDate:10, endDate:20, coach: "Raul", apprentices: [], rutaAprendizaje: {id: "Ruta1", nombre: "nombreRuta1", descripcion: "Ruta1Des", rutas: []}},
+  {trainingId:"2", name:"asd", description:"desc2", startDate:10, endDate:20, coach: "Eddi", apprentices: [], rutaAprendizaje: {id: "Ruta1", nombre: "nombreRuta1", descripcion: "Ruta1Des", rutas: []}}
   ]
-  
 
   constructor(private api:ApiService, private router:Router) { }
 
