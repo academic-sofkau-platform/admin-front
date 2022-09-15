@@ -41,6 +41,9 @@ import { HeatMapAllModule } from '@syncfusion/ej2-angular-heatmap';
 import { StdInfoComponent } from './pages/std-info/std-info.component';
 import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ListasComponent } from './pages/listas/listas.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 
 @NgModule({
@@ -49,6 +52,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HeaderComponent,
     ListaAprendicesComponent,
     HomeComponent,
+    ListasComponent,
     CursosComponent,
     ListaAprendicesComponent,
     ListaTrainingActivosComponent,
@@ -56,7 +60,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CreacionTrainingComponent,
     CursosComponent,
     StdInfoComponent,
-    ListaRutaAprendizajeComponent
+    ListaRutaAprendizajeComponent,
+    FooterComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -93,7 +98,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonModule,
     HeatMapAllModule,
     MatPaginatorModule,
-    HttpClientModule  
+    HttpClientModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
