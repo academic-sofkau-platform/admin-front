@@ -45,7 +45,6 @@ import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

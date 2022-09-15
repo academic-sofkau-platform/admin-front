@@ -41,6 +41,7 @@ export class ApiService {
 
   //RUTAS DE APRENDIZAJE
   crearRutaAprendizaje(command: CrearRutaAprendizajeCommand) {
+    console.log(command);
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
@@ -66,6 +67,10 @@ export class ApiService {
 
   agregarRuta(id:string , command: AgregarRutaCommand){
     return this.http.post(environment.apiBase + '/rutaAprendizaje/add/route/' + id, command)
+  }
+  
+  controlCursoEnRutaAprendizaje(id:string) {
+    return this.http.get(environment.apiBase + '/rutaAprendizaje/curso/' + id)
   }
 
   //ACTIVIDAD
