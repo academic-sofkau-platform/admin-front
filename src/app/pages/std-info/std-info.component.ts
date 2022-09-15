@@ -8,7 +8,7 @@ import {
   Legend,
   Tooltip,
 } from '@syncfusion/ej2-angular-heatmap';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 HeatMap.Inject(Legend, Tooltip, Adaptor);
 
 @Component({
@@ -21,7 +21,7 @@ export class StdInfoComponent implements OnInit {
   std: StudentModel;
   cursoId: string = '';
 
-  weeks: string[] = []
+  weeks: string[] = [];
   dataSource: any[] = [];
 
   heatmap: HeatMap = new HeatMap({
@@ -43,7 +43,7 @@ export class StdInfoComponent implements OnInit {
         color: 'black',
         fontWeight: '500',
         fontStyle: 'Bold',
-      }
+      },
     },
 
     yAxis: {
@@ -54,7 +54,7 @@ export class StdInfoComponent implements OnInit {
         'Jueves',
         'Miercoles',
         'Martes',
-        'Lunes'
+        'Lunes',
       ],
 
       textStyle: {
@@ -84,9 +84,9 @@ export class StdInfoComponent implements OnInit {
 
     paletteSettings: {
       palette: [
-        { color: '#c1f0f0 ', label: 'Poor' },
-        { color: '#5cd3fb ', label: 'Average' },
-        { color: '#111979 ', label: 'Excellent' },
+        { color: '#c1f0f0 ', label: 'Baja' },
+        { color: '#5cd3fb ', label: 'Media' },
+        { color: '#111979 ', label: 'Alta' },
       ],
       type: 'Gradient',
     },
@@ -110,28 +110,34 @@ export class StdInfoComponent implements OnInit {
       this.stdEmail = params['email'];
 
       this.api
-        .getAprendiceByTrainingAndMail(this.cursoId, this.stdEmail).subscribe((std) => {
+        .getAprendiceByTrainingAndMail(this.cursoId, this.stdEmail)
+        .subscribe((std) => {
           this.std = std;
           this.std.lastname = std.lastName;
 
           this.api.getTrainingById(this.cursoId).subscribe((training) => {
-            
-              this.api.getActividad(this.cursoId, std.id).subscribe((actividad) => {
+            this.api
+              .getActividad(this.cursoId, std.id)
+              .subscribe((actividad) => {
                 actividad.forEach((elem) => {
-                  let fecha = moment(elem.fecha)
+                  let fecha = moment(elem.fecha);
                   let fechaI = moment(training.startDate);
                   this.dataSource.push({
                     Labels: {
                       Xlabel:
-                        'Semana ' + (Math.trunc(fecha.diff(fechaI, 'weeks', true) + 1)),
+                        'Semana ' +
+                        Math.trunc(fecha.diff(fechaI, 'weeks', true) + 1),
                       Ylabel: this.getDayOfWeek(fecha.day()),
                     },
                     data: { value: elem.puntaje },
                   });
                 });
-                
-                let weekDiff = moment(training.endDate).diff(moment(training.startDate), 'weeks');
-                for(let i = 0; i <= weekDiff; i++){
+
+                let weekDiff = moment(training.endDate).diff(
+                  moment(training.startDate),
+                  'weeks'
+                );
+                for (let i = 0; i <= weekDiff; i++) {
                   this.weeks.push('Semana ' + i);
                 }
 
