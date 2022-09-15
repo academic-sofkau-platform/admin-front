@@ -69,12 +69,12 @@ export class ApiService {
   //CREAR TRAINING
   crearTraining(command: CrearTrainingCommand) {
     console.log(command);
-    //return this.http.post(environment.apiBase + '/trainings/save', command)
+    return this.http.post(environment.apiBase + '/trainings/save', command)
   }
-//TRAININGS ACTIVOS
-getActiveTrainings():Observable<TrainingModel[]>{
-  console.log("desplegando trainings");
-  return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
-}
+  //TRAININGS ACTIVOS
+  getActiveTrainings():Observable<TrainingModel[]>{
+    console.log("desplegando trainings");
+    return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+  }
 
 }

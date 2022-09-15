@@ -1,55 +1,3 @@
-<!--
-<form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
-  <div class="conteiner">
-    <div class="inputs">
-      <mat-form-field appearance="legacy">
-        <mat-label>Nombre</mat-label>
-        <input formControlName="nombre" matInput placeholder="Placeholder">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Fecha de Inicio</mat-label>
-        <input formControlName="fechainicio" type="date" matInput placeholder="Placeholder">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Fecha Final</mat-label>
-        <input formControlName="fechafinal" type="date" matInput placeholder="Placeholder">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Descripcion</mat-label>
-        <input formControlName="descripcion" matInput placeholder="Descripcion">
-      </mat-form-field>
-    </div>
-    <div class="selects">
-      <mat-form-field appearance="fill" >
-          <mat-label>Responsable (Coach)</mat-label>
-          <mat-select formControlName="coach">
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Ruta</mat-label>
-          <mat-select formControlName="ruta">
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-            <mat-option value="one">Third option</mat-option>
-            <mat-option value="two">Fourth option</mat-option>
-          </mat-select>
-        </mat-form-field>
-    </div>
-
-    <div class="cargarbutton">
-      <input mat-flat-button color="primary" type="file" accept=".csv" #csvFile (change)='convertToBase64()'/>
-      Carga Aprendices
-    </div>
-
-    <div class="crearbutton">
-      <button [disabled]="!miFormulario.valid" type="submit" class="crearbutton" mat-flat-button color="primary">CREAR</button>
-    </div>
-  </div>
-</form> -->
-<!-------------------------------------------------------TESTING-->
-
 <div class="container">
   <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
   <div class="inputs">
@@ -74,27 +22,23 @@
     <div class="form-group col-md-2">
       Coach
         <select id="" class="form-control" formControlName="coach">
-          <option value="1">Raul</option>
-          <option value="2">Eddie</option>
-          <option value="3">Adryan</option>
-          <option value="4">Santiago</option>
+          <option value="Raul">Raul</option>
+          <option value="Eddie">Eddie</option>
+          <option value="Adryan">Adryan</option>
+          <option value="Santiago">Santiago</option>
         </select>
     </div>
   </div>
   <div class="selectbuton">
     <div class="form-group col-md-2">
       Ruta
-      <select id="" class="form-control" formControlName="ruta">
-        <option value="1">Ruta 1</option>
-        <option value="2">Ruta 2</option>
-        <option value="3">Ruta 3</option>
-        <option value="4">Ruta 4</option>
-        <option value="5">Ruta 5</option>
-        <option value="6">Ruta 6</option>
+      <select class="form-control" formControlName="ruta">
+        <option *ngFor="let ruta of rutasAprendizaje" value="{{ruta.id}}">
+          {{ruta.nombre}}
+        </option>
       </select>
     <input class="file-input" mat-flat-button color="primary"
       type="file" accept=".csv" #csvFile (change)='onFileSelected($event)'/>
-    <input class="file-input2" type="text" [value]="csvBase64" formControlName="csvBase64input"/>
       <!-- {{csvBase64}} -->
     <div class="cargarbutton">
       {{csvFileName || "No file uploaded yet."}}
@@ -105,10 +49,11 @@
   </div>
 
     </div>
-    <button class="button-64" role="button"
+    <button  class="button-64" role="button"
       type="submit"><span class="text">Crear</span>
     </button>
   </div>
 </form>
 </div>
+
 <!-- [disabled]="!miFormulario.valid" -->

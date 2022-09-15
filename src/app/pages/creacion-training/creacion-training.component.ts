@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { TrainingModel } from 'src/app/shared/models/training';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Observable, ReplaySubject } from 'rxjs';
+import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
 
 @Component({
   selector: 'app-creacion-training',
@@ -11,30 +11,32 @@ import { Observable, ReplaySubject } from 'rxjs';
 })
 export class CreacionTrainingComponent {
 
-  csvFile: any;//?
-  csvBase64 : string = "";
   csvFileName: string = "";
+  rutasAprendizaje: RutaAprendizajeModel[] = [];
 
   constructor(
     public api: ApiService,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    this.api.getRutasAprendizaje().subscribe((rutas: RutaAprendizajeModel[]) => {
+      this.rutasAprendizaje = rutas;
+    });
+  }
 
   public miFormulario: FormGroup = this.formBuilder.group({
     nombre: [, [Validators.required, Validators.minLength(3)], []],
-    fechainicio: [, [Validators.required, Validators.minLength(3)], []],
-    fechafinal: [, [Validators.required, Validators.minLength(3)], []],
+    fechainicio: [, [Validators.required], []],
+    fechafinal: [, [Validators.required], []],
     descripcion: [, [Validators.required, ], []],
-    coach: [, [Validators.required ]],//select
-    ruta: [, [Validators.required ]],//select leer validators
-    csvBase64input: [, [Validators.required, Validators.minLength(300)], []]
+    coach: [, [Validators.required ]],
+    ruta: [, [Validators.required ]]
   })
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
     this.csvFileName = file.name;
     this.convertToBase64(file).subscribe(base64 => {
-      this.csvBase64 = base64;
+      this.miFormulario.value.csvBase64 = base64;
     });
   }
 
@@ -47,21 +49,17 @@ export class CreacionTrainingComponent {
   }
 
   enviarFormulario(): void {
-    console.log("enviado");
-    //console.log(this.csvBase64);
-      // console.log(this.miFormulario.get("nombre")?.value);
-      // console.log(this.miFormulario.get("fechainicio")?.value);
-      // console.log(this.miFormulario.get("fechafinal")?.value);
-      // console.log(this.miFormulario.get("descripcion")?.value);
-      // console.log(this.miFormulario.get("coach")?.value);
-      // console.log(this.miFormulario.get("ruta")?.value);
-      // console.log(this.miFormulario.get("csvBase64input")?.value);
-    console.log(this.miFormulario.value);
-    //console.log(this.csvBase64,"this.csvBase64");
-    //this.api.crearTraining();
+    console.log(this.miFormulario.value.ruta.id);
+    this.api.crearTraining({
+      name: this.miFormulario.value.nombre,
+      description: this.miFormulario.value.descripcion,
+      startDate: this.miFormulario.value.fechainicio,
+      endDate: this.miFormulario.value.fechafinal,
+      coach: this.miFormulario.value.coach,
+      apprentices: this.miFormulario.value.csvBase64,
+      rutaId: this.miFormulario.value.ruta
+    }).subscribe();
   }
-  //--------------------------------------------------------------//testing
-
 }
 
 
