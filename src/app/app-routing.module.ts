@@ -14,7 +14,9 @@ import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/li
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },//borrar por ser reduntante ++
+
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
   { path: 'std-info/:id/:email', component: StdInfoComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'list-aprendices/:id', component:ListaAprendicesComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
   { path: 'creacion-training', component: CreacionTrainingComponent},
+  //cualquier otra cosa me redirectea a 404
+  { path: '**', redirectTo:'login'}, //++
   { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
   { path: 'lista-training-activos', component: ListaTrainingActivosComponent},
   { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent}
