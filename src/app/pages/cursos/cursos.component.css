@@ -1,91 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
-.contenedorimagen{
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
+/* .contenedorimagen{
   background-image: url(/assets/897.jpg);
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+} */
+.contenedorimagen {
+  background-image: url(/assets/897.jpg);
+  background-size: cover;
 }
-.cursos-data-display{
-    text-align: center;
-    font-family: 'DM Sans', sans-serif;
-    color: #111979
+.cursos-data-display {
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+  color: #111979;
 }
 
 h1 {
- margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 
 .form__group {
-    margin-left: 30%;
-    display: flex;
-    position: relative;
-    padding: 15px 0 0;
-    margin-top: 10px;
-    width: 40%;
-  }
-  
-  .form__field {
-    font-family: inherit;
-    width: 100%;
-    border: 0;
-    border-bottom: 2px solid #c1f0f0;
-    outline: 0;
-    font-size: 1.3rem;
-    color: rgb(0, 0, 0);
-    padding: 7px 0;
-    background: transparent;
-    transition: border-color 0.2s;
-    margin-top: 10px;
-  }
-  .form__field::placeholder {
-    color: transparent;
-  }
-  .form__field:placeholder-shown ~ .form__label {
-    font-size: 1.3rem;
-    cursor: text;
-    top: 20px;
-  }
-  
-  .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: #5cd3fb;
-    margin-top: 10px;
-  }
-  
-  .form__field:focus {
-    padding-bottom: 6px;
-    font-weight: 700;
-    border-width: 3px;
-    border-image: linear-gradient(to right,  #1c2da1, #5cd3fb);
-    border-image-slice: 1;
-  }
-  .form__field:focus ~ .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: #7bdafc;
-    font-weight: 700;
-  }
-  
-  /* reset input */
-  .form__field:required, .form__field:invalid {
-    box-shadow: none;
-  }
+  margin-left: 30%;
+  display: flex;
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 40%;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #c1f0f0;
+  outline: 0;
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-top: 10px;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #5cd3fb;
+  margin-top: 10px;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #1c2da1, #5cd3fb);
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #7bdafc;
+  font-weight: 700;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+  box-shadow: none;
+}
 
 .button-64 {
   align-items: center;
-  background-image: linear-gradient(144deg,#111979, #1c2da1 50%,#7bdafc);
+  background-image: linear-gradient(144deg, #111979, #1c2da1 50%, #7bdafc);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   display: flex;
   font-family: Phantomsans, sans-serif;
   font-size: 20px;
@@ -100,7 +105,7 @@ h1 {
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
-  margin-top:5% ;
+  margin-top: 5%;
   margin-left: 44%;
 }
 
@@ -134,18 +139,18 @@ tr {
 }
 
 table {
-  display:inline-table;
+  display: inline-table;
   margin-top: 5%;
   width: 80%;
-  border-spacing: 0 20px; 
+  border-spacing: 0 20px;
 }
 
 th {
-  padding:0 15px 0 15px;
+  padding: 0 15px 0 15px;
 }
 
 td {
-  padding:0 15px 0 15px;
+  padding: 0 15px 0 15px;
 }
 
 p {
@@ -157,7 +162,7 @@ p {
 }
 
 .acciones {
- width: 10%;
+  width: 10%;
 }
 
 .accion {

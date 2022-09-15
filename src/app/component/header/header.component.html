@@ -14,9 +14,15 @@
     <!-- <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.email}}</mat-card-title> -->
     <button routerLink="home" mat-menu-item>
       <mat-icon >home</mat-icon>
+      Crear
+    </button>
+    <button routerLink="listas" mat-menu-item>
+      <mat-icon >list</mat-icon>
+      Listar
     </button>
     <button (click)="auth.signOut()" *ngIf="auth.isLoggedIn;" mat-menu-item>
       <mat-icon >logout</mat-icon>
+     LogOut
     </button>
 
   </mat-menu>
