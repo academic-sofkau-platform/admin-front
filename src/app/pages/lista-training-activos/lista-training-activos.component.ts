@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { RangeValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TrainingModel } from 'src/app/shared/models/training';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class ListaTrainingActivosComponent implements OnInit {
     // ]
 
 
-  constructor(private api: ApiService, private router: Router) { 
+  constructor(private api: ApiService, private router: Router) {
     this.api.getActiveTrainings().subscribe((element:any)=>{
       this.dataSource = element
     })

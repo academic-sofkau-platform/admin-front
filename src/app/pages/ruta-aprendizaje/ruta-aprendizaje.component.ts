@@ -30,8 +30,8 @@ export class RutaAprendizajeComponent implements OnInit {
     rutas: this.formBuilder.array([
       this.formBuilder.group({
         nivel: [, [Validators.required, Validators.min(0)]],
-        curso: [, [Validators.required, Validators.min(1)]],
-        prerrequisitos: [, [Validators.required, Validators.min(0)]],
+        cursoId: [, [Validators.required, Validators.min(1)]],
+        prerrequisitos: [, [Validators.min(0)]],
       }),
     ]),
   });
@@ -55,7 +55,7 @@ export class RutaAprendizajeComponent implements OnInit {
     control.push(
       this.formBuilder.group({
         nivel: [, [Validators.required, Validators.min(0)]],
-        curso: [, [Validators.required, Validators.min(1)]],
+        cursoId: [, [Validators.required, Validators.min(1)]],
         prerrequisitos: [, [Validators.required, Validators.min(0)]],
       })
     );
@@ -89,7 +89,7 @@ export class RutaAprendizajeComponent implements OnInit {
       control.push(
         this.formBuilder.group({
           nivel: ruta.nivel,
-          curso: ruta.curso,
+          cursoId: ruta.cursoId,
           prerrequisitos: [ruta.prerrequisitos],
         })
       );
@@ -191,7 +191,7 @@ export class RutaAprendizajeComponent implements OnInit {
       this.miFormulario.value.nombre != null &&
       this.miFormulario.value.descripcion != null &&
       this.miFormulario.value.rutas[0].nivel != null &&
-      this.miFormulario.value.rutas[0].curso != null
+      this.miFormulario.value.rutas[0].cursoId != null
     )
       return true;
     return false;
