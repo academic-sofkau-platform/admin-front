@@ -4,8 +4,6 @@ body {
     margin: 0;
     box-sizing: border-box;
 }
-
-
 .btn-google {
     font-family: 'DM Sans', sans-serif;
     color: #4285f4;
@@ -29,12 +27,12 @@ body {
 
 }
 
-header {
+header,footer{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 100vw;
+    width: 100%;
     max-height:100vh;
     overflow: hidden;
     background-color: hsl(240deg 81% 11% / 80%);
