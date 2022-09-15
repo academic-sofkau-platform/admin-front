@@ -1,13 +1,36 @@
-<div class="cursos-data-display">
-  <h1>Creación de Ruta de Aprendizaje</h1>
-  <form [formGroup]="miFormulario">
-    <!--Nombre-->
-    <div class="form-group1">
-      <div class="cont-name-description">
-        <div class="form__group field">
-          <input class="form__field" placeholder="Nombre" name="nombre" id='nombre'
-            formControlName="nombre" [value] = "nombre" required />
-          <label for="nombre" class="form__label">Nombre  </label>
+<div class="contenedorimagen">
+  <div class="cursos-data-display">
+    <h1>Creación de Ruta de Aprendizaje</h1>
+    <form [formGroup]="miFormulario">
+      <!--Nombre-->
+      <div class="form-group1">
+        <div class="cont-name-description">
+          <div class="form__group field">
+            <input
+              class="form__field"
+              placeholder="Nombre"
+              name="nombre"
+              id="nombre"
+              formControlName="nombre"
+              [value]="nombre"
+              required
+            />
+            <label for="nombre" class="form__label">Nombre </label>
+          </div>
+          <!--Descripción-->
+          <div class="form__group field">
+            <input
+              type="input"
+              class="form__field"
+              placeholder="Descripción"
+              name="descripcion"
+              id="descripcion"
+              formControlName="descripcion"
+              [value]="descripcion"
+              required
+            />
+            <label for="descripcion" class="form__label">Descripción</label>
+          </div>
         </div>
         <!--Descripción-->
         <div class="form__group field">
@@ -21,7 +44,7 @@
         <button *ngIf="rutaAprendizaje == null" class="button-64" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
         <button *ngIf="rutaAprendizaje" class="button-64" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
       </div>
-    </div>
+
 
     <!-- Seleccione curso -->
     <div formArrayName="rutas" *ngFor="let ruta of getRutas.controls; let i = index" >
@@ -46,8 +69,8 @@
         <div class="form-group">
           <mat-form-field appearance="fill">
             <mat-label>Seleccione curso</mat-label>
-            <mat-select formControlName = "curso" required>
-              <mat-option *ngFor="let curso of listaCursos" [value]="curso.nombre">{{curso.nombre}}</mat-option>
+            <mat-select formControlName = "cursoId" required>
+              <mat-option *ngFor="let curso of listaCursos" [value]="curso.id">{{curso.nombre}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -67,8 +90,7 @@
           <button type="submit" id="eliminar" (click)="removeRuta(i)" class="btn btn-danger"><mat-icon>delete</mat-icon></button>
         </div>
       </div>
-
     </div>
-
-  </form>
+    </form>
+  </div>
 </div>

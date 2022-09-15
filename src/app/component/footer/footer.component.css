@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
+.mat-toolbar {
+  background-color: #010132f0;
+  height: 300px;
+}
+
+.elementor-section-wrap,.elementor-row{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+/* .elementor-image{
+    width: 200px;
+    font-size: 15px;
+} */
+.elementor-widget-container{
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    font-size: 15px;
+}
+
+.elementor-container{
+width: 200px;
+}

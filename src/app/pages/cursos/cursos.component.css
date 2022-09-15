@@ -1,17 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
-
-/* Data */
-.cursos-data-display{
-    text-align: center;
-    font-family: 'DM Sans', sans-serif;
-    color: #111979
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
+.contenedorimagen{
+  background-image: url(/assets/897.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+/* .contenedorimagen {
+  background-image: url(/assets/897.jpg);
+  background-size: cover;
+} */
+.cursos-data-display {
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+  color: #111979;
 }
 
 h1 {
-  position: relative;
-  top: 150px;
-  margin-bottom: 150px;
-  font-size: 40px;
+  margin-bottom: 5%;
 }
 
 /* Form */
@@ -23,7 +28,7 @@ h1 {
     margin-top: 10px;
     width: 30vw;
   }
-  
+
   .form__field {
     font-family: inherit;
     width: 100%;
@@ -45,7 +50,7 @@ h1 {
     cursor: text;
     top: 20px;
   }
-  
+
   .form__label {
     position: absolute;
     top: 0;
@@ -55,7 +60,7 @@ h1 {
     color: #5cd3fb;
     margin-top: 10px;
   }
-  
+
   .form__field:focus {
     padding-bottom: 6px;
     font-weight: 700;
@@ -72,12 +77,113 @@ h1 {
     color: #7bdafc;
     font-weight: 700;
   }
-  
+
 
   /* reset input */
   .form__field:required, .form__field:invalid {
     box-shadow: none;
   }
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #c1f0f0;
+  outline: 0;
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin-top: 10px;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #5cd3fb;
+  margin-top: 10px;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #1c2da1, #5cd3fb);
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #7bdafc;
+  font-weight: 700;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+  box-shadow: none;
+}
+
+  /* Button */
+
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg, #111979, #1c2da1 50%, #7bdafc);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  margin-top: 5%;
+  margin-left: 44%;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
 
 @media (min-width: 768px) {
   .button-64 {
@@ -89,30 +195,18 @@ h1 {
 /* Table */
 
 table {
-  display:inline-table;
+  display: inline-table;
   margin-top: 5%;
   width: 80%;
-  border-spacing: 0 20px; 
+  border-spacing: 0 20px;
 }
 
-.container-fluid{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 150px;
-}
-th,td,button{
-  font-size:20px;
-  font-family: serif;
-  font-family: 'DM Sans', sans-serif;
-}
-.inner-adjust{
-  margin-top: 30px;
-  width: 1500px;
+th {
+  padding: 0 15px 0 15px;
 }
 
-.example-form-field{
-  width: 90%;
+td {
+  padding: 0 15px 0 15px;
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
@@ -120,6 +214,12 @@ th,td,button{
   border-radius: 5px;
 }
 
-.buttonth {
-  margin-left:120px ;
+.acciones {
+  width: 10%;
+}
+
+.accion {
+  margin-left: 0;
+  margin-top: 0;
+  border: 0;
 }

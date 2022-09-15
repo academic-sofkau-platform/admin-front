@@ -10,12 +10,13 @@ import { ListaTrainingActivosComponent } from './pages/lista-training-activos/li
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
 import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
+import { ListasComponent } from './pages/listas/listas.component';
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },//borrar por ser reduntante ++
-
+  { path: 'listas', component: ListasComponent},
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
