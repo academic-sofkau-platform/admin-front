@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { CursoModel } from 'src/app/shared/models/curso';
+import { RutaAprendizajeModel, RutaModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-cursos',
@@ -10,6 +12,11 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class CursosComponent implements OnInit {
   dataSource: CursoModel[] = [];
+  idData: String[] = [];
+  idRuta: String[] = [];
+  idCurso: String = ""
+  ruta:RutaModel[][] = [];
+  displayedColumns: string[] = ['nombre', 'descripcion', 'valorAprobacion', 'acciones'];
   cursoForm: FormGroup;
   elementos: any 
   cursoId:string=""
@@ -17,6 +24,7 @@ export class CursosComponent implements OnInit {
   descripcion:string = "";
   valorAprobacion:number = 0;
   modificando:boolean = false;
+  siendoUsado:boolean = true;
 
   constructor( public api: ApiService ) {
     this.cursoForm = new FormGroup({
@@ -35,13 +43,26 @@ export class CursosComponent implements OnInit {
 
   ngOnInit() {
     this.api.getCursos().subscribe((elements) => {
-      this.dataSource = elements;
+      this.dataSource =  elements;
+      this.ordenar(this.dataSource)
     });
+  }
 
+  ordenar(array: CursoModel[]) {
+    array.sort(function (a,b) {
+      if (a.nombre > b.nombre) {
+        return 1;
+      }
+      if (a.nombre < b.nombre) {
+        return -1;
+      }
+      return 0;
+    })
   }
 
   crearCurso() {
-   this.api.crearCurso({
+   if (this.cursoForm.value.nombre !== null && this.cursoForm.value.descripcion !== null && this.cursoForm.value.valorAprobacion) {
+    this.api.crearCurso({
       nombre:this.cursoForm.value.nombre,
       descripcion:this.cursoForm.value.descripcion,
       aprobacion:this.cursoForm.value.valorAprobacion
@@ -49,6 +70,7 @@ export class CursosComponent implements OnInit {
 
     //Al crear el curso lo añado al datasource para que aparezca en la tabla
     this.dataSource.push(elementos)
+    this.ordenar(this.dataSource)
     })
 
     //Limpio los datos luego de postear
@@ -56,18 +78,69 @@ export class CursosComponent implements OnInit {
     this.descripcion = ""
     this.valorAprobacion = 0
     window.location.reload()
+   } else {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Los campos no pueden estar vacíos'
+    })
+   }
+  
   }
 
   
   eliminar(id:string) {
-    this.api.deleteCurso(id).subscribe();
-    this.dataSource = this.dataSource.filter(cursos => cursos.id !== id)
+    Swal.fire({
+      title: '¿Seguro que quieres borrar el curso?',
+      text: "No podrás revertirlo!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, elimínalo!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Eliminado!',
+          'Curso eliminado.',
+          'success'
+        )
+        this.api.deleteCurso(id).subscribe();
+        this.dataSource = this.dataSource.filter(cursos => cursos.id !== id)
+        this.ordenar(this.dataSource)
+      }
+    }) 
   }
 
+  imposibleBorrar() {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Estás intentando borrar un curso que está siendo utilizado!'
+    })
+  }
 
-  llevarDatos(id:string) {
+  evaluar(id:string,$event:any) {
+    $event.preventDefault() 
+      this.api.getRutasAprendizaje()
+      .subscribe((element) => this.ruta = element.map((rutas) => rutas.rutas));
+      setTimeout(() => {
+      this.ruta.map((ruta) => ruta.map((curso) => curso.cursoId).map((id) => {this.idRuta.push(id)}))
+      this.idCurso = this.dataSource.filter((curso) => curso.id == id)[0].id
+      this.siendoUsado = this.idRuta.includes(this.idCurso)
+      if(this.siendoUsado) {
+        this.imposibleBorrar()
+      }
+      if(!this.siendoUsado) {
+        this.eliminar(id)
+      }
+    },150)
+   
+  }
+
+  llevarDatos(id:string,$event:any) {
+    $event.preventDefault()
     this.modificando = true
-
     //Pongo los datos en los form y en las variables
     setTimeout(()=> { let curso:any
       curso = this.dataSource.filter(curso => curso.id == id)
@@ -105,6 +178,7 @@ export class CursosComponent implements OnInit {
     //Al modificar elimino el curso que aparece en la tabla y pongo el nuevo modificado
       this.dataSource = this.dataSource.filter(elementos => elementos.id !== cursoId)
       this.dataSource.push(elementos)
+      this.ordenar(this.dataSource)
     })
 
     //Limpio los datos luego de modificar
@@ -112,6 +186,7 @@ export class CursosComponent implements OnInit {
     this.descripcion = ""
     this.valorAprobacion = 0
     this.modificando = false
+    window.scrollTo(0, document.body.scrollHeight);
   }
  
 }
