@@ -30,12 +30,12 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/curso/save', command);
   }
 
-  deleteCurso(cursoId:string){
+  deleteCurso(cursoId: string) {
     return this.http.post(environment.apiBase + '/curso/delete/', cursoId);
   }
 
-  modificarCurso(cursoId:string, command: ModificarCursoCommand){
-    return this.http.post(environment.apiBase + '/curso/update/' +cursoId , command);
+  modificarCurso(cursoId: string, command: ModificarCursoCommand) {
+    return this.http.post(environment.apiBase + '/curso/update/' + cursoId, command);
   }
 
   //RUTAS DE APRENDIZAJE
@@ -43,7 +43,7 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
-  getRutasAprendizaje(): Observable<RutaAprendizajeModel[]>{
+  getRutasAprendizaje(): Observable<RutaAprendizajeModel[]> {
     return this.http.get<RutaAprendizajeModel[]>(environment.apiBase + '/rutaAprendizaje/findAll');
   }
 
@@ -76,16 +76,19 @@ export class ApiService {
     return this.http.get<any>(environment.apiBase + '/trainings/aprendices/' + trainingId + '/' + aprendizEmail);
   }
 
-
   //APRENDICES
   aprendicesByTrainingId(trainingId: string): Observable<StudentModel[]> {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
-//TRAININGS ACTIVOS
-getActiveTrainings():Observable<TrainingModel[]>{
-  console.log("desplegando trainings");
-  return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
-}
+  deleteAprendizByEmail(trainingId:string, email:string){
+    return this.http.post(environment.apiBase + '/trainings/deleteAprendiz/'+ trainingId, email);
+  }
+
+  //TRAININGS ACTIVOS
+  getActiveTrainings(): Observable<TrainingModel[]> {
+    console.log("desplegando trainings");
+    return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+  }
 
 }

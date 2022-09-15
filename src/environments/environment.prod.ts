@@ -1,5 +1,5 @@
 export const environment = {
-  apiBase: "https://academic-sofkau.herokuapp.com",
+  apiBase: "https://guarded-forest-06646.herokuapp.com",
   firebase: {
    apiKey: "AIzaSyD-RlhMjFAzFQx7NQ4qJxS-Wcnq4ojqK10",
    authDomain: "academic-sofkau.firebaseapp.com",
