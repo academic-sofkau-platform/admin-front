@@ -9,6 +9,7 @@ import { ModificarCursoCommand } from '../commands/modificarCursoCommand';
 import { StudentModel } from '../models/student';
 import { ActividadModel } from '../models/actividad';
 import { RutaAprendizajeModel } from '../models/ruta-aprendizaje';
+import { CrearTrainingCommand } from '../commands/crearTrainingCommand';
 import { TrainingModel } from '../models/training';
 import { ModificarRutaAprendizajeCommand } from '../commands/modificarRutaAprendizajeCommand';
 import { AgregarRutaCommand } from '../commands/agregarRutaCommand';
@@ -85,11 +86,15 @@ export class ApiService {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
 
+
+  //TRAINING
+  crearTraining(command: CrearTrainingCommand) {
+    console.log(command);
+    return this.http.post(environment.apiBase + '/trainings/save', command)
+  }
   deleteAprendizByEmail(trainingId:string, email:string){
     return this.http.post(environment.apiBase + '/trainings/deleteAprendiz/'+ trainingId, email);
   }
-
-  //TRAININGS ACTIVOS
   getActiveTrainings(): Observable<TrainingModel[]> {
     console.log("desplegando trainings");
     return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')

@@ -1,29 +1,66 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { TrainingModel } from 'src/app/shared/models/training';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { Observable, ReplaySubject } from 'rxjs';
+import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
 
 @Component({
   selector: 'app-creacion-training',
   templateUrl: './creacion-training.component.html',
   styleUrls: ['./creacion-training.component.css']
 })
-export class CreacionTrainingComponent implements OnInit {
-  dataSource: TrainingModel[] = [];
-  trainingForm: FormGroup;
+export class CreacionTrainingComponent {
+
+  csvFileName: string = "";
+  rutasAprendizaje: RutaAprendizajeModel[] = [];
+
   constructor(
     public api: ApiService,
-  ) { 
-    this.trainingForm = new FormGroup({
-      nombre: new FormControl(),
-      descripcion: new FormControl(),
-      fechaInicio: new FormControl(),
-      fechaFinal: new FormControl(),
-    })
-
+    private formBuilder: FormBuilder
+  ) {
+    this.api.getRutasAprendizaje().subscribe((rutas: RutaAprendizajeModel[]) => {
+      this.rutasAprendizaje = rutas;
+    });
   }
 
-  ngOnInit() {
+  public miFormulario: FormGroup = this.formBuilder.group({
+    nombre: [, [Validators.required, Validators.minLength(3)], []],
+    fechainicio: [, [Validators.required], []],
+    fechafinal: [, [Validators.required], []],
+    descripcion: [, [Validators.required, ], []],
+    coach: [, [Validators.required ]],
+    ruta: [, [Validators.required ]]
+  })
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    this.csvFileName = file.name;
+    this.convertToBase64(file).subscribe(base64 => {
+      this.miFormulario.value.csvBase64 = base64;
+    });
   }
 
+  convertToBase64(file : File) : Observable<string> {
+    const result = new ReplaySubject<string>(1);
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = (event: any) => result.next(btoa(event.target.result.toString()));
+    return result;
+  }
+
+  enviarFormulario(): void {
+    this.api.crearTraining({
+      name: this.miFormulario.value.nombre,
+      description: this.miFormulario.value.descripcion,
+      startDate: this.miFormulario.value.fechainicio,
+      endDate: this.miFormulario.value.fechafinal,
+      coach: this.miFormulario.value.coach,
+      apprentices: this.miFormulario.value.csvBase64,
+      rutaId: this.miFormulario.value.ruta
+    }).subscribe();
+  }
 }
+
+
+
+
