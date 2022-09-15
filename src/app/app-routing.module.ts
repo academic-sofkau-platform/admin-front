@@ -25,11 +25,12 @@ const routes: Routes = [
   { path: 'list-aprendices/:id', component:ListaAprendicesComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
   { path: 'creacion-training', component: CreacionTrainingComponent},
-  //cualquier otra cosa me redirectea a 404
- // { path: '**', redirectTo:'login'}, //++
   { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
   { path: 'lista-training-activos', component: ListaTrainingActivosComponent},
-  { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent}
+  { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent},
+  //cualquier otra cosa me redirectea a 404
+  { path: '**', redirectTo:'login'}, //++
+  
 ];
 //, canActivate: [AuthGuard]
 @NgModule({

@@ -98,6 +98,7 @@ import { FooterComponent } from './component/footer/footer.component';
     HeatMapAllModule,
     MatPaginatorModule,
     HttpClientModule,
+    
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
