@@ -12,29 +12,39 @@ import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
   styleUrls: ['./lista-training-activos.component.css']
 })
 export class ListaTrainingActivosComponent implements OnInit {
-  trainings:TrainingModel[]=[];
+  trainings: TrainingModel[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'descripcion', 'inicio', 'fin', 'ver'];
+  displayedColumns: string[] = ['nombre', 'descripcion', 'inicio', 'fin', 'ver'];
   //displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
   //dataSource: TrainingModel[] = this.getTrainings();
-dataSource: TrainingModel[]=[
-  {trainingId:"1", name:"asd", description:"desc1", startDate:10, endDate:20, coach: "Raul", apprentices: [], rutaAprendizaje: {id: "Ruta1", nombre: "nombreRuta1", descripcion: "Ruta1Des", rutas: []}},
-  {trainingId:"2", name:"asd", description:"desc2", startDate:10, endDate:20, coach: "Eddi", apprentices: [], rutaAprendizaje: {id: "Ruta1", nombre: "nombreRuta1", descripcion: "Ruta1Des", rutas: []}}
-  ]
+  dataSource: TrainingModel[] = [];
+    // [{ id: "1", nombre: "asd", descripcion: "desc1", fechaInicio: 10, fechaFinal: 20 },
+    // { id: "2", nombre: "asd", descripcion: "desc2", fechaInicio: 10, fechaFinal: 20 }
+    // ]
 
-  constructor(private api:ApiService, private router:Router) { }
 
-  ngOnInit() {
-    this.getTrainings()
+  constructor(private api: ApiService, private router: Router) {
+    this.api.getActiveTrainings().subscribe((element:any)=>{
+      this.dataSource = element
+    })
   }
 
-  getTrainings(){
-    this.api.getActiveTrainings()
-    .subscribe(data =>{
-      console.log(data)
-      console.log("desplegando trainings2");
-      this.trainings=data;
-    })
-    return this.trainings;
+  ngOnInit() {
+    // this.getTrainings()
+  }
+
+  // getTrainings() {
+  //   this.api.getActiveTrainings()
+  //     .subscribe(data => {
+  //       console.log(data)
+  //       console.log("desplegando trainings2");
+  //       this.trainings = data;
+  //     })
+  //   return this.trainings;
+  // }
+
+
+  verTraining(id:string){
+    this.router.navigate(['list-aprendices', id])
   }
 }

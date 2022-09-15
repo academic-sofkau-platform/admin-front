@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentModel } from 'src/app/shared/models/student';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-lista-aprendices',
@@ -9,13 +11,32 @@ import { StudentModel } from 'src/app/shared/models/student';
 export class ListaAprendicesComponent implements OnInit {
 
   displayedColumns: string[] = ['nombre', 'apellido', 'email', 'ver','eliminar'];
-  dataSource: StudentModel[] = 
-  [{id:"asd",name:'Matias',lastname:'Souza',city:"lp ñeri",gender:"no se", email:'matisouzafr@gmail.com',phoneNumber:1050,photo:"asd",bilingual:false},
-  {id:"23",name:'PEPE',lastname:'Souza',city:"lp ñeri",gender:"no se", email:'ASD@gmail.com',phoneNumber:1050,photo:"asd",bilingual:true}
-  ]
-  constructor() { }
-
-  ngOnInit() {
+  dataSource: StudentModel[] = [];
+  idTraining:string='';
+  constructor(
+    private api: ApiService,
+    private router:Router,
+    private route: ActivatedRoute
+    ) { 
+      
   }
 
+  ngOnInit() {
+    this.route.params.subscribe((params)=>{
+      console.log(params)
+      this.idTraining = params['id']
+      this.api.aprendicesByTrainingId(this.idTraining).subscribe((element)=>{
+        this.dataSource = element;
+        console.log(element)
+      });
+    })
+  }
+  eliminar(email:string){
+    this.api.deleteAprendizByEmail(this.idTraining, email).subscribe();
+    this.dataSource = this.dataSource.filter((aprendiz)=> aprendiz.email !== email)
+  }
+
+  verAprendiz(email:string){
+   this.router.navigate(['std-info',this.idTraining, email])
+  }
 }

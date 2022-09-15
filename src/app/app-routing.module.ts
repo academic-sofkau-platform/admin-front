@@ -19,9 +19,9 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'std-info', component: StdInfoComponent},
+  { path: 'std-info/:id/:email', component: StdInfoComponent},
   { path: 'cursos', component:CursosComponent},
-  { path: 'list-aprendices', component:ListaAprendicesComponent},
+  { path: 'list-aprendices/:id', component:ListaAprendicesComponent},
   { path: 'ruta-aprendizaje', component: RutaAprendizajeComponent},
   { path: 'creacion-training', component: CreacionTrainingComponent},
   //cualquier otra cosa me redirectea a 404

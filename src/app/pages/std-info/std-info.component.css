@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
 
-ejs-heatmap{
+#element{
     margin: auto;
     display: block;
     width: 1500px;
@@ -25,7 +25,7 @@ h1{
 .std-data{
     display: flex;
     margin: auto;
-    padding-left: 240px;
+    padding-left: 275px;
     color: black;
 }
 .std-data img{
