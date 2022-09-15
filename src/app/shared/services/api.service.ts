@@ -68,6 +68,10 @@ export class ApiService {
     return this.http.get<any>(environment.apiBase + '/trainings/aprendices/' + trainingId + '/' + aprendizEmail);
   }
 
+  getTrainingById(trainingId: string): Observable <any>{
+    return this.http.get<any>(environment.apiBase + '/trainings/findById/' + trainingId);
+  }
+
   //APRENDICES
   aprendicesByTrainingId(trainingId: string): Observable<StudentModel[]> {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
