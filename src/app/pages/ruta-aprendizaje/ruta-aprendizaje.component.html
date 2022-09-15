@@ -19,7 +19,7 @@
       <div class="cont-btn">
         <!--Guardar-->
         <button *ngIf="rutaAprendizaje == null" class="button-64" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
-        <button *ngIf="rutaAprendizaje" class="button-64" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id, rutaAprendizaje.rutas.id)"><span class="text">MODIFICAR</span></button>
+        <button *ngIf="rutaAprendizaje" class="button-64" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
       </div>
     </div>
 
