@@ -49,7 +49,6 @@ export class CreacionTrainingComponent {
   }
 
   enviarFormulario(): void {
-    console.log("ruta",typeof this.miFormulario.value.ruta);
     this.api.crearTraining({
       name: this.miFormulario.value.nombre,
       description: this.miFormulario.value.descripcion,
