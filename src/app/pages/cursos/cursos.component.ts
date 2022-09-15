@@ -122,20 +122,19 @@ export class CursosComponent implements OnInit {
 
   evaluar(id:string,$event:any) {
     $event.preventDefault() 
-      this.api.getRutasAprendizaje()
-      .subscribe((element) => this.ruta = element.map((rutas) => rutas.rutas));
+
+      this.api.controlCursoEnRutaAprendizaje(id).subscribe((element:any) => {
+       this.siendoUsado = element
+      })
+
       setTimeout(() => {
-      this.ruta.map((ruta) => ruta.map((curso) => curso.cursoId).map((id) => {this.idRuta.push(id)}))
-      this.idCurso = this.dataSource.filter((curso) => curso.id == id)[0].id
-      this.siendoUsado = this.idRuta.includes(this.idCurso)
-      if(this.siendoUsado) {
-        this.imposibleBorrar()
-      }
-      if(!this.siendoUsado) {
-        this.eliminar(id)
-      }
-    },150)
-   
+        if(this.siendoUsado) {
+          this.imposibleBorrar()
+        }
+        if(!this.siendoUsado) {
+          this.eliminar(id)
+        }
+      }, 200);
   }
 
   llevarDatos(id:string,$event:any) {

@@ -68,6 +68,10 @@ export class ApiService {
   agregarRuta(id:string , command: AgregarRutaCommand){
     return this.http.post(environment.apiBase + '/rutaAprendizaje/add/route/' + id, command)
   }
+  
+  controlCursoEnRutaAprendizaje(id:string) {
+    return this.http.get(environment.apiBase + '/rutaAprendizaje/curso/' + id)
+  }
 
   //ACTIVIDAD
   getActividad(trainingId: string, aprendizId: string): Observable <ActividadModel[]> {
