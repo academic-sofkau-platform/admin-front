@@ -18,6 +18,7 @@ export class ListaTrainingActivosComponent implements OnInit {
   //displayedColumns: string[] = ['Nombre', 'Periodo', 'Aprendices', 'Acciones'];
   //dataSource: TrainingModel[] = this.getTrainings();
   dataSource: TrainingModel[] = [];
+  element: any;
     // [{ id: "1", nombre: "asd", descripcion: "desc1", fechaInicio: 10, fechaFinal: 20 },
     // { id: "2", nombre: "asd", descripcion: "desc2", fechaInicio: 10, fechaFinal: 20 }
     // ]

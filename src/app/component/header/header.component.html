@@ -1,23 +1,48 @@
-
-<mat-toolbar color="black">
-
-  <span>Sofka</span>
+<mat-toolbar>
+  <span>
+    <a routerLink="/home">
+      <img
+        width="100px"
+        height="37px"
+        src="https://ik.imagekit.io/vpvzuhxi3/Sofka/logo-sofkau_blanco_5wK-vAh4g.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1661194626415"
+        data-src="https://www.sofka.com.co/wp-content/uploads/2020/09/logo-sofka-blanco-1.png"
+        class="attachment-full size-full lazy-loaded lazyloaded"
+        alt=""
+      />
+    </a>
+  </span>
   <span class="example-spacer"></span>
 
-  <button *ngIf="auth.isLoggedIn;" [matMenuTriggerFor]="menu" mat-icon-button class="main-icono favorite-icon"
-    title="Menú" aria-label="Example icon-button with heart icon">
-    <img class="img-round" src={{auth.user.photoURL}} referrerpolicy="no-referrer" alt="Avatar">
+  <button
+    *ngIf="auth.isLoggedIn"
+    [matMenuTriggerFor]="menu"
+    mat-icon-button
+    class="main-icono favorite-icon"
+    title="Menú"
+    aria-label="Example icon-button with heart icon"
+  >
+    <img
+      class="img-round"
+      src="{{ auth.user.photoURL }}"
+      referrerpolicy="no-referrer"
+      alt="Avatar"
+    />
+    <span style="margin-left: 10px">{{ auth.user.displayName }}</span>
+    <mat-icon style="color: white">keyboard_arrow_down</mat-icon>
   </button>
-
   <mat-menu class="menu-icon" #menu="matMenu">
-    <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.displayName}}</mat-card-title>
     <!-- <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.email}}</mat-card-title> -->
-    <button mat-menu-item>
-      <mat-icon routerLink="home">home</mat-icon>
+    <button routerLink="home" mat-menu-item>
+      <mat-icon>home</mat-icon>
+      Crear
     </button>
-    <button *ngIf="auth.isLoggedIn;" mat-menu-item>
-      <mat-icon (click)="auth.signOut()">logout</mat-icon>
+    <button routerLink="listas" mat-menu-item>
+      <mat-icon>list</mat-icon>
+      Listar
     </button>
-
+    <button (click)="auth.signOut()" *ngIf="auth.isLoggedIn" mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      Cerrar Sesion
+    </button>
   </mat-menu>
 </mat-toolbar>
