@@ -47,13 +47,13 @@ export class StdInfoComponent implements OnInit {
 
     yAxis: {
       labels: [
-        'Lunes',
-        'Martes',
-        'Miercoles',
-        'Jueves',
-        'Viernes',
-        'Sabado',
         'Domingo',
+        'Sabado',
+        'Viernes',
+        'Jueves',
+        'Miercoles',
+        'Martes',
+        'Lunes'
       ],
 
       textStyle: {
