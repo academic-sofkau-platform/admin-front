@@ -42,6 +42,8 @@ import { StdInfoComponent } from './pages/std-info/std-info.component';
 import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ListasComponent } from './pages/listas/listas.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { ListasComponent } from './pages/listas/listas.component';
     CreacionTrainingComponent,
     CursosComponent,
     StdInfoComponent,
-    ListaRutaAprendizajeComponent
+    ListaRutaAprendizajeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +95,8 @@ import { ListasComponent } from './pages/listas/listas.component';
     MatTabsModule,
     MatButtonModule,
     HeatMapAllModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FontAwesomeModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
