@@ -31,19 +31,14 @@
             />
             <label for="descripcion" class="form__label">Descripción</label>
           </div>
-        </div>
-        <!--Descripción-->
-        <div class="form__group field">
-          <input type="input" class="form__field" placeholder="Descripción" name="descripcion" id='descripcion'
-            formControlName="descripcion" [value] = "descripcion" required  />
-          <label for="descripcion" class="form__label">Descripción</label>
+          <div class="cont-btn">
+            <!--Guardar-->
+            <button *ngIf="rutaAprendizaje == null" class="button-64" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
+            <button *ngIf="rutaAprendizaje" class="button-64" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
+          </div>
         </div>
       </div>
-      <div class="cont-btn">
-        <!--Guardar-->
-        <button *ngIf="rutaAprendizaje == null" class="button-64" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
-        <button *ngIf="rutaAprendizaje" class="button-64" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
-      </div>
+    
 
 
     <!-- Seleccione curso -->
@@ -89,7 +84,9 @@
         <div class="form-group col-md-2" *ngIf="getRutas.controls.length > 1">
           <button type="submit" id="eliminar" (click)="removeRuta(i)" class="btn btn-danger"><mat-icon>delete</mat-icon></button>
         </div>
+     
       </div>
+    
     </div>
     </form>
   </div>

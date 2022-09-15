@@ -3,32 +3,46 @@
 .contenedorimagen{
   background-image: url(/assets/897.jpg);
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 .container-fluid{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 150px;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    padding-top: 62px;
   }
   th,td,button{
     font-size:20px;
     font-family: 'DM Sans', sans-serif;
   }
-  .h2{
-    text-align: center;
-    font-size: 40px;
-    padding-bottom: 45px;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .inner-adjust{
-    margin-top: 30px;
-    width: 1500px;
-  }
   h1{
     font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    text-align: center;
     color: #111979;
-    font-size: xx-large;
     font-weight: bolder;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  table {
+    display: inline-table;
+    margin-top: 5%;
+    width: 80%;
+    border-spacing: 0 20px;
+  }
+  
+  th {
+    padding: 0 15px 0 15px;
+  }
+  
+  td {
+    padding: 0 15px 0 15px;
+  }
+  .inj{
+    margin: auto;
+    width: 1000px;
   }

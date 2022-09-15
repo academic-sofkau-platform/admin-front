@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StudentModel } from 'src/app/shared/models/student';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,29 +11,35 @@ import Swal from 'sweetalert2';
   templateUrl: './lista-aprendices.component.html',
   styleUrls: ['./lista-aprendices.component.css']
 })
-export class ListaAprendicesComponent implements OnInit {
+export class ListaAprendicesComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['nombre', 'apellido', 'email', 'acciones'];
-  dataSource: StudentModel[] = [];
+  dataSource: any;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  ngAfterViewInit() {
+    this.route.params.subscribe((params) => {
+      console.log(params)
+      this.idTraining = params['id']
+      this.api.aprendicesByTrainingId(this.idTraining).subscribe((elements) => {
+        this.dataSource = new MatTableDataSource(elements)
+        this.dataSource.paginator = this.paginator
+        console.log(elements)
+      });
+      
+      
+    })
+    
+  }
+
   idTraining: string = '';
   constructor(
     private api: ApiService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
+  ) {}
 
-  }
-
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      console.log(params)
-      this.idTraining = params['id']
-      this.api.aprendicesByTrainingId(this.idTraining).subscribe((element) => {
-        this.dataSource = element;
-        console.log(element)
-      });
-    })
-  }
   eliminar(email: string) {
     Swal.fire({
       title: 'Desea borrar un aprendiz?',
@@ -47,7 +55,7 @@ export class ListaAprendicesComponent implements OnInit {
           'completo'
         )
         this.api.deleteAprendizByEmail(this.idTraining, email).subscribe();
-        this.dataSource = this.dataSource.filter((aprendiz) => aprendiz.email !== email)
+        this.dataSource = this.dataSource.filter((aprendiz:any) => aprendiz.email !== email)
       }
     })
 

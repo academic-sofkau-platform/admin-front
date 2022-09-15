@@ -6,10 +6,11 @@
   height: 100vh;
 }
 h1 {
- margin-bottom: 5%;
  font-family: 'DM Sans', sans-serif;
- font-size: 3rem;
- font-weight: 500;
+ font-size: 2rem;
+ text-align: center;
+ color: #111979;
+ font-weight: bolder;
 }
 
 .form__group {
@@ -18,7 +19,7 @@ h1 {
     position: relative;
     padding: 15px 0 0;
     margin-top: 10px;
-    width: 80%;
+    width: 100%;
   }
   
   .form__field {
@@ -152,22 +153,18 @@ p {
   padding: 20px;
 }
 
-h1 {
-  font-family: "DM Sans";
-  text-align: center;
-  align-items: center;
-}
-
 .form-group1{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-right: 10%;
+  width: 1000px;
+  margin-left: 10%;
 }
 .cont-btn{
   width: 25%;
+  margin-top: 10%;
 }
+
 
 .cursos-data-display{
   padding-top: 150px;
@@ -187,6 +184,7 @@ h1 {
 }
 .form-group{
   margin-left: 40px;
+  
 }
 
 
