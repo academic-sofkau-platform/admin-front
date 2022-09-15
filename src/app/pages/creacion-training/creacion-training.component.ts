@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Observable, ReplaySubject } from 'rxjs';
 import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
@@ -49,7 +49,7 @@ export class CreacionTrainingComponent {
   }
 
   enviarFormulario(): void {
-    console.log(this.miFormulario.value.ruta.id);
+    console.log("ruta",typeof this.miFormulario.value.ruta);
     this.api.crearTraining({
       name: this.miFormulario.value.nombre,
       description: this.miFormulario.value.descripcion,

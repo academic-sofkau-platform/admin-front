@@ -1,5 +1,4 @@
 import { StudentModel } from './student';
-import { RutaAprendizajeModel } from './ruta-aprendizaje';
 
 export interface TrainingModel {
     trainingId: string;
