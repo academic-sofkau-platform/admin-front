@@ -1,29 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
 
 .contenedorimagen{
+  padding-top:62px;
   background-image: url(/assets/897.jpg);
   background-size: cover;
-  width: 98vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 .container-fluid{
-    display: flex;
+  padding-top:10px;
     justify-content: center;
     align-items: center;
-    padding-top: 150px;
+    width: 100%;
+    height: 100vh;
   }
   th,td,button{
-    font-size:20px;
-    font-family: serif;
     font-family: 'DM Sans', sans-serif;
   }
-  .h2{
+  h1{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
     text-align: center;
-    font-size: 40px;
-    padding-bottom: 45px;
-    font-family: 'DM Sans', sans-serif;
+    color: #111979;
+    font-weight: bolder;
+    margin-bottom: 5%;
   }
-  .inner-adjust{
-    margin-top: 30px;
-    width: 1500px;
+  table {
+    display: inline-table;
+    margin-top: 5%;
+    width: 80%;
+    border-spacing: 0 20px;
+  }
+  
+  th {
+    padding: 0 15px 0 15px;
+  }
+  
+  td {
+    padding: 0 15px 0 15px;
+  }
+  .inner-adjusts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    margin: auto;
+    padding: 0;
+  }
+  .zoom {
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .zoom {
+    transition: 0.05s all ease-in-out;
+  }
+  
+  .zoom:hover {
+    transform: scale(1.6);
+  }
+
+  .flecha{
+    margin-left: 13px !important;
+    margin-top: 10px !important;
+  }
+  .zoomf{
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .zoomf {
+    transition: 0.05s all ease-in-out;
+  }
+  
+  .zoomf:hover{
+    transform: scale(1.3);
   }

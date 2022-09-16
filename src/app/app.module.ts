@@ -43,7 +43,6 @@ import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/li
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 
 @NgModule({
@@ -99,7 +98,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     HeatMapAllModule,
     MatPaginatorModule,
     HttpClientModule,
-    FontAwesomeModule
+
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

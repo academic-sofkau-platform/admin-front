@@ -1,5 +1,5 @@
 <div class="contenedorimagen">
-  <button style="margin-left: 13px;" routerLink="/home" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
+  <button class="flecha zoomf" routerLink="/home" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
   <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
     <div class="inputs">
         <div class="form__group field">
@@ -43,18 +43,16 @@
         <!-- {{csvBase64}} -->
       <div class="cargarbutton">
         {{csvFileName || "No file uploaded yet."}}
-        <button mat-flat-button color="primary" type="button" (click)="csvFile.click()">
+        <button mat-flat-button color="primary" type="button" class="zoom" (click)="csvFile.click()">
           Carga Aprendices
           <mat-icon>attach_file</mat-icon>
         </button>
     </div>
   
       </div>
-      <button  class="button-64" role="button"
+      <button  class="button-64 zoom" role="button"
         type="submit"><span class="text">Crear</span>
       </button>
     </div>
   </form>
 </div>
-
-<!-- [disabled]="!miFormulario.valid" -->

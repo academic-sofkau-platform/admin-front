@@ -1,5 +1,5 @@
 <div class="contenedorimagen">
-  <button style="margin-left: 13px;" routerLink="/home" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
+  <button class="flecha zoomf" routerLink="/home" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
   <div class="cursos-data-display">
     <h1>Creación de Ruta de Aprendizaje</h1>
     <form [formGroup]="miFormulario">
@@ -32,100 +32,64 @@
             />
             <label for="descripcion" class="form__label">Descripción</label>
           </div>
-        </div>
-        <div class="cont-btn">
-          <!--Guardar-->
-          <button
-            *ngIf="rutaAprendizaje == null"
-            class="button-64"
-            role="button"
-            type="submit"
-            (click)="crearRutaAprendizaje()"
-          >
-            <span class="text">CREAR</span>
-          </button>
-          <button
-            *ngIf="rutaAprendizaje"
-            class="button-64"
-            role="button"
-            type="submit"
-            (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"
-          >
-            <span class="text">MODIFICAR</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Seleccione curso -->
-      <div
-        formArrayName="rutas"
-        *ngFor="let ruta of getRutas.controls; let i = index"
-      >
-        <div [formGroupName]="i" class="form-row">
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Seleccione nivel</mat-label>
-              <mat-select formControlName="nivel" required>
-                <mat-option [value]="1"> 1 </mat-option>
-                <mat-option [value]="2"> 2 </mat-option>
-                <mat-option [value]="3"> 3 </mat-option>
-                <mat-option [value]="4"> 4 </mat-option>
-                <mat-option [value]="5"> 5 </mat-option>
-                <mat-option [value]="6"> 6 </mat-option>
-                <mat-option [value]="7"> 7 </mat-option>
-                <mat-option [value]="8"> 8 </mat-option>
-                <mat-option [value]="9"> 9 </mat-option>
-                <mat-option [value]="10"> 10 </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Seleccione curso</mat-label>
-              <mat-select formControlName="curso" required>
-                <mat-option
-                  *ngFor="let curso of listaCursos"
-                  [value]="curso.nombre"
-                  >{{ curso.nombre }}</mat-option
-                >
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div class="form-group">
-            <mat-form-field appearance="fill">
-              <mat-label>Seleccione prerrequisitos</mat-label>
-              <mat-select formControlName="prerrequisitos" multiple>
-                <mat-option
-                  *ngFor="let curso of listaCursos"
-                  [value]="curso.nombre"
-                  >{{ curso.nombre }}</mat-option
-                >
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="form-group">
-            <button
-              type="submit"
-              id="agregar"
-              (click)="addRutas()"
-              class="btn btn-primary"
-            >
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
-          <div class="form-group col-md-2" *ngIf="getRutas.controls.length > 1">
-            <button
-              type="submit"
-              id="eliminar"
-              (click)="removeRuta(i)"
-              class="btn btn-danger"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
+          <div class="cont-btn">
+            <!--Guardar-->
+            <button *ngIf="rutaAprendizaje == null" class="button-64 zoom" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
+            <button class="button-64 zoom" role="button" type="submit" (click)="verListadoRutas()"><span class="text">VER RUTAS</span></button>
+            <button *ngIf="rutaAprendizaje" class="button-64 zoom" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
           </div>
         </div>
       </div>
+
+
+
+    <!-- Seleccione curso -->
+    <div formArrayName="rutas" *ngFor="let ruta of getRutas.controls; let i = index" >
+      <div [formGroupName]="i" class="form-row">
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Seleccione nivel</mat-label>
+            <mat-select formControlName = "nivel" required>
+              <mat-option [value] = "1"> 1 </mat-option>
+              <mat-option [value] = "2"> 2 </mat-option>
+              <mat-option [value] = "3"> 3 </mat-option>
+              <mat-option [value] = "4"> 4 </mat-option>
+              <mat-option [value] = "5"> 5 </mat-option>
+              <mat-option [value] = "6"> 6 </mat-option>
+              <mat-option [value] = "7"> 7 </mat-option>
+              <mat-option [value] = "8"> 8 </mat-option>
+              <mat-option [value] = "9"> 9 </mat-option>
+              <mat-option [value] = "10"> 10 </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Seleccione curso</mat-label>
+            <mat-select formControlName = "cursoId" required>
+              <mat-option *ngFor="let curso of listaCursos" [value]="curso.id">{{curso.nombre}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Seleccione prerrequisitos</mat-label>
+            <mat-select formControlName = "prerrequisitos" multiple>
+              <mat-option *ngFor="let curso of listaCursos" [value]="curso.nombre">{{curso.nombre}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group ">
+          <button type="submit" id="agregar" (click)="addRutas()" class="btn btn-primary zoom"><mat-icon>add</mat-icon></button>
+        </div>
+        <div class="form-group col-md-2" *ngIf="getRutas.controls.length > 1">
+          <button type="submit" id="eliminar" (click)="removeRuta(i)" class="btn btn-danger zoom"><mat-icon>delete</mat-icon></button>
+        </div>
+
+      </div>
+
+    </div>
     </form>
   </div>
 </div>

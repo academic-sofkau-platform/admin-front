@@ -7,10 +7,11 @@
   padding-top: 62px;
 }
 h1 {
- margin-bottom: 5%;
  font-family: 'DM Sans', sans-serif;
- font-size: 3rem;
- font-weight: 500;
+ font-size: 2rem;
+ text-align: center;
+ color: #111979;
+ font-weight: bolder;
 }
 
 .form__group {
@@ -19,9 +20,9 @@ h1 {
     position: relative;
     padding: 15px 0 0;
     margin-top: 10px;
-    width: 80%;
+    width: 100%;
   }
-  
+
   .form__field {
     font-family: inherit;
     width: 150%;
@@ -43,7 +44,7 @@ h1 {
     cursor: text;
     top: 20px;
   }
-  
+
   .form__label {
     position: absolute;
     top: 0;
@@ -53,7 +54,7 @@ h1 {
     color: #5cd3fb;
     margin-top: 10px;
   }
-  
+
   .form__field:focus {
     padding-bottom: 6px;
     font-weight: 700;
@@ -70,7 +71,7 @@ h1 {
     color: #7bdafc;
     font-weight: 700;
   }
-  
+
   /* reset input */
   .form__field:required, .form__field:invalid {
     box-shadow: none;
@@ -99,8 +100,13 @@ h1 {
   white-space: nowrap;
   cursor: pointer;
   margin-left: 50%;
- 
+
 }
+
+button{
+  margin: 10px !important;
+}
+
 
 .button-64:active,
 .button-64:hover {
@@ -135,7 +141,7 @@ table {
   display:inline-table;
   margin-top: 5%;
   width: 80%;
-  border-spacing: 0 20px; 
+  border-spacing: 0 20px;
 }
 
 th {
@@ -153,29 +159,23 @@ p {
   padding: 20px;
 }
 
-h1 {
-  font-family: "DM Sans";
-  text-align: center;
-  align-items: center;
-}
-
 .form-group1{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-right: 10%;
+  width: 1000px;
+  margin-left: 10%;
 }
 .cont-btn{
   width: 25%;
+  margin-top: 10%;
 }
 
 .cursos-data-display{
-  padding-top: 150px;
   display: flex;
   justify-content: center;
   flex-direction: column;
- 
+
 }
 
 .form-row{
@@ -188,6 +188,34 @@ h1 {
 }
 .form-group{
   margin-left: 40px;
+
+}
+.zoom {
+  overflow: hidden;
+  margin: 0 auto;
 }
 
+.zoom {
+  transition: 0.05s all ease-in-out;
+}
 
+.zoom:hover {
+  transform: scale(1.2);
+}
+
+.flecha{
+  margin-left: 13px !important;
+  margin-top: 10px !important;
+}
+.zoomf{
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.zoomf {
+  transition: 0.05s all ease-in-out;
+}
+
+.zoomf:hover{
+  transform: scale(1.3);
+}
