@@ -142,26 +142,6 @@ export class RutaAprendizajeComponent implements OnInit {
           rutas: this.miFormulario.value.rutas,
         })
         .subscribe();
-      }else{
-        //Cuando se agrega una ruta (o más)
-        //Crear un arreglo de rutas auxiliar que tenga las rutas que voy a añadir/quitar.
-        //let rutasxd: RutaModel = [];
-
-        if(this.miFormulario.value.rutas.length > this.rutas.length){
-          this.miFormulario.value.rutas.forEach((ruta: RutaModel) =>
-            this.api.agregarRuta(id,{
-              ruta: ruta
-            })
-            .subscribe()
-          );
-        }
-
-        //Cuando se quita una ruta (o más)
-        if(this.miFormulario.value.rutas.length < this.rutas.length){
-          this.miFormulario.value.rutas.forEach((ruta: RutaModel) =>
-            this.api.quitarRuta(id, ruta.rutaId).subscribe()
-          );
-        }
       }
       Swal.fire({
         position: 'center',
