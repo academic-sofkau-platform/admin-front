@@ -23,6 +23,7 @@ h1 {
   text-align: center;
   color: #111979;
   font-weight: bolder;
+  margin-bottom: 5%;
  }
 
 /* Form */
@@ -200,9 +201,8 @@ h1 {
 
 /* Table */
 
-table {
+table, mat-paginator {
   display: inline-table;
-  margin-top: 5%;
   width: 80%;
   border-spacing: 0 20px;
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { CursoModel } from 'src/app/shared/models/curso';
-import { RutaAprendizajeModel, RutaModel } from 'src/app/shared/models/ruta-aprendizaje';
+import { RutaModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
 import Swal from 'sweetalert2'
 
@@ -10,21 +12,23 @@ import Swal from 'sweetalert2'
   templateUrl: './cursos.component.html',
   styleUrls: ['./cursos.component.css']
 })
-export class CursosComponent implements OnInit {
-  dataSource: CursoModel[] = [];
+export class CursosComponent implements AfterViewInit{
+  dataSource: any;
   idData: String[] = [];
   idRuta: String[] = [];
   idCurso: String = ""
   ruta:RutaModel[][] = [];
   displayedColumns: string[] = ['nombre', 'descripcion', 'valorAprobacion', 'acciones'];
   cursoForm: FormGroup;
-  elementos: any 
+  elementos: any
   cursoId:string=""
-  nombre:string = ""; 
+  nombre:string = "";
   descripcion:string = "";
   valorAprobacion:number = 0;
   modificando:boolean = false;
   siendoUsado:boolean = true;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
   constructor( public api: ApiService ) {
     this.cursoForm = new FormGroup({
@@ -41,9 +45,10 @@ export class CursosComponent implements OnInit {
     })
    }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.api.getCursos().subscribe((elements) => {
-      this.dataSource =  elements;
+      this.dataSource = new MatTableDataSource(elements)
+      this.dataSource.paginator = this.paginator
       this.ordenar(this.dataSource)
     });
   }
@@ -85,10 +90,10 @@ export class CursosComponent implements OnInit {
       text: 'Los campos no pueden estar vacíos'
     })
    }
-  
+
   }
 
-  
+
   eliminar(id:string) {
     Swal.fire({
       title: '¿Seguro que quieres borrar el curso?',
@@ -106,10 +111,10 @@ export class CursosComponent implements OnInit {
           'success'
         )
         this.api.deleteCurso(id).subscribe();
-        this.dataSource = this.dataSource.filter(cursos => cursos.id !== id)
+        this.dataSource = this.dataSource.filter((cursos:any) => cursos.id !== id)
         this.ordenar(this.dataSource)
       }
-    }) 
+    })
   }
 
   imposibleBorrar() {
@@ -121,7 +126,7 @@ export class CursosComponent implements OnInit {
   }
 
   evaluar(id:string,$event:any) {
-    $event.preventDefault() 
+    $event.preventDefault()
 
       this.api.controlCursoEnRutaAprendizaje(id).subscribe((element:any) => {
        this.siendoUsado = element
@@ -142,22 +147,22 @@ export class CursosComponent implements OnInit {
     this.modificando = true
     //Pongo los datos en los form y en las variables
     setTimeout(()=> { let curso:any
-      curso = this.dataSource.filter(curso => curso.id == id)
+      curso = this.dataSource.filter((cursos:any) => curso.id == id)
       this.cursoId = id
-      
+
       this.cursoForm.value.name = curso[0].nombre
       this.nombre = curso[0].nombre
-      
+
       this.cursoForm.value.description = curso[0].descripcion
       this.descripcion = curso[0].descripcion
-      
+
       this.cursoForm.value.aprobacion = curso[0].aprobacion
       this.valorAprobacion = curso[0].aprobacion
      },0)
     window.scroll({
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
      });
   }
 
@@ -175,7 +180,7 @@ export class CursosComponent implements OnInit {
     }).subscribe((elementos:any)=> {
 
     //Al modificar elimino el curso que aparece en la tabla y pongo el nuevo modificado
-      this.dataSource = this.dataSource.filter(elementos => elementos.id !== cursoId)
+      this.dataSource = this.dataSource.filter((elementos:any) => elementos.id !== cursoId)
       this.dataSource.push(elementos)
       this.ordenar(this.dataSource)
     })
@@ -187,5 +192,5 @@ export class CursosComponent implements OnInit {
     this.modificando = false
     window.scrollTo(0, document.body.scrollHeight);
   }
- 
+
 }
