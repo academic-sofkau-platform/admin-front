@@ -3,7 +3,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CursoModel } from 'src/app/shared/models/curso';
 import { RutaModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -41,7 +41,8 @@ export class RutaAprendizajeComponent implements OnInit {
   constructor(
     public api: ApiService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.api.getCursos().subscribe((element) => (this.listaCursos = element));
   }
@@ -56,7 +57,7 @@ export class RutaAprendizajeComponent implements OnInit {
       this.formBuilder.group({
         nivel: [, [Validators.required, Validators.min(0)]],
         cursoId: [, [Validators.required, Validators.min(1)]],
-        prerrequisitos: [, [Validators.required, Validators.min(0)]],
+        prerrequisitos: [, [Validators.min(0)]],
       })
     );
   }
@@ -195,5 +196,9 @@ export class RutaAprendizajeComponent implements OnInit {
     )
       return true;
     return false;
+  }
+
+  verListadoRutas(){
+    this.router.navigate(['list-ruta-aprendizaje'])
   }
 }

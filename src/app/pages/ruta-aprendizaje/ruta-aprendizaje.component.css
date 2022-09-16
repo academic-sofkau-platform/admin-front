@@ -21,7 +21,7 @@ h1 {
     margin-top: 10px;
     width: 100%;
   }
-  
+
   .form__field {
     font-family: inherit;
     width: 150%;
@@ -43,7 +43,7 @@ h1 {
     cursor: text;
     top: 20px;
   }
-  
+
   .form__label {
     position: absolute;
     top: 0;
@@ -53,7 +53,7 @@ h1 {
     color: #5cd3fb;
     margin-top: 10px;
   }
-  
+
   .form__field:focus {
     padding-bottom: 6px;
     font-weight: 700;
@@ -70,7 +70,7 @@ h1 {
     color: #7bdafc;
     font-weight: 700;
   }
-  
+
   /* reset input */
   .form__field:required, .form__field:invalid {
     box-shadow: none;
@@ -99,7 +99,11 @@ h1 {
   white-space: nowrap;
   cursor: pointer;
   margin-left: 50%;
- 
+
+}
+
+button{
+  margin-top: 10px;
 }
 
 .button-64:active,
@@ -135,7 +139,7 @@ table {
   display:inline-table;
   margin-top: 5%;
   width: 80%;
-  border-spacing: 0 20px; 
+  border-spacing: 0 20px;
 }
 
 th {
@@ -171,7 +175,7 @@ p {
   display: flex;
   justify-content: center;
   flex-direction: column;
- 
+
 }
 
 .form-row{
@@ -184,7 +188,7 @@ p {
 }
 .form-group{
   margin-left: 40px;
-  
+
 }
 
 

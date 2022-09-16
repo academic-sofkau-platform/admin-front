@@ -50,4 +50,8 @@ export class ListaRutaAprendizajeComponent implements OnInit {
     this.router.navigate(['ruta-aprendizaje', id])
   }
 
+  crearRuta(){
+    this.router.navigate(['ruta-aprendizaje'])
+  }
+
 }
