@@ -25,6 +25,8 @@ export class StdInfoComponent implements OnInit {
   dataSource: any[] = [];
 
   heatmap: HeatMap = new HeatMap({
+    width: '100%',
+    height: '50%',
     titleSettings: {
       text: 'Actividad',
       textStyle: {
