@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentModel } from 'src/app/shared/models/student';
 import { ApiService } from 'src/app/shared/services/api.service';
+import * as moment from 'moment';
 import {
   Adaptor,
   HeatMap,
   Legend,
   Tooltip,
 } from '@syncfusion/ej2-angular-heatmap';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 HeatMap.Inject(Legend, Tooltip, Adaptor);
 
 @Component({
@@ -20,12 +21,14 @@ export class StdInfoComponent implements OnInit {
   std: StudentModel;
   cursoId: string = '';
 
-  weeks: string[] = []
+  weeks: string[] = [];
   dataSource: any[] = [];
 
   heatmap: HeatMap = new HeatMap({
+    width: '100%',
+    height: '50%',
     titleSettings: {
-      text: 'Progreso',
+      text: 'Actividad',
       textStyle: {
         size: '24px',
         color: 'black',
@@ -42,7 +45,7 @@ export class StdInfoComponent implements OnInit {
         color: 'black',
         fontWeight: '500',
         fontStyle: 'Bold',
-      }
+      },
     },
 
     yAxis: {
@@ -53,7 +56,7 @@ export class StdInfoComponent implements OnInit {
         'Jueves',
         'Miercoles',
         'Martes',
-        'Lunes'
+        'Lunes',
       ],
 
       textStyle: {
@@ -83,9 +86,9 @@ export class StdInfoComponent implements OnInit {
 
     paletteSettings: {
       palette: [
-        { color: '#c1f0f0 ', label: 'Poor' },
-        { color: '#5cd3fb ', label: 'Average' },
-        { color: '#111979 ', label: 'Excellent' },
+        { color: '#c1f0f0 ', label: 'Baja' },
+        { color: '#5cd3fb ', label: 'Media' },
+        { color: '#111979 ', label: 'Alta' },
       ],
       type: 'Gradient',
     },
@@ -109,31 +112,34 @@ export class StdInfoComponent implements OnInit {
       this.stdEmail = params['email'];
 
       this.api
-        .getAprendiceByTrainingAndMail(this.cursoId, this.stdEmail).subscribe((std) => {
+        .getAprendiceByTrainingAndMail(this.cursoId, this.stdEmail)
+        .subscribe((std) => {
           this.std = std;
           this.std.lastname = std.lastName;
 
           this.api.getTrainingById(this.cursoId).subscribe((training) => {
-            
-              this.api.getActividad(this.cursoId, std.id).subscribe((actividad) => {
+            this.api
+              .getActividad(this.cursoId, std.id)
+              .subscribe((actividad) => {
                 actividad.forEach((elem) => {
-                  
-                  let fechaI = new Date(training.startDate);
-                  let fecha = new Date(elem.fecha);
-          
+                  let fecha = moment(elem.fecha);
+                  let fechaI = moment(training.startDate);
                   this.dataSource.push({
                     Labels: {
                       Xlabel:
                         'Semana ' +
-                        this.getWeeksDiff(fechaI, fecha),
-                      Ylabel: this.getDayOfWeek(fecha.getDay()),
+                        Math.trunc(fecha.diff(fechaI, 'weeks', true) + 1),
+                      Ylabel: this.getDayOfWeek(fecha.day()),
                     },
                     data: { value: elem.puntaje },
                   });
                 });
-                
-                let weekDiff = this.getWeeksDiff(new Date(training.startDate), new Date(training.endDate));
-                for(let i = 1; i <= weekDiff; i++){
+
+                let weekDiff = moment(training.endDate).diff(
+                  moment(training.startDate),
+                  'weeks'
+                );
+                for (let i = 0; i <= weekDiff; i++) {
                   this.weeks.push('Semana ' + i);
                 }
 
@@ -148,31 +154,22 @@ export class StdInfoComponent implements OnInit {
 
   ngOnInit() {}
 
-  getWeeksDiff(startDate: Date, endDate: Date) {
-    const msInWeek = 1000 * 60 * 60 * 24 * 7;
-
-    return (
-      Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / msInWeek) +
-      1
-    );
-  }
-
   getDayOfWeek(day: number): string {
     switch (day) {
       case 0:
-        return 'Lunes';
-      case 1:
-        return 'Martes';
-      case 2:
-        return 'Miercoles';
-      case 3:
-        return 'Jueves';
-      case 4:
-        return 'Viernes';
-      case 5:
-        return 'Sabado';
-      case 6:
         return 'Domingo';
+      case 1:
+        return 'Lunes';
+      case 2:
+        return 'Martes';
+      case 3:
+        return 'Miercoles';
+      case 4:
+        return 'Jueves';
+      case 5:
+        return 'Viernes';
+      case 6:
+        return 'Sabado';
       default:
         return 'Default';
     }
