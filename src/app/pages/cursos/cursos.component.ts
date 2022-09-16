@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CursoModel } from 'src/app/shared/models/curso';
-import { RutaModel } from 'src/app/shared/models/ruta-aprendizaje';
 import { ApiService } from 'src/app/shared/services/api.service';
 import Swal from 'sweetalert2'
 
@@ -17,7 +16,6 @@ export class CursosComponent implements AfterViewInit{
   idData: String[] = [];
   idRuta: String[] = [];
   idCurso: String = ""
-  ruta:RutaModel[][] = [];
   displayedColumns: string[] = ['nombre', 'descripcion', 'valorAprobacion', 'acciones'];
   cursoForm: FormGroup;
   elementos: any
@@ -49,12 +47,12 @@ export class CursosComponent implements AfterViewInit{
     this.api.getCursos().subscribe((elements) => {
       this.dataSource = new MatTableDataSource(elements)
       this.dataSource.paginator = this.paginator
-      this.ordenar(this.dataSource)
+      this.ordenar(this.dataSource.data)
     });
   }
 
   ordenar(array: CursoModel[]) {
-    array.sort(function (a,b) {
+     array.sort(function (a,b) {
       if (a.nombre > b.nombre) {
         return 1;
       }
@@ -71,18 +69,14 @@ export class CursosComponent implements AfterViewInit{
       nombre:this.cursoForm.value.nombre,
       descripcion:this.cursoForm.value.descripcion,
       aprobacion:this.cursoForm.value.valorAprobacion
-    }).subscribe((elementos:any)=> {
-
-    //Al crear el curso lo añado al datasource para que aparezca en la tabla
-    this.dataSource.push(elementos)
-    this.ordenar(this.dataSource)
+    }).subscribe((cursoagregado:any)=> {
+      //Al crear el curso lo añado al datasource para que aparezca en la tabla
+      //this.dataSource.push(elementos)
+      let cursoAux = this.dataSource.data
+      cursoAux.push(cursoagregado)
+      this.dataSource.data = cursoAux;
     })
 
-    //Limpio los datos luego de postear
-    this.nombre = ""
-    this.descripcion = ""
-    this.valorAprobacion = 0
-    window.location.reload()
    } else {
     Swal.fire({
       icon: 'error',
@@ -111,8 +105,9 @@ export class CursosComponent implements AfterViewInit{
           'success'
         )
         this.api.deleteCurso(id).subscribe();
-        this.dataSource = this.dataSource.filter((cursos:any) => cursos.id !== id)
-        this.ordenar(this.dataSource)
+        this.dataSource.data = this.dataSource.data.filter((cursos:any) => cursos.id !== id)
+
+        this.ordenar(this.dataSource.data)
       }
     })
   }
@@ -146,8 +141,10 @@ export class CursosComponent implements AfterViewInit{
     $event.preventDefault()
     this.modificando = true
     //Pongo los datos en los form y en las variables
-    setTimeout(()=> { let curso:any
-      curso = this.dataSource.filter((cursos:any) => curso.id == id)
+    setTimeout(()=> {
+      let curso:any
+
+      curso = this.dataSource.data.filter((cursito:CursoModel) => cursito.id == id)
       this.cursoId = id
 
       this.cursoForm.value.name = curso[0].nombre
@@ -180,9 +177,9 @@ export class CursosComponent implements AfterViewInit{
     }).subscribe((elementos:any)=> {
 
     //Al modificar elimino el curso que aparece en la tabla y pongo el nuevo modificado
-      this.dataSource = this.dataSource.filter((elementos:any) => elementos.id !== cursoId)
+      this.dataSource = this.dataSource.data.filter((elementos:any) => elementos.id !== cursoId)
       this.dataSource.push(elementos)
-      this.ordenar(this.dataSource)
+      this.ordenar(this.dataSource.data)
     })
 
     //Limpio los datos luego de modificar
