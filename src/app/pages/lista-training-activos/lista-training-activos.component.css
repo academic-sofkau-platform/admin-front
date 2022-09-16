@@ -42,24 +42,11 @@
   .inner-adjusts{
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 1000px;
     margin: auto;
     padding: 0;
   }
-  .zoom {
-    overflow: hidden;
-    margin: 0 auto;
-  }
   
-  .zoom {
-    transition: 0.05s all ease-in-out;
-  }
-  
-  .zoom:hover {
-    transform: scale(1.6);
-  }
-
   .flecha{
     margin-left: 13px !important;
     margin-top: 10px !important;

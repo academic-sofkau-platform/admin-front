@@ -25,14 +25,14 @@
     text-align: center;
     color: #111979;
     font-weight: bolder;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
   }
   table {
     display: inline-table;
     margin-top: 5%;
     width: 80%;
     border-spacing: 0 20px;
+    overflow: hidden;
   }
   
   th {
@@ -46,3 +46,20 @@
     margin: auto;
     width: 1000px;
   }
+  .flecha{
+    margin-left: 13px !important;
+    margin-top: 10px !important;
+  }
+  .zoomf{
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .zoomf {
+    transition: 0.05s all ease-in-out;
+  }
+  
+  .zoomf:hover{
+    transform: scale(1.3);
+  }
+
