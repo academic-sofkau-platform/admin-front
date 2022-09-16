@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
 
-.contenedorimagen{
+/* .contenedorimagen{
   padding-top: 62px;
   background-image: url(/assets/897.jpg);
   background-size: cover;
   width: 100%;
-  height: 100%;
-}
+  min-height: 100%;
+  padding-bottom:2rem;
+} */
 /* .contenedorimagen {
   background-image: url(/assets/897.jpg);
   background-size: cover;
@@ -14,7 +15,7 @@
 .cursos-data-display {
   text-align: center;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 h1 {

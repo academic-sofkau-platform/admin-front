@@ -1,39 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
+.comtenedorFooter{
+  display: flex;
+  margin-left: 5%;
 
+}
 .container1 {
-  margin-left: 40px;
+  padding-top: 5%;
+  text-align: center;
   display: flex;
   flex-direction: column;
   border-right: rgb(148, 138, 138) solid 2px;
-  padding: 0;
-  width: 360px;
+  width: 50%;
 }
 
 .container2 {
-  margin-left: 50px;
+  margin-left:5%;
   font-size: 15px;
 }
 
 .container3 {
-  margin-left: 100px;
+  margin-left: 1%;
   display: flex;
   flex-direction: column;
   font-size: 10px;
 }
 .container4 {
-  margin-left: 60px;
+  margin-left: 1%;
   display: flex;
   flex-direction: column;
   font-size: 10px;
 }
 
 .container5 {
-  margin-left: 60px;
+  margin-left: 3%;
   font-size: 10px;
 }
 .mat-toolbar {
   background-color: #ddddddf0;
-  height: 370px;
+  height: 50%;
 }
 
 img {
