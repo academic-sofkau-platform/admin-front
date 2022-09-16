@@ -26,10 +26,10 @@
         <ng-container matColumnDef="Acciones">
           <th mat-header-cell *matHeaderCellDef> Acciones </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" (click)="editarRutaAprendizaje(element.id)">
+            <button mat-icon-button color="primary" class="zoom" (click)="editarRutaAprendizaje(element.id)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="eliminarRutaAprendizaje(element.id)"
+            <button mat-icon-button color="warn" class="zoom" (click)="eliminarRutaAprendizaje(element.id)"
               aria-label="Eliminar ruta de aprendizaje">
               <mat-icon>delete_forever</mat-icon>
             </button>

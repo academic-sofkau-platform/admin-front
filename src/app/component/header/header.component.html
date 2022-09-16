@@ -1,6 +1,6 @@
 <mat-toolbar>
-    <span>
-      <a routerLink="/home">
+    <span >
+      <a routerLink="/home" >
         <img width="100px" height="37px"
           src="https://ik.imagekit.io/vpvzuhxi3/Sofka/logo-sofkau_blanco_5wK-vAh4g.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1661194626415"
           data-src="https://www.sofka.com.co/wp-content/uploads/2020/09/logo-sofka-blanco-1.png"
@@ -17,15 +17,15 @@
     </button>
     <mat-menu class="menu-icon" #menu="matMenu">
       <!-- <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.email}}</mat-card-title> -->
-      <button routerLink="home" mat-menu-item>
+      <button routerLink="home" mat-menu-item class="zoom">
         <mat-icon>home</mat-icon>
         Crear
       </button>
-      <button routerLink="listas" mat-menu-item>
+      <button routerLink="listas" mat-menu-item class="zoom">
         <mat-icon>list</mat-icon>
         Listar
       </button>
-      <button (click)="auth.signOut()" *ngIf="auth.isLoggedIn" mat-menu-item>
+      <button (click)="auth.signOut()" *ngIf="auth.isLoggedIn" mat-menu-item class="zoom">
         <mat-icon>logout</mat-icon>
         Cerrar Sesion
       </button>

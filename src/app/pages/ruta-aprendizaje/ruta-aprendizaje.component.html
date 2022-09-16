@@ -33,9 +33,9 @@
           </div>
           <div class="cont-btn">
             <!--Guardar-->
-            <button *ngIf="rutaAprendizaje == null" class="button-64" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
-            <button class="button-64" role="button" type="submit" (click)="verListadoRutas()"><span class="text">VER RUTAS</span></button>
-            <button *ngIf="rutaAprendizaje" class="button-64" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
+            <button *ngIf="rutaAprendizaje == null" class="button-64 zoom" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
+            <button class="button-64 zoom" role="button" type="submit" (click)="verListadoRutas()"><span class="text">VER RUTAS</span></button>
+            <button *ngIf="rutaAprendizaje" class="button-64 zoom" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
           </div>
         </div>
       </div>
@@ -80,10 +80,10 @@
           </mat-form-field>
         </div>
         <div class="form-group ">
-          <button type="submit" id="agregar" (click)="addRutas()" class="btn btn-primary"><mat-icon>add</mat-icon></button>
+          <button type="submit" id="agregar" (click)="addRutas()" class="btn btn-primary zoom"><mat-icon>add</mat-icon></button>
         </div>
         <div class="form-group col-md-2" *ngIf="getRutas.controls.length > 1">
-          <button type="submit" id="eliminar" (click)="removeRuta(i)" class="btn btn-danger"><mat-icon>delete</mat-icon></button>
+          <button type="submit" id="eliminar" (click)="removeRuta(i)" class="btn btn-danger zoom"><mat-icon>delete</mat-icon></button>
         </div>
 
       </div>
