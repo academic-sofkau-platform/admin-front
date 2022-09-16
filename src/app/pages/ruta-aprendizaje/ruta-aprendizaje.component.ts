@@ -133,8 +133,6 @@ export class RutaAprendizajeComponent implements OnInit {
 
   modificarRutaAprendizaje(id: string) {
     if (this.chequear()) {
-      //Cuando se modifica el nombre o descripción (modificamos todo)
-      if(this.nombre != this.miFormulario.value.nombre || this.descripcion != this.miFormulario.value.descripcion){
       this.api
         .modificarRutaAprendizaje(id, {
           nombre: this.miFormulario.value.nombre,
@@ -142,14 +140,15 @@ export class RutaAprendizajeComponent implements OnInit {
           rutas: this.miFormulario.value.rutas,
         })
         .subscribe();
-      }
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Se ha modificado la ruta de aprendizaje correctamente',
-        showConfirmButton: false,
-        timer: 1500,
-      });
+
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Se ha modificado la ruta de aprendizaje correctamente',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
     }else {
       Swal.fire({
         icon: 'error',
