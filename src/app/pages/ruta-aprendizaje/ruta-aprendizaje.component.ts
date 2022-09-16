@@ -53,6 +53,7 @@ export class RutaAprendizajeComponent implements OnInit {
 
   addRutas() {
     const control = <FormArray>this.miFormulario.controls['rutas'];
+
     control.push(
       this.formBuilder.group({
         nivel: [, [Validators.required, Validators.min(0)]],
@@ -60,6 +61,7 @@ export class RutaAprendizajeComponent implements OnInit {
         prerrequisitos: [, [Validators.min(0)]],
       })
     );
+
   }
 
   removeRuta(indice: number) {
@@ -99,7 +101,7 @@ export class RutaAprendizajeComponent implements OnInit {
 
   crearRutaAprendizaje() {
     //Controles para chequear que la ruta y los campos no vayan vacíos
-    if (this.chequear()) {
+    if (!this.hayErrores()) {
       this.api
         .crearRutaAprendizaje({
           nombre: this.miFormulario.value.nombre,
@@ -132,7 +134,7 @@ export class RutaAprendizajeComponent implements OnInit {
   }
 
   modificarRutaAprendizaje(id: string) {
-    if (this.chequear()) {
+    if(!this.hayErrores()) {
       this.api
         .modificarRutaAprendizaje(id, {
           nombre: this.miFormulario.value.nombre,
@@ -158,7 +160,8 @@ export class RutaAprendizajeComponent implements OnInit {
     }
   }
 
-  chequear() {
+  hayErrores() : boolean{
+    let errores: boolean = false;
     if (this.miFormulario.value.nombre == null) {
       this.miFormulario.value.nombre = this.nombre;
     }
@@ -167,14 +170,19 @@ export class RutaAprendizajeComponent implements OnInit {
       this.miFormulario.value.descripcion = this.descripcion;
     }
 
-    if (
-      this.miFormulario.value.nombre != null &&
-      this.miFormulario.value.descripcion != null &&
-      this.miFormulario.value.rutas[0].nivel != null &&
-      this.miFormulario.value.rutas[0].cursoId != null
-    )
-      return true;
-    return false;
+    if (this.miFormulario.value.nombre != null && this.miFormulario.value.descripcion != null){
+      this.miFormulario.value.rutas.forEach( (ruta: RutaModel) => {
+        if (errores) {
+          return;
+        }
+
+        if(ruta.nivel == null || ruta.cursoId == null){
+          errores = true;
+          return;
+        }
+      });
+    }
+    return errores;
   }
 
   verListadoRutas(){

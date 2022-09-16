@@ -49,7 +49,7 @@
         <div class="form-group">
           <mat-form-field appearance="fill">
             <mat-label>Seleccione nivel</mat-label>
-            <mat-select formControlName = "nivel" required>
+            <mat-select formControlName = "nivel" >
               <mat-option [value] = "1"> 1 </mat-option>
               <mat-option [value] = "2"> 2 </mat-option>
               <mat-option [value] = "3"> 3 </mat-option>
@@ -66,7 +66,7 @@
         <div class="form-group">
           <mat-form-field appearance="fill">
             <mat-label>Seleccione curso</mat-label>
-            <mat-select formControlName = "cursoId" required>
+            <mat-select formControlName = "cursoId" >
               <mat-option *ngFor="let curso of listaCursos" [value]="curso.id">{{curso.nombre}}</mat-option>
             </mat-select>
           </mat-form-field>
