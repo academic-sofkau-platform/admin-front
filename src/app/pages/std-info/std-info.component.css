@@ -1,61 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
 }
-.contenedorimagen{
+
+.contenedorimagen {
     padding-top: 62px;
     background-image: url(/assets/897.jpg);
     background-size: cover;
     width: 100%;
-    height: 100vh;
-  }
+    height: 100%;
+
+}
+
+#element {
+    margin: auto;
+    display: block;
+    width: 1500px;
+}
 
 
-.std-data-display{
-    padding-top:10px;
-    padding-bottom:30px;
-    text-align: center;
+.std-data-display {
     font-family: 'DM Sans', sans-serif;
     color: #111979;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 }
 
-.std-data{
+.std-data {
     display: flex;
     margin: auto;
     padding-left: 275px;
     color: black;
     width: 100%;
 }
-.std-data img{
+
+.std-data img {
     width: 130px;
     height: 130px;
 }
 
-.pinfo{
+.pinfo {
     display: block;
     text-align: left;
     padding-left: 10px;
 }
 
-#divChart{
+#divChart {
     margin: auto;
     display: block;
     width: 1400px;
     height: 1400px;
 }
 
-#element{
+#element {
     margin: auto;
     display: block;
     width: 1500px;
 }
 
-h1{
+h1 {
     font-family: 'DM Sans', sans-serif;
+    text-align: center;
     color: #111979;
     font-size: xx-large;
     font-weight: bolder;
 }
+.flecha{
+    margin-left: 13px !important;
+    margin-top: 10px !important;
+  }
+  .zoomf{
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .zoomf {
+    transition: 0.05s all ease-in-out;
+  }
+
+  .zoomf:hover{
+    transform: scale(1.3);
+  }

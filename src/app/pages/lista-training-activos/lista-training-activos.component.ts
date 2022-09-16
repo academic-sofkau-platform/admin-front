@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { RangeValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TrainingModel } from 'src/app/shared/models/training';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 
 @Component({
@@ -11,17 +13,22 @@ import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
   templateUrl: './lista-training-activos.component.html',
   styleUrls: ['./lista-training-activos.component.css']
 })
-export class ListaTrainingActivosComponent implements OnInit {
-  trainings: TrainingModel[] = [];
-
+export class ListaTrainingActivosComponent implements AfterViewInit {
   displayedColumns: string[] = ['nombre', 'descripcion', 'inicio', 'fin', 'ver'];
-  dataSource: TrainingModel[] = [];
+  dataSource:any;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  ngAfterViewInit(){
+    this.api.getActiveTrainings().subscribe((element)=>{
+      console.log(element)
+      this.dataSource = new MatTableDataSource(element)
+      this.dataSource.paginator = this.paginator
+    })
+  }
 
   constructor(private api: ApiService, private router: Router) {
-    this.api.getActiveTrainings().subscribe((element:any)=>{
-      console.log(element)
-      this.dataSource = element
-    })
+    
   }
 
   ngOnInit() {

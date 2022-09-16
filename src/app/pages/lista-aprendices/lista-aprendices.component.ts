@@ -20,7 +20,6 @@ export class ListaAprendicesComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.route.params.subscribe((params) => {
-      console.log(params)
       this.idTraining = params['id']
       this.api.aprendicesByTrainingId(this.idTraining).subscribe((elements) => {
         this.dataSource = new MatTableDataSource(elements)
