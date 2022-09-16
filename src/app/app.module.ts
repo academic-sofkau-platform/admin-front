@@ -43,6 +43,8 @@ import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/li
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -98,6 +100,8 @@ import { FooterComponent } from './component/footer/footer.component';
     HeatMapAllModule,
     MatPaginatorModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
 
   ],
   providers: [ApiService],
