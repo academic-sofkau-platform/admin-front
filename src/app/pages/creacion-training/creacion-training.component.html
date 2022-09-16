@@ -2,92 +2,97 @@
   <button class="flecha zoomf" routerLink="/home" mat-raised-button>
     <mat-icon>keyboard_backspace</mat-icon>
   </button>
-  <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
-      <div class="form__group field">
-        <input
-          type="input"
-          class="form__field"
-          placeholder="Nombre"
-          name="nombre"
-          id="nombre"
-          formControlName="nombre"
-        />
-        <label for="nombre" class="form__label">Nombre</label>
-      </div>
-      <div class="form__group field">
-        <input
-          type="input"
-          class="form__field"
-          placeholder="Descripcion"
-          name="descripcion"
-          id="descripcion"
-          formControlName="descripcion"
-        />
-        <label for="descripcion" class="form__label">Descripcion</label>
-      </div>
-      <div class="input">
+  <h1>Creación de Training</h1>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Enter a date range</mat-label>
-          <mat-date-range-input  [rangePicker]="picker">
-            <input
-              matStartDate
-              formControlName="fechainicio"
-              placeholder="Fecha de Inicio"
-            />
-            <input matEndDate formControlName="fechafinal" placeholder="Fecha Final" />
-          </mat-date-range-input>
-          <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Seleccione un Coach</mat-label>
-            <mat-select formControlName="coach" required>
-              <mat-option value="Eddie"> Eddie </mat-option>
-              <mat-option value="Adryan"> Adryan </mat-option>
-              <mat-option value="Santiago"> Santiago </mat-option>
-              <mat-option value="Raul"> Raul </mat-option>
-              <mat-option value="Yulieth"> Yulieth </mat-option>
-              <mat-option value="Messi"> Messi </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>Seleccione una Ruta</mat-label>
-            <mat-select formControlName="ruta" required>
-              <mat-option
-                *ngFor="let ruta of rutasAprendizaje"
-                [value]="ruta.id"
-                >{{ ruta.nombre }}</mat-option
-              >
-            </mat-select>
-          </mat-form-field>
-      </div>
-        <input
-          class="file-input"
-          mat-flat-button
-          color="primary"
-          type="file"
-          accept=".csv"
-          #csvFile
-          (change)="onFileSelected($event)"
-        />
-        <!-- {{csvBase64}} -->
-        <div class="cargarbutton">
-          {{ csvFileName || "No file uploaded yet." }}
-          <button
-            mat-flat-button
-            color="primary"
-            type="button"
-            class="zoom"
-            (click)="csvFile.click()"
-          >
-            Carga Aprendices
-            <mat-icon>attach_file</mat-icon>
-          </button>
-        </div>
+  <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">
+    <div class="form__group field">
+      <input
+        type="input"
+        class="form__field"
+        placeholder="Nombre"
+        name="nombre"
+        id="nombre"
+        formControlName="nombre"
+      />
+      <label for="nombre" class="form__label">Nombre</label>
+    </div>
+    <div class="form__group field">
+      <input
+        type="input"
+        class="form__field"
+        placeholder="Descripcion"
+        name="descripcion"
+        id="descripcion"
+        formControlName="descripcion"
+      />
+      <label for="descripcion" class="form__label">Descripcion</label>
+    </div>
+    <div class="input">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            formControlName="fechainicio"
+            placeholder="Fecha de Inicio"
+          />
+          <input
+            matEndDate
+            formControlName="fechafinal"
+            placeholder="Fecha Final"
+          />
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione un Coach</mat-label>
+        <mat-select formControlName="coach" required>
+          <mat-option value="Eddie"> Eddie </mat-option>
+          <mat-option value="Adryan"> Adryan </mat-option>
+          <mat-option value="Santiago"> Santiago </mat-option>
+          <mat-option value="Raul"> Raul </mat-option>
+          <mat-option value="Yulieth"> Yulieth </mat-option>
+          <mat-option value="Messi"> Messi </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione una Ruta</mat-label>
+        <mat-select formControlName="ruta" required>
+          <mat-option *ngFor="let ruta of rutasAprendizaje" [value]="ruta.id">{{
+            ruta.nombre
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <input
+        class="file-input"
+        mat-flat-button
+        color="primary"
+        type="file"
+        accept=".csv"
+        #csvFile
+        (change)="onFileSelected($event)"
+      />
+      <!-- {{csvBase64}} -->
+
+
+      <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        class="zoom"
+        (click)="csvFile.click()"
+      >
+        Carga Aprendices
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <label> {{ csvFileName || "No file uploaded yet." }}</label>
+    </div>
+    <div class="cargarbutton">
+      <button class="button-64 zoom" role="button" type="submit">
+        <span class="text">Crear</span>
+      </button>
+    </div>
   </form>
-  <button class="button-64 zoom" role="button" type="submit">
-    <span class="text">Crear</span>
-  </button>
 </div>
