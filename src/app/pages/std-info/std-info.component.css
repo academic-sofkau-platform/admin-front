@@ -22,7 +22,6 @@
 
 
 .std-data-display {
-    text-align: center;
     font-family: 'DM Sans', sans-serif;
     color: #111979;
     width: 100vw;
@@ -63,7 +62,24 @@
 
 h1 {
     font-family: 'DM Sans', sans-serif;
+    text-align: center;
     color: #111979;
     font-size: xx-large;
     font-weight: bolder;
 }
+.flecha{
+    margin-left: 13px !important;
+    margin-top: 10px !important;
+  }
+  .zoomf{
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .zoomf {
+    transition: 0.05s all ease-in-out;
+  }
+  
+  .zoomf:hover{
+    transform: scale(1.3);
+  }
