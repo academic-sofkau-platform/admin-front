@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { Observable, ReplaySubject } from 'rxjs';
 import { RutaAprendizajeModel } from 'src/app/shared/models/ruta-aprendizaje';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creacion-training',
@@ -16,7 +17,8 @@ export class CreacionTrainingComponent {
 
   constructor(
     public api: ApiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.api.getRutasAprendizaje().subscribe((rutas: RutaAprendizajeModel[]) => {
       this.rutasAprendizaje = rutas;
@@ -57,7 +59,9 @@ export class CreacionTrainingComponent {
       coach: this.miFormulario.value.coach,
       apprentices: this.miFormulario.value.csvBase64,
       rutaId: this.miFormulario.value.ruta
-    }).subscribe();
+    }).subscribe((response: any) => {
+      this.router.navigate(['/lista-training-activos'], { queryParams: {file: response } });
+    });
   }
 }
 
