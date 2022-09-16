@@ -31,3 +31,15 @@ span{
 .mat-toolbar{
   background-color: #080840f0
 }
+.zoom mat-icon{
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.zoom mat-icon{
+  transition: 0.05s all ease-in-out;
+}
+
+.zoom:hover mat-icon{
+  transform: scale(1.4);
+}

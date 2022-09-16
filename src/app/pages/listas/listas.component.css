@@ -43,3 +43,15 @@ ul li:hover a {
   /*background-image: url(/src/assets/homefotos/sofkafoto1.jpg);
   */
 }
+.zoom {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.zoom {
+  transition: 0.05s all ease-in-out;
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+}

@@ -186,5 +186,16 @@ p {
   margin-left: 40px;
   
 }
+.zoom {
+  overflow: hidden;
+  margin: 0 auto;
+}
 
+.zoom {
+  transition: 0.05s all ease-in-out;
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+}
 
