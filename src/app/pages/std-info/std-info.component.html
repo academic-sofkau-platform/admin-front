@@ -1,16 +1,20 @@
+<div class="contenedorimagen">
+  <div class="std-data-display">
+    <h1>Información del aprendiz</h1>
 
-<div class="std-data-display">
-  <h1>Información del aprendiz</h1>
+    <div class="std-data">
+      <img src="{{ std.photo }}" alt="std-photo" />
 
-  <div class="std-data">
-    <img src={{std.photo}} alt="std-photo" />
-
-    <div class="pinfo">
-      <h2>{{ std.name }} {{ std.lastname }}</h2>
-      <p>{{std.email}} <br> +{{std.phoneNumber}} <br> {{std.city}}</p>
+      <div class="pinfo">
+        <h2>{{ std.name }} {{ std.lastname }}</h2>
+        <p>
+          {{ std.email }} <br />
+          +{{ std.phoneNumber }} <br />
+          {{ std.city }}
+        </p>
+      </div>
     </div>
-  </div>
 
     <div id="element"></div>
-
+  </div>
 </div>
