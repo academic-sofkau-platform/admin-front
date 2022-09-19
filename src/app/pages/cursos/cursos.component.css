@@ -19,7 +19,6 @@ h1 {
 
 .example-form-field{
     margin-left: 2vw;
-    width: 10vw;
 }
 
 .form__group {
@@ -162,25 +161,17 @@ table, mat-paginator {
 
 th {
   padding: 0 15px 0 15px;
+  text-align: center !important;
 }
 
 td {
   padding: 0 15px 0 15px;
+  text-align: center;
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   background-color: white;
   border-radius: 5px;
-}
-
-.descripcion {
-margin-left: vw;
-width: 25vw;
-}
-
-.enlace {
-margin-left: vw;
-width: 25vw;
 }
 
 .acciones {
@@ -228,14 +219,15 @@ width: 25vw;
 }
 
 .paginator {
-  width: 93.8vw;
-}
-
-.aprobacion {
-  width: 5vw;
-  margin-right: 30px;
+  width: 89.2%;
 }
 
 .buttonth {
   padding-right: 55px;
 }
+
+p {
+  width: 90%;
+}
+
+
