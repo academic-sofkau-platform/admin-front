@@ -12,13 +12,13 @@
 
             <!--Input Nombre Cuando Creo-->
             <mat-form-field *ngIf="!modificando" class="example-form-field" appearance="outline">
-              <mat-label>Nombre</mat-label>
+              <mat-label class="labelInput">Nombre</mat-label>
               <input matInput type="text" formControlName="nombre">
             </mat-form-field>
 
             <!--Input Nombre Cuando Modifico-->
             <mat-form-field *ngIf="modificando" class="example-form-field" appearance="outline">
-              <mat-label>Nombre</mat-label>
+              <mat-label class="labelInput">Nombre</mat-label>
               <input matInput type="text" formControlName="name" [value]="nombre">
             </mat-form-field>
           </th>
@@ -34,13 +34,13 @@
 
             <!--Input Descripción Cuando Creo-->
             <mat-form-field *ngIf="!modificando" class="example-form-field" appearance="outline">
-              <mat-label>Descripción</mat-label>
+              <mat-label class="labelInput">Descripción</mat-label>
               <input matInput type="text" formControlName="descripcion">
             </mat-form-field>
 
             <!--Input Descripción Cuando Modifico-->
             <mat-form-field *ngIf="modificando" class="example-form-field" appearance="outline">
-              <mat-label>Descripción</mat-label>
+              <mat-label class="labelInput">Descripción</mat-label>
               <input matInput type="text" formControlName="description" [value]="descripcion">
             </mat-form-field>
 
@@ -56,13 +56,13 @@
 
             <!--Input Valor Aprobación Cuando Creo-->
             <mat-form-field *ngIf="!modificando" class="example-form-field" appearance="outline">
-              <mat-label>Valor Aprobación</mat-label>
+              <mat-label class="labelInput">Valor Aprobación</mat-label>
               <input matInput type="number" formControlName="valorAprobacion">
             </mat-form-field>
 
             <!--Input Valor Aprobación Cuando Modifico-->
             <mat-form-field *ngIf="modificando" class="example-form-field" appearance="outline">
-              <mat-label>Valor Aprobación</mat-label>
+              <mat-label class="labelInput">Valor Aprobación</mat-label>
               <input matInput type="number" formControlName="aprobacion" [value]="valorAprobacion">
             </mat-form-field>
 
@@ -76,7 +76,7 @@
         <ng-container matColumnDef="acciones">
 
           <!--Modificar/Guardar los datos del input-->
-          <th mat-header-cell *matHeaderCellDef>
+          <th mat-header-cell *matHeaderCellDef class="thSave">
             <button *ngIf="!modificando" type = "reset" (click)="crearCurso()" mat-icon-button color="primary" class="buttonth zoom">
               <mat-icon>save</mat-icon>
             </button>
