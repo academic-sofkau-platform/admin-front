@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
-/* .contenedorimagen{
-  background-image: url(/assets/897.jpg);
-  background-size: cover;
-  width: 100%;
-  min-height: 100vh;
-  padding-top: 62px;
-} */
+
 h1 {
  font-family: 'DM Sans', sans-serif;
  font-size: 2rem;
