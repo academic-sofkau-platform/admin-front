@@ -1,0 +1,49 @@
+<div class="contenedorimagen">
+  <div class="prueba">
+  <button class="flecha zoomf" routerLink="/ruta-aprendizaje" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
+  <div>
+    <h1>Resultado de los Cursos</h1>
+  </div>
+  <div class="inj">
+
+    <table mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef> Training </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef> Cursos </th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" class="zoom" (click)="(element.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" class="zoom" (click)="(element.id)"
+            aria-label="Eliminar ruta de aprendizaje">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+    <button class="button-64" role="button" type="submit"><span class="text">CREAR RUTA</span></button>
+  </div>
+</div>
+</div>

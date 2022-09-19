@@ -45,6 +45,7 @@ import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     CursosComponent,
     StdInfoComponent,
     ListaRutaAprendizajeComponent,
-    FooterComponent
+    FooterComponent,
+    ResultadoCursosComponent
   ],
   imports: [
     ReactiveFormsModule,
