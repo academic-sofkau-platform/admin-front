@@ -16,12 +16,14 @@ export class CursosComponent implements AfterViewInit{
   idData: String[] = [];
   idRuta: String[] = [];
   idCurso: String = ""
-  displayedColumns: string[] = ['nombre', 'descripcion', 'valorAprobacion', 'acciones'];
+  displayedColumns: string[] = ['nombre', 'descripcion', 'consigna', 'enlace', 'valorAprobacion', 'acciones'];
   cursoForm: FormGroup;
   elementos: any
   cursoId:string=""
   nombre:string = "";
   descripcion:string = "";
+  consigna:string = "";
+  enlace:string = "";
   valorAprobacion:number = 0;
   modificando:boolean = false;
   siendoUsado:boolean = true;
@@ -34,11 +36,15 @@ export class CursosComponent implements AfterViewInit{
       //Forms cuando no modifico
       nombre: new FormControl(),
       descripcion: new FormControl(),
+      consigna: new FormControl(),
+      enlace: new FormControl(),
       valorAprobacion: new FormControl(),
 
       //Forms cuando modifico
       name: new FormControl(),
       description: new FormControl(),
+      task: new FormControl(),
+      link: new FormControl(),
       aprobacion: new FormControl()
     })
    }
@@ -64,10 +70,13 @@ export class CursosComponent implements AfterViewInit{
   }
 
   crearCurso() {
-   if (this.cursoForm.value.nombre !== null && this.cursoForm.value.descripcion !== null && this.cursoForm.value.valorAprobacion) {
+   if (this.cursoForm.value.nombre !== null && this.cursoForm.value.descripcion !== null
+     && this.cursoForm.value.valorAprobacion && this.cursoForm.value.consigna !== null && this.cursoForm.value.enlace !== null) {
     this.api.crearCurso({
       nombre:this.cursoForm.value.nombre,
       descripcion:this.cursoForm.value.descripcion,
+      consigna:this.cursoForm.value.consigna,
+      enlace:this.cursoForm.value.enlace,
       aprobacion:this.cursoForm.value.valorAprobacion
     }).subscribe((cursoagregado:any)=> {
       //Al crear el curso lo añado al datasource para que aparezca en la tabla
@@ -153,6 +162,12 @@ export class CursosComponent implements AfterViewInit{
       this.cursoForm.value.description = curso[0].descripcion
       this.descripcion = curso[0].descripcion
 
+      this.cursoForm.value.task = curso[0].consigna
+      this.consigna = curso[0].consigna
+
+      this.cursoForm.value.link = curso[0].enlace
+      this.enlace = curso[0].enlace
+
       this.cursoForm.value.aprobacion = curso[0].aprobacion
       this.valorAprobacion = curso[0].aprobacion
      },0)
@@ -168,11 +183,15 @@ export class CursosComponent implements AfterViewInit{
     //Condicional para que no se borren los datos si modifico solo un input
     if (this.cursoForm.value.name == null) {this.cursoForm.value.name = this.nombre }
     if (this.cursoForm.value.description == null) {this.cursoForm.value.description = this.descripcion }
+    if (this.cursoForm.value.task == null) {this.cursoForm.value.task = this.consigna }
+    if (this.cursoForm.value.link == null) {this.cursoForm.value.link = this.enlace }
     if (this.cursoForm.value.aprobacion == null) {this.cursoForm.value.aprobacion = this.valorAprobacion }
 
     this.api.modificarCurso(cursoId,{
       nombre:this.cursoForm.value.name,
       descripcion:this.cursoForm.value.description,
+      consigna:this.cursoForm.value.task,
+      enlace:this.cursoForm.value.link,
       aprobacion:this.cursoForm.value.aprobacion
     }).subscribe((elementos:any)=> {
 
@@ -185,9 +204,10 @@ export class CursosComponent implements AfterViewInit{
     //Limpio los datos luego de modificar
     this.nombre = ""
     this.descripcion = ""
+    this.consigna = ""
+    this.enlace = ""
     this.valorAprobacion = 0
     this.modificando = false
-    window.scrollTo(0, document.body.scrollHeight);
   }
 
 }

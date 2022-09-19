@@ -30,8 +30,8 @@ h1 {
 /* Form */
 
 .example-form-field{
-    margin-left: 4vw;
-    width: 15vw;
+    margin-left: 2vw;
+    width: 10vw;
 }
 
 .form__group {
@@ -185,6 +185,16 @@ td {
   border-radius: 5px;
 }
 
+.descripcion {
+margin-left: vw;
+width: 25vw;
+}
+
+.enlace {
+margin-left: vw;
+width: 25vw;
+}
+
 .acciones {
   width: 10%;
 }
@@ -227,4 +237,17 @@ td {
 
 .zoomf:hover{
   transform: scale(1.3);
+}
+
+.paginator {
+  width: 93.8vw;
+}
+
+.aprobacion {
+  width: 5vw;
+  margin-right: 30px;
+}
+
+.buttonth {
+  padding-right: 55px;
 }
