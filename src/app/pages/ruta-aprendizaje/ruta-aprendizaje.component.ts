@@ -64,8 +64,35 @@ export class RutaAprendizajeComponent implements OnInit {
 
   }
 
-  removeRuta(indice: number) {
-    this.getRutas.removeAt(indice);
+  removeRuta(indice: number, click: boolean) {
+    if(this.rutaAprendizaje){
+      let ruta: any = this.rutaAprendizaje.rutas[indice];
+      if(ruta && click == true){
+        Swal.fire({
+          title: '¿Estás seguro?',
+          text: "No se podrá revertir!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Eliminar'
+        }).then((result: any) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Eliminado!',
+              'La ruta ha sido eliminada correctamente.',
+              'success'
+            )
+            this.api.quitarRuta(this.rutaAprendizajeId, ruta.id).subscribe();
+            this.getRutas.removeAt(indice);
+          }
+        })
+      }else{
+        this.getRutas.removeAt(indice);
+      }
+    }else{
+      this.getRutas.removeAt(indice);
+    }
   }
 
   ngOnInit() {
@@ -79,7 +106,7 @@ export class RutaAprendizajeComponent implements OnInit {
             this.nombre = this.rutaAprendizaje.nombre;
             this.descripcion = this.rutaAprendizaje.descripcion;
             this.rutas = this.rutaAprendizaje.rutas;
-            this.removeRuta(0);
+            this.removeRuta(0, false);
             this.addRutasMod(this.rutaAprendizaje.rutas);
           });
       }
@@ -112,7 +139,7 @@ export class RutaAprendizajeComponent implements OnInit {
 
       if (this.miFormulario.value.rutas.length > 1) {
         this.miFormulario.value.rutas.forEach((value: any, index: number) => {
-          this.removeRuta(index);
+          this.removeRuta(index, false);
         });
       }
       Swal.fire({
@@ -170,7 +197,7 @@ export class RutaAprendizajeComponent implements OnInit {
       this.miFormulario.value.descripcion = this.descripcion;
     }
 
-    if (this.miFormulario.value.nombre != null && this.miFormulario.value.descripcion != null){
+    if (this.miFormulario.value.nombre != "" && this.miFormulario.value.descripcion != ""){
       this.miFormulario.value.rutas.forEach( (ruta: RutaModel) => {
         if (errores) {
           return;
@@ -181,7 +208,10 @@ export class RutaAprendizajeComponent implements OnInit {
           return;
         }
       });
+    }else{
+      errores = true;
     }
+
     return errores;
   }
 

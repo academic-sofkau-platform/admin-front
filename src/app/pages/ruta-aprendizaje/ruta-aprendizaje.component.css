@@ -98,7 +98,11 @@ h1 {
 }
 
 button{
-  margin: 10px !important;
+  margin: 5px !important;
+}
+
+.rancio{
+  float:right
 }
 
 
@@ -127,25 +131,6 @@ button{
   }
 }
 
-tr {
-  height: 150%;
-}
-
-table {
-  display:inline-table;
-  margin-top: 5%;
-  width: 80%;
-  border-spacing: 0 20px;
-}
-
-th {
-  padding:0 15px 0 15px;
-}
-
-td {
-  padding:0 15px 0 15px;
-}
-
 p {
   border-color: #111979;
   border-style: outset;
@@ -161,15 +146,15 @@ p {
   margin-left: 10%;
 }
 .cont-btn{
-  width: 25%;
-  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cursos-data-display{
   display: flex;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .form-row{
@@ -178,7 +163,6 @@ p {
   position: relative;
   margin-top: 60px;
   margin-bottom: 30px;
-  width: 60%;
 }
 .form-group{
   margin-left: 40px;

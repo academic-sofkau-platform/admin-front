@@ -1,7 +1,9 @@
 <div class="contenedorimagen">
-  <button class="flecha zoomf" routerLink="/home" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
+  <button *ngIf="rutaAprendizaje == null" class="flecha zoomf" routerLink="/home" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
+  <button *ngIf="rutaAprendizaje != null" class="flecha zoomf" routerLink="/list-ruta-aprendizaje" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
   <div class="cursos-data-display">
-    <h1>Creación de Ruta de Aprendizaje</h1>
+    <h1 *ngIf="rutaAprendizaje == null">Creación de Ruta de Aprendizaje</h1>
+    <h1 *ngIf="rutaAprendizaje">Modificación de Ruta de Aprendizaje</h1>
     <form [formGroup]="miFormulario">
       <!--Nombre-->
       <div class="form-group1">
@@ -20,27 +22,24 @@
           </div>
           <!--Descripción-->
           <div class="form__group field">
-            <input
-              type="input"
+            <textarea
               class="form__field"
               placeholder="Descripción"
               name="descripcion"
               id="descripcion"
+              rows="10"
+              cols="50"
               formControlName="descripcion"
               [value]="descripcion"
-              required
-            />
+              required>
+            </textarea>
             <label for="descripcion" class="form__label">Descripción</label>
           </div>
-          <div class="cont-btn">
-            <!--Guardar-->
-            <button *ngIf="rutaAprendizaje == null" class="button-64 zoom" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
-            <button class="button-64 zoom" role="button" type="submit" (click)="verListadoRutas()"><span class="text">VER RUTAS</span></button>
-            <button *ngIf="rutaAprendizaje" class="button-64 zoom" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
+          <div class="rancio"  *ngIf="getRutas.controls.length >= 1">
+            <button type="submit" id="agregar"  (click)="addRutas()" class="btn btn-primary zoom">Agregar ruta</button>
           </div>
         </div>
       </div>
-
 
 
     <!-- Seleccione curso -->
@@ -80,15 +79,22 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="form-group ">
-          <button type="submit" id="agregar" (click)="addRutas()" class="btn btn-primary zoom"><mat-icon>add</mat-icon></button>
-        </div>
+
         <div class="form-group col-md-2" *ngIf="getRutas.controls.length > 1">
-          <button type="submit" id="eliminar" (click)="removeRuta(i)" class="btn btn-danger zoom"><mat-icon>delete</mat-icon></button>
+          <button type="submit" id="eliminar" (click)="removeRuta(i, true)" class="btn btn-danger zoom"><mat-icon>delete</mat-icon></button>
         </div>
 
       </div>
 
+
+
+    </div>
+
+    <div class="cont-btn">
+      <!--Guardar-->
+      <button *ngIf="rutaAprendizaje == null" class="button-64 zoom" role="button" type="submit" (click)="crearRutaAprendizaje()"><span class="text">CREAR</span></button>
+      <button class="button-64 zoom" role="button" type="submit" (click)="verListadoRutas()"><span class="text">VER RUTAS</span></button>
+      <button *ngIf="rutaAprendizaje" class="button-64 zoom" role="button" type="submit" (click)="modificarRutaAprendizaje(rutaAprendizaje.id)"><span class="text">MODIFICAR</span></button>
     </div>
     </form>
   </div>
