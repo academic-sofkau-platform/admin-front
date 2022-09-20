@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
+/* @media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+} */
+/* 
+.prueba{
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+} */
+
+table {
+  display: inline-table;
+  width: 100%;
+  border-spacing: 0 20px;
+}
+
+th {
+  padding: 0 15px 0 15px;
+}
+
+td {
+  padding: 0 15px 0 15px;
+}
+
+h1{
+  font-family: 'DM Sans', sans-serif;
+  color: #111979;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 3%;
+}
+.inj{
+  margin: auto;
+  width: 1000px;
+}
+.zoom {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.zoom {
+  transition: 0.05s all ease-in-out;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
+.flecha{
+  margin-left: 13px !important;
+  margin-top: 10px !important;
+}
+.zoomf{
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.zoomf {
+  transition: 0.05s all ease-in-out;
+}
+
+.zoomf:hover{
+  transform: scale(1.3);
+}
+.example-form {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.example-full-width {
+  width: 100%;
+}

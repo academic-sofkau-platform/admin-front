@@ -14,7 +14,6 @@ import { ListasComponent } from './pages/listas/listas.component';
 import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
 
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },//borrar por ser reduntante ++
   { path: 'listas', component: ListasComponent},
