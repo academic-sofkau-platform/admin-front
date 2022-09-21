@@ -45,6 +45,7 @@ import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AddAprendicesTrainingActivosModalComponent } from './component/add-aprendices-training-activos-modal/add-aprendices-training-activos-modal.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     CursosComponent,
     StdInfoComponent,
     ListaRutaAprendizajeComponent,
-    FooterComponent
+    FooterComponent,
+    AddAprendicesTrainingActivosModalComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -101,7 +103,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule, 
+    MatNativeDateModule,
 
   ],
   providers: [ApiService],
