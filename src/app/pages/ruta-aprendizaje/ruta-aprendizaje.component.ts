@@ -178,6 +178,10 @@ export class RutaAprendizajeComponent implements OnInit {
           timer: 1500,
         });
 
+        setTimeout(() =>{
+          this.agregarRutasAlFinalizar();
+        },200)
+
     }else {
       Swal.fire({
         icon: 'error',
@@ -185,6 +189,13 @@ export class RutaAprendizajeComponent implements OnInit {
         text: 'Uno de los campos está vacío',
       });
     }
+  }
+
+  agregarRutasAlFinalizar(){
+    this.api.getRutaAprendizaje(this.rutaAprendizajeId).subscribe((element: any) => {
+      console.log(element.rutas);
+      this.rutas = element.rutas;
+    });
   }
 
   hayErrores() : boolean{
