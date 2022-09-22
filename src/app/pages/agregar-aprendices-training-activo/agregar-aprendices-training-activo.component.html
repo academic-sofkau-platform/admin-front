@@ -1,0 +1,35 @@
+<div class="contenedorimagen">
+  <!-- <div class="flechas">
+    <button class="flecha zoomf" routerLink="/home" mat-raised-button>
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button class="flecha zoomf" routerLink="/lista-training-activos" mat-raised-button>
+      <mat-icon class="material-icons">arrow_forward</mat-icon>
+    </button>
+  </div> -->
+  <h1>Agregar aprendices</h1>
+  <form [formGroup]="miFormulario" (ngSubmit)="agregarAprendices()">
+    <div class="form__group field">
+      <input type="text" class="form__field" placeholder="Nombre"
+        name="nombre" formControlName="name" required/>
+      <label for="nombre" class="form__label">Nombre</label>
+    </div>
+    <div class="form__group field">
+      <input type="text" class="form__field" placeholder="Apellido"
+        name="lastname" formControlName="lastname"/>
+      <label for="lastname" class="form__label">Apellido</label>
+    </div>
+    <div class="form__group field">
+      <input type="text" class="form__field" placeholder="Email"
+        name="email" formControlName="email"/>
+      <label for="email" class="form__label">Email</label>
+    </div>
+    <br>
+    <div class="cargarbutton">
+      <button class="zoom" role="button" type="submit" [disabled]="miFormulario.invalid">
+        <span class="text">Agregar</span>
+      </button>
+    </div>
+  </form>
+</div>

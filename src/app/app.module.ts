@@ -20,7 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './pages/home/home.component';
 import { MatInputModule } from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { ListaTrainingActivosComponent } from './pages/lista-training-activos/lista-training-activos.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
@@ -45,8 +45,7 @@ import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AddAprendicesTrainingActivosModalComponent } from './component/add-aprendices-training-activos-modal/add-aprendices-training-activos-modal.component';
-
+import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprendices-training-activo/agregar-aprendices-training-activo.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +63,7 @@ import { AddAprendicesTrainingActivosModalComponent } from './component/add-apre
     StdInfoComponent,
     ListaRutaAprendizajeComponent,
     FooterComponent,
-    AddAprendicesTrainingActivosModalComponent
+    AgregarAprendicesTrainingActivoComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -73,7 +72,6 @@ import { AddAprendicesTrainingActivosModalComponent } from './component/add-apre
     HttpClientModule,
     LoginModule,
     FormsModule,
-    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),
@@ -104,7 +102,6 @@ import { AddAprendicesTrainingActivosModalComponent } from './component/add-apre
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

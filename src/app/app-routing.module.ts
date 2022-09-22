@@ -11,6 +11,7 @@ import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendi
 import { CreacionTrainingComponent } from './pages/creacion-training/creacion-training.component';
 import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/lista-ruta-aprendizaje.component';
 import { ListasComponent } from './pages/listas/listas.component';
+import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprendices-training-activo/agregar-aprendices-training-activo.component';
 
 
 
@@ -28,9 +29,10 @@ const routes: Routes = [
   { path: 'list-ruta-aprendizaje', component: ListaRutaAprendizajeComponent},
   { path: 'lista-training-activos', component: ListaTrainingActivosComponent},
   { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent},
+  { path: 'agregar-aprendices/:id', component: AgregarAprendicesTrainingActivoComponent},
   //cualquier otra cosa me redirectea a 404
   { path: '**', redirectTo:'login'}, //++
-  
+
 ];
 //, canActivate: [AuthGuard]
 @NgModule({

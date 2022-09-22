@@ -26,10 +26,10 @@ export class ListaAprendicesComponent implements AfterViewInit {
         this.dataSource.paginator = this.paginator
         console.log(elements)
       });
-      
-      
+
+
     })
-    
+
   }
 
   idTraining: string = '';
@@ -62,5 +62,9 @@ export class ListaAprendicesComponent implements AfterViewInit {
 
   verAprendiz(email: string) {
     this.router.navigate(['std-info', this.idTraining, email])
+  }
+
+  agregarAprendicesRouring() {
+    this.router.navigate(['agregar-aprendices/', this.idTraining])
   }
 }

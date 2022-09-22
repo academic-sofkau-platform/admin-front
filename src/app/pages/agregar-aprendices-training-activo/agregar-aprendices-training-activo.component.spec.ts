@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AddAprendicesTrainingActivosModalComponent } from './add-aprendices-training-activos-modal.component';
+import { AgregarAprendicesTrainingActivoComponent } from './agregar-aprendices-training-activo.component';
 
-describe('AddAprendicesTrainingActivosModalComponent', () => {
-  let component: AddAprendicesTrainingActivosModalComponent;
-  let fixture: ComponentFixture<AddAprendicesTrainingActivosModalComponent>;
+describe('AgregarAprendicesTrainingActivoComponent', () => {
+  let component: AgregarAprendicesTrainingActivoComponent;
+  let fixture: ComponentFixture<AgregarAprendicesTrainingActivoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddAprendicesTrainingActivosModalComponent ]
+      declarations: [ AgregarAprendicesTrainingActivoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddAprendicesTrainingActivosModalComponent);
+    fixture = TestBed.createComponent(AgregarAprendicesTrainingActivoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -13,6 +13,7 @@ import { CrearTrainingCommand } from '../commands/crearTrainingCommand';
 import { TrainingModel } from '../models/training';
 import { ModificarRutaAprendizajeCommand } from '../commands/modificarRutaAprendizajeCommand';
 import { AgregarRutaCommand } from '../commands/agregarRutaCommand';
+import { AgregarAprendicesListCommand } from '../commands/agregarAprendicesListCommand';
 
 
 @Injectable({
@@ -89,6 +90,9 @@ export class ApiService {
   //APRENDICES
   aprendicesByTrainingId(trainingId: string): Observable<StudentModel[]> {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
+  }
+  agregarApredicesByTrainingId(trainingId: string, command: AgregarAprendicesListCommand) {
+    return this.http.put(environment.apiBase + '/trainings/agregarAprendices/' + trainingId, command)
   }
 
 
