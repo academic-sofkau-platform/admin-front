@@ -41,7 +41,6 @@ export class ApiService {
 
   //RUTAS DE APRENDIZAJE
   crearRutaAprendizaje(command: CrearRutaAprendizajeCommand) {
-    console.log(command);
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
@@ -94,14 +93,12 @@ export class ApiService {
 
   //TRAINING
   crearTraining(command: CrearTrainingCommand) {
-    console.log(command);
     return this.http.post(environment.apiBase + '/trainings/save', command)
   }
   deleteAprendizByEmail(trainingId:string, email:string){
     return this.http.post(environment.apiBase + '/trainings/deleteAprendiz/'+ trainingId, email);
   }
   getActiveTrainings(): Observable<TrainingModel[]> {
-    console.log("desplegando trainings");
     return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
   }
 
