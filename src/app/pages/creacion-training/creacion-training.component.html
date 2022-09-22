@@ -1,7 +1,14 @@
 <div class="contenedorimagen">
-  <button class="flecha zoomf" routerLink="/home" mat-raised-button>
-    <mat-icon>keyboard_backspace</mat-icon>
-  </button>
+  <div class="flechas">
+    <button class="flecha zoomf" routerLink="/home" mat-raised-button>
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button class="flecha zoomf" routerLink="/lista-training-activos" mat-raised-button>
+      <mat-icon class="material-icons">arrow_forward</mat-icon>
+    </button>
+  </div>
+
   <h1>Creación de Training</h1>
 
   <form [formGroup]="miFormulario" (ngSubmit)="enviarFormulario()">

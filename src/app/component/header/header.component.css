@@ -1,9 +1,8 @@
-.example-spacer {
-  flex: 0.85 auto;
-}
+
 mat-toolbar{
   z-index: 1;
-  position: absolute;
+  display: flex;
+  justify-content: space-between;
 }
 .img-round{
   border-radius: 50%;
@@ -11,20 +10,15 @@ mat-toolbar{
   width: 45px;
 }
 .main-icono{
-  border-radius: 50%;
-  height: 45px;
-  width: 45px;
-  background-color: #000000;
+  height: auto;
+  width: auto;
 }
 .menu-icon{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-mat-card-title{
-  margin-left: 10px;
-  margin-right: 10px;
-}
+
 span{
   color: white;
 }

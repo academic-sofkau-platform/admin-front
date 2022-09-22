@@ -1,4 +1,5 @@
 <mat-toolbar>
+  <div class="logo">
     <span >
       <a (click)="clickeado(auth.isLoggedIn)" >
         <img width="100px" height="37px"
@@ -7,8 +8,10 @@
           class="attachment-full size-full lazy-loaded lazyloaded" alt="" />
       </a>
     </span>
-    <span class="example-spacer"></span>
+  </div>
 
+
+  <div class="menu">
     <button *ngIf="auth.isLoggedIn" [matMenuTriggerFor]="menu" mat-icon-button class="main-icono favorite-icon"
       title="Menú" aria-label="Example icon-button with heart icon">
       <img class="img-round" src="{{ auth.user.photoURL }}" referrerpolicy="no-referrer" alt="Avatar" />
@@ -16,7 +19,6 @@
       <mat-icon style="color: white">keyboard_arrow_down</mat-icon>
     </button>
     <mat-menu class="menu-icon" #menu="matMenu">
-      <!-- <mat-card-title *ngIf="auth.isLoggedIn;">{{auth.user.email}}</mat-card-title> -->
       <button routerLink="home" mat-menu-item class="zoom">
         <mat-icon>home</mat-icon>
         Crear
@@ -30,4 +32,6 @@
         Cerrar Sesion
       </button>
     </mat-menu>
+  </div>
+
 </mat-toolbar>

@@ -7,24 +7,24 @@
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [style.width.%]="">
 
         <!--Container Nombre-->
-        <ng-container matColumnDef="nombre">
+        <ng-container id= "nombre" matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef>
 
             <!--Input Nombre Cuando Creo-->
-            <mat-form-field *ngIf="!modificando" class="example-form-field" appearance="outline">
-              <mat-label>Nombre</mat-label>
+            <mat-form-field *ngIf="!modificando" class="example-form-field nombre" appearance="outline">
+              <mat-label class="labelInput">Nombre</mat-label>
               <input matInput type="text" formControlName="nombre">
             </mat-form-field>
 
             <!--Input Nombre Cuando Modifico-->
-            <mat-form-field *ngIf="modificando" class="example-form-field" appearance="outline">
-              <mat-label>Nombre</mat-label>
+            <mat-form-field *ngIf="modificando" class="example-form-field nombre" appearance="outline">
+              <mat-label class="labelInput">Nombre</mat-label>
               <input matInput type="text" formControlName="name" [value]="nombre">
             </mat-form-field>
           </th>
 
           <!--Traigo la variable-->
-          <td mat-cell *matCellDef="let element"> {{element.nombre}}</td>
+          <td mat-cell *matCellDef="let element"> <p> {{element.nombre}} </p> </td>
         </ng-container>
 
 
@@ -33,20 +33,86 @@
           <th mat-header-cell *matHeaderCellDef>
 
             <!--Input Descripción Cuando Creo-->
-            <mat-form-field *ngIf="!modificando" class="example-form-field" appearance="outline">
-              <mat-label>Descripción</mat-label>
+            <mat-form-field *ngIf="!modificando" class="example-form-field descripcion" appearance="outline">
+              <mat-label class="labelInput">Descripción</mat-label>
               <input matInput type="text" formControlName="descripcion">
             </mat-form-field>
 
             <!--Input Descripción Cuando Modifico-->
-            <mat-form-field *ngIf="modificando" class="example-form-field" appearance="outline">
-              <mat-label>Descripción</mat-label>
+            <mat-form-field *ngIf="modificando" class="example-form-field descripcion" appearance="outline">
+              <mat-label class="labelInput">Descripción</mat-label>
               <input matInput type="text" formControlName="description" [value]="descripcion">
             </mat-form-field>
 
           </th>
           <!--Traigo la variable-->
-          <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+          <td mat-cell *matCellDef="let element"> <p> {{element.descripcion}} </p> </td>
+        </ng-container>
+
+
+         <!--Container Acción Mejora-->
+         <ng-container matColumnDef="accionMejora">
+          <th mat-header-cell *matHeaderCellDef>
+
+            <!--Input Acción Mejora Cuando Creo-->
+            <mat-form-field *ngIf="!modificando" class="example-form-field accionMejora" appearance="outline">
+              <mat-label class="labelInput">Acción Mejora</mat-label>
+              <input matInput type="text" formControlName="accionMejora">
+            </mat-form-field>
+
+            <!--Input Acción Mejora Cuando Modifico-->
+            <mat-form-field *ngIf="modificando" class="example-form-field accionMejora" appearance="outline">
+              <mat-label class="labelInput">Acción Mejora</mat-label>
+              <input matInput type="text" formControlName="actionImprovement" [value]="accionMejora">
+            </mat-form-field>
+
+          </th>
+          <!--Traigo la variable-->
+          <td mat-cell *matCellDef="let element"> <p> {{element.accionMejora}} </p> </td>
+        </ng-container>
+
+
+        <!--Container Consigna-->
+        <ng-container matColumnDef="consigna">
+          <th mat-header-cell *matHeaderCellDef>
+
+            <!--Input Consigna Cuando Creo-->
+            <mat-form-field *ngIf="!modificando" class="example-form-field consigna" appearance="outline">
+              <mat-label class="labelInput">Consigna</mat-label>
+              <input matInput type="text" formControlName="consigna">
+            </mat-form-field>
+
+            <!--Input Consigna Cuando Modifico-->
+            <mat-form-field *ngIf="modificando" class="example-form-field consigna" appearance="outline">
+              <mat-label class="labelInput">Consigna</mat-label>
+              <input matInput type="text" formControlName="task" [value]="consigna">
+            </mat-form-field>
+
+          </th>
+          <!--Traigo la variable-->
+          <td mat-cell *matCellDef="let element" class="td"><p>{{element.consigna}}</p></td>
+        </ng-container>
+
+
+        <!--Container Enlace-->
+        <ng-container matColumnDef="enlace">
+          <th mat-header-cell *matHeaderCellDef>
+
+            <!--Input Enlace Cuando Creo-->
+            <mat-form-field *ngIf="!modificando" class="example-form-field enlace" appearance="outline">
+              <mat-label class="labelInput">Enlace</mat-label>
+              <input matInput type="text" formControlName="enlace">
+            </mat-form-field>
+
+            <!--Input Enlace Cuando Modifico-->
+            <mat-form-field *ngIf="modificando" class="example-form-field enlace" appearance="outline">
+              <mat-label class="labelInput">Enlace</mat-label>
+              <input matInput type="text" formControlName="link" [value]="enlace">
+            </mat-form-field>
+
+          </th>
+          <!--Traigo la variable-->
+          <td mat-cell *matCellDef="let element"> <a href="{{element.enlace}}"> {{element.enlace}} </a> </td>
         </ng-container>
 
 
@@ -55,20 +121,20 @@
           <th mat-header-cell *matHeaderCellDef>
 
             <!--Input Valor Aprobación Cuando Creo-->
-            <mat-form-field *ngIf="!modificando" class="example-form-field" appearance="outline">
-              <mat-label>Valor Aprobación</mat-label>
-              <input matInput type="number" formControlName="valorAprobacion">
+            <mat-form-field *ngIf="!modificando" class="example-form-field " appearance="outline">
+              <mat-label class="labelInput">Valor</mat-label>
+              <input matInput type="number" formControlName="valorAprobacion" >
             </mat-form-field>
 
             <!--Input Valor Aprobación Cuando Modifico-->
-            <mat-form-field *ngIf="modificando" class="example-form-field" appearance="outline">
-              <mat-label>Valor Aprobación</mat-label>
-              <input matInput type="number" formControlName="aprobacion" [value]="valorAprobacion">
+            <mat-form-field *ngIf="modificando" class="example-form-field " appearance="outline">
+              <mat-label class="labelInput">Valor</mat-label>
+              <input matInput type="number" formControlName="aprobacion" [value]="valorAprobacion" >
             </mat-form-field>
 
           </th>
           <!--Traigo la variable-->
-          <td mat-cell *matCellDef="let element"> {{element.aprobacion}} </td>
+          <td mat-cell *matCellDef="let element" class="aprobacion">  {{element.aprobacion}} </td>
         </ng-container>
 
 
@@ -76,8 +142,8 @@
         <ng-container matColumnDef="acciones">
 
           <!--Modificar/Guardar los datos del input-->
-          <th mat-header-cell *matHeaderCellDef>
-            <button *ngIf="!modificando" (ngSubmit)="crearCurso()" mat-icon-button color="primary" class="buttonth zoom">
+          <th mat-header-cell *matHeaderCellDef class="thSave">
+            <button *ngIf="!modificando" type = "reset" (click)="crearCurso()" mat-icon-button color="primary" class="buttonth zoom">
               <mat-icon>save</mat-icon>
             </button>
             <button *ngIf="modificando" (click)="modificarCurso(cursoId)" mat-icon-button color="primary"
@@ -101,7 +167,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons aria-label="Select page of periodic elements">
+      <mat-paginator [pageSizeOptions]="[20,10,5]" showFirstLastButtons aria-label="Select page of periodic elements" class="paginator">
       </mat-paginator>
     </form>
   </div>
