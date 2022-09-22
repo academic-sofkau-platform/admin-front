@@ -168,7 +168,11 @@ export class RutaAprendizajeComponent implements OnInit {
           descripcion: this.miFormulario.value.descripcion,
           rutas: this.miFormulario.value.rutas,
         })
-        .subscribe();
+        .subscribe((element:any) => {
+          this.rutaAprendizaje = element;
+          this.rutas = [];
+          this.rutas.push(element.rutas);
+        });
 
         Swal.fire({
           position: 'center',
@@ -177,10 +181,6 @@ export class RutaAprendizajeComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
-
-        setTimeout(() =>{
-          this.agregarRutasAlFinalizar();
-        },200)
 
     }else {
       Swal.fire({
@@ -191,12 +191,6 @@ export class RutaAprendizajeComponent implements OnInit {
     }
   }
 
-  agregarRutasAlFinalizar(){
-    this.api.getRutaAprendizaje(this.rutaAprendizajeId).subscribe((element: any) => {
-      console.log(element.rutas);
-      this.rutas = element.rutas;
-    });
-  }
 
   hayErrores() : boolean{
     let errores: boolean = false;
