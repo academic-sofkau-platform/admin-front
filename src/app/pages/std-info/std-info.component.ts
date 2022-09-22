@@ -119,7 +119,7 @@ export class StdInfoComponent implements OnInit {
 
           this.api.getTrainingById(this.cursoId).subscribe((training) => {
             this.api
-              .getActividad(this.cursoId, std.id)
+              .getActividad(this.cursoId, this.stdEmail)
               .subscribe((actividad) => {
                 actividad.forEach((elem) => {
                   let fecha = moment(elem.fecha);

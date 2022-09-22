@@ -37,3 +37,7 @@ span{
 .zoom:hover mat-icon{
   transform: scale(1.3);
 }
+
+a :hover {
+  cursor: pointer;
+}

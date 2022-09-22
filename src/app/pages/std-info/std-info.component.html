@@ -1,6 +1,6 @@
 <div class=" std-data-display">
   <div class="contenedorimagen">
-    <button class="flecha zoomf" routerLink="/lista-training-activos" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
+    <button class="flecha zoomf" routerLink="/list-aprendices/{{this.cursoId}}" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
     <h1>Información del aprendiz</h1>
 
     <div class="std-data">
@@ -10,7 +10,7 @@
         <h2>{{ std.name }} {{ std.lastname }}</h2>
         <p>
           {{ std.email }} <br />
-          +{{ std.phoneNumber }} <br />
+          {{ std.phoneNumber }} <br />
           {{ std.city }}
         </p>
       </div>
