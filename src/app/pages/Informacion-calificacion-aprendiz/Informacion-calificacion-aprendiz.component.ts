@@ -9,9 +9,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./Informacion-calificacion-aprendiz.component.css']
 })
 export class InformacionCalificacionAprendizComponent implements OnInit {
-  stdEmail: string = 'lauratatis379@gmail.com';
+  stdEmail: string = 'lauratatis3791@gmail.com';
   std: StudentModel;
-  trainingId: string = '1fea345e-1640-4e67-a8b5-03f52868fc21';
+  trainingId: string = '04f51240-2965-4501-8bfb-b2f87f805a2a';
 
   constructor(private api: ApiService, private route: ActivatedRoute) { 
     this.std = {
@@ -28,8 +28,11 @@ export class InformacionCalificacionAprendizComponent implements OnInit {
 
     this.api
         .getAprendiceByTrainingAndMail(this.trainingId, this.stdEmail)
-        .subscribe((std) => 
-          this.std = std)
+        .subscribe((std) => {
+          this.std = std;
+          console.log(std)
+        }
+          )
         
 
   }
