@@ -13,8 +13,8 @@ import { CrearTrainingCommand } from '../commands/crearTrainingCommand';
 import { TrainingModel } from '../models/training';
 import { ModificarRutaAprendizajeCommand } from '../commands/modificarRutaAprendizajeCommand';
 import { AgregarRutaCommand } from '../commands/agregarRutaCommand';
+import { AgregarAprendicesListCommand } from '../commands/agregarAprendicesListCommand';
 import { ActiveTraining } from '../models/active-training';
-
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +42,6 @@ export class ApiService {
 
   //RUTAS DE APRENDIZAJE
   crearRutaAprendizaje(command: CrearRutaAprendizajeCommand) {
-    console.log(command);
     return this.http.post(environment.apiBase + '/rutaAprendizaje/save', command)
   }
 
@@ -91,19 +90,34 @@ export class ApiService {
   aprendicesByTrainingId(trainingId: string): Observable<StudentModel[]> {
     return this.http.get<StudentModel[]>(environment.apiBase + '/trainings/getAprendicesByTrainingId/' + trainingId)
   }
+  agregarApredicesByTrainingId(trainingId: string, command: AgregarAprendicesListCommand) {
+    return this.http.put(environment.apiBase + '/trainings/agregarAprendices/' + trainingId, command)
+  }
 
 
   //TRAINING
   crearTraining(command: CrearTrainingCommand) {
-    console.log(command);
     return this.http.post(environment.apiBase + '/trainings/save', command)
   }
   deleteAprendizByEmail(trainingId:string, email:string){
     return this.http.post(environment.apiBase + '/trainings/deleteAprendiz/'+ trainingId, email);
   }
+ /* getActiveTrainings(): Observable<TrainingModel[]> {
+    return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+  }*/
   getActiveTrainings(): Observable<ActiveTraining[]> {
     console.log("desplegando trainings");
     return this.http.get<ActiveTraining[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
   }
+
+  getResultadoCursos(){
+    return this.http.get(environment.apiBase + '/trainings/getResultadoCursos');
+  }
+
+
+  //RESULTADO DE LOS CURSOS
+  // getResultadoCursos(): Observable<ResultadoCursosModel[]> {
+  //   return this.http.get<ResultadoCursosModel[]>(environment.apiBase + '//////');
+  // }
 
 }

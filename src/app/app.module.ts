@@ -20,7 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './pages/home/home.component';
 import { MatInputModule } from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { ListaTrainingActivosComponent } from './pages/lista-training-activos/lista-training-activos.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
@@ -45,7 +45,10 @@ import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
+import { InformacionCalificacionAprendizComponent } from './pages/Informacion-calificacion-aprendiz/Informacion-calificacion-aprendiz.component';
 
+import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprendices-training-activo/agregar-aprendices-training-activo.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     CursosComponent,
     StdInfoComponent,
     ListaRutaAprendizajeComponent,
-    FooterComponent
+    FooterComponent,
+    ResultadoCursosComponent,
+    InformacionCalificacionAprendizComponent,
+    AgregarAprendicesTrainingActivoComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -71,7 +77,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     LoginModule,
     FormsModule,
-    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),
@@ -83,7 +88,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatListModule,
     MatAutocompleteModule,
-    MatFormFieldModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
@@ -101,7 +105,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule, 
+    MatNativeDateModule,
 
   ],
   providers: [ApiService],
