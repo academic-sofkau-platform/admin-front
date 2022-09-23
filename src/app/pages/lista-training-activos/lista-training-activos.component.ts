@@ -13,7 +13,8 @@ import * as moment from 'moment';
   styleUrls: ['./lista-training-activos.component.css']
 })
 export class ListaTrainingActivosComponent implements AfterViewInit {
-  displayedColumns: string[] = ['nombre', 'descripcion', 'inicio', 'fin', 'ver'];
+ // displayedColumns: string[] = ['nombre', 'descripcion', 'inicio', 'fin', 'ver'];
+ displayedColumns: string[] = ['name', 'period', 'apprentices', 'ver'];
   dataSource:any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;

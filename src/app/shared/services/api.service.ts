@@ -14,7 +14,7 @@ import { TrainingModel } from '../models/training';
 import { ModificarRutaAprendizajeCommand } from '../commands/modificarRutaAprendizajeCommand';
 import { AgregarRutaCommand } from '../commands/agregarRutaCommand';
 import { AgregarAprendicesListCommand } from '../commands/agregarAprendicesListCommand';
-
+import { ActiveTraining } from '../models/active-training';
 
 @Injectable({
   providedIn: 'root'
@@ -102,8 +102,12 @@ export class ApiService {
   deleteAprendizByEmail(trainingId:string, email:string){
     return this.http.post(environment.apiBase + '/trainings/deleteAprendiz/'+ trainingId, email);
   }
-  getActiveTrainings(): Observable<TrainingModel[]> {
+ /* getActiveTrainings(): Observable<TrainingModel[]> {
     return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+  }*/
+  getActiveTrainings(): Observable<ActiveTraining[]> {
+    console.log("desplegando trainings");
+    return this.http.get<ActiveTraining[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
   }
 
   getResultadoCursos(){

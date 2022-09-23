@@ -11,25 +11,20 @@
             <h1 class="h2">Lista de Trainings Activos</h1>
           </div>
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [style.width.%]="100">
-            <ng-container matColumnDef="nombre">
-              <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Training</th>
               <td mat-cell *matCellDef="let element">
                 {{element.name}}
               </td>
             </ng-container>
-            <ng-container matColumnDef="descripcion">
-              <th mat-header-cell *matHeaderCellDef> Descripción</th>
-              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            <ng-container matColumnDef="period">
+              <th mat-header-cell *matHeaderCellDef>Período</th>
+              <td mat-cell *matCellDef="let element"> {{element.period}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="inicio">
-              <th mat-header-cell *matHeaderCellDef>Fecha Inicio</th>
-              <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="fin">
-              <th mat-header-cell *matHeaderCellDef>Fecha Fin</th>
-              <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+            <ng-container matColumnDef="apprentices">
+              <th mat-header-cell *matHeaderCellDef>Aprendices</th>
+              <td mat-cell *matCellDef="let element"> {{element.apprenticesCount}} </td>
             </ng-container>
 
             <ng-container matColumnDef="ver">
