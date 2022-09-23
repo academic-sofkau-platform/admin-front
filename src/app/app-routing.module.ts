@@ -13,6 +13,8 @@ import { ListaRutaAprendizajeComponent } from './pages/lista-ruta-aprendizaje/li
 import { ListasComponent } from './pages/listas/listas.component';
 import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
 import { InformacionCalificacionAprendizComponent } from './pages/Informacion-calificacion-aprendiz/Informacion-calificacion-aprendiz.component';
+import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprendices-training-activo/agregar-aprendices-training-activo.component';
+
 
 
 const routes: Routes = [
@@ -31,6 +33,7 @@ const routes: Routes = [
   { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent},
   { path: 'resultado-cursos', component: ResultadoCursosComponent},
   { path: 'informacion-calificacion-aprendiz', component: InformacionCalificacionAprendizComponent},
+  { path: 'agregar-aprendices/:id', component: AgregarAprendicesTrainingActivoComponent},
   //cualquier otra cosa me redirectea a 404
   { path: '**', redirectTo:'login'}, //++
 

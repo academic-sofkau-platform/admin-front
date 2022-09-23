@@ -20,7 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './pages/home/home.component';
 import { MatInputModule } from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ListaAprendicesComponent } from './pages/lista-aprendices/lista-aprendices.component';
 import { ListaTrainingActivosComponent } from './pages/lista-training-activos/lista-training-activos.component';
 import { RutaAprendizajeComponent } from './pages/ruta-aprendizaje/ruta-aprendizaje.component';
@@ -48,6 +48,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
 import { InformacionCalificacionAprendizComponent } from './pages/Informacion-calificacion-aprendiz/Informacion-calificacion-aprendiz.component';
 
+import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprendices-training-activo/agregar-aprendices-training-activo.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { InformacionCalificacionAprendizComponent } from './pages/Informacion-ca
     ListaRutaAprendizajeComponent,
     FooterComponent,
     ResultadoCursosComponent,
-    InformacionCalificacionAprendizComponent
+    InformacionCalificacionAprendizComponent,
+    AgregarAprendicesTrainingActivoComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -75,7 +77,6 @@ import { InformacionCalificacionAprendizComponent } from './pages/Informacion-ca
     HttpClientModule,
     LoginModule,
     FormsModule,
-    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),

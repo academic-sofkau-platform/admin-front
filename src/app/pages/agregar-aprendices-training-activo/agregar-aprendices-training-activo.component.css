@@ -1,0 +1,47 @@
+h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    color: #111979;
+    font-weight: bolder;
+    margin-bottom: 5%;
+   }
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.form__group__field{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+form{
+    width: 35%;
+    margin: auto;
+}
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #c1f0f0;
+    outline: 0;
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    margin-top: 10px;
+  }
+  .form__field::placeholder {
+    color: #abdbdb;
+  }
+  .form__field:placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
