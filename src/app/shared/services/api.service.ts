@@ -68,7 +68,7 @@ export class ApiService {
   agregarRuta(id:string , command: AgregarRutaCommand){
     return this.http.post(environment.apiBase + '/rutaAprendizaje/add/route/' + id, command)
   }
-  
+
   controlCursoEnRutaAprendizaje(id:string) {
     return this.http.get(environment.apiBase + '/rutaAprendizaje/curso/' + id)
   }
@@ -103,6 +103,10 @@ export class ApiService {
   getActiveTrainings(): Observable<TrainingModel[]> {
     console.log("desplegando trainings");
     return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
+  }
+
+  getResultadoCursos(){
+    return this.http.get(environment.apiBase + '/trainings/getResultadoCursos');
   }
 
 

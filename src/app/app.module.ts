@@ -47,7 +47,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +84,6 @@ import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cur
     MatFormFieldModule,
     MatListModule,
     MatAutocompleteModule,
-    MatFormFieldModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
@@ -103,7 +101,7 @@ import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cur
     MatPaginatorModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule, 
+    MatNativeDateModule,
 
   ],
   providers: [ApiService],
