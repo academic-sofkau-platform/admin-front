@@ -102,4 +102,14 @@ export class ApiService {
     return this.http.get<TrainingModel[]>(environment.apiBase + '/trainings/findAllTrainingActivos')
   }
 
+  getResultadoCursos(){
+    return this.http.get(environment.apiBase + '/trainings/getResultadoCursos');
+  }
+
+
+  //RESULTADO DE LOS CURSOS
+  // getResultadoCursos(): Observable<ResultadoCursosModel[]> {
+  //   return this.http.get<ResultadoCursosModel[]>(environment.apiBase + '//////');
+  // }
+
 }

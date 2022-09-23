@@ -45,6 +45,8 @@ import { ListasComponent } from './pages/listas/listas.component';
 import { FooterComponent } from './component/footer/footer.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
+import { InformacionCalificacionAprendizComponent } from './pages/Informacion-calificacion-aprendiz/Informacion-calificacion-aprendiz.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     CursosComponent,
     StdInfoComponent,
     ListaRutaAprendizajeComponent,
-    FooterComponent
+    FooterComponent,
+    ResultadoCursosComponent,
+    InformacionCalificacionAprendizComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -83,7 +87,6 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatListModule,
     MatAutocompleteModule,
-    MatFormFieldModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
@@ -101,7 +104,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule, 
+    MatNativeDateModule,
 
   ],
   providers: [ApiService],
