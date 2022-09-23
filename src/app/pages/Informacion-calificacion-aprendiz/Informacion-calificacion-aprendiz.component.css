@@ -1,0 +1,43 @@
+img{
+    width: 30%;
+}
+
+.cuadro{
+    border: #111979 2px solid;
+    height: 75%;
+    width: 70%;
+    color: black;
+}
+.std-data {
+    display: flex;
+    margin: auto;
+    padding-left: 275px;
+    color: black;
+    width: 100%;
+}
+
+.pinfo {
+    display: block;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.std-data-display {
+    font-family: 'DM Sans', sans-serif;
+    color: #111979;
+    width: 100%;
+    min-height: 100%;
+}
+
+.std-calificacion{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    padding-left: 275px;
+    color: black;
+    height: 100%;
+    width: 100%;
+}
+.puntaje{
+    width: 10%;
+}

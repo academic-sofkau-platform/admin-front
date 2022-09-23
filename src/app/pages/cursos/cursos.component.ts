@@ -16,12 +16,13 @@ export class CursosComponent implements AfterViewInit{
   idData: String[] = [];
   idRuta: String[] = [];
   idCurso: String = ""
-  displayedColumns: string[] = ['nombre', 'descripcion', 'consigna', 'enlace', 'valorAprobacion', 'acciones'];
+  displayedColumns: string[] = ['nombre', 'descripcion', 'accionMejora', 'consigna', 'enlace', 'valorAprobacion', 'acciones'];
   cursoForm: FormGroup;
   elementos: any
   cursoId:string=""
   nombre:string = "";
   descripcion:string = "";
+  accionMejora:string = "";
   consigna:string = "";
   enlace:string = "";
   valorAprobacion:number = 0;
@@ -36,6 +37,7 @@ export class CursosComponent implements AfterViewInit{
       //Forms cuando no modifico
       nombre: new FormControl(),
       descripcion: new FormControl(),
+      accionMejora: new FormControl(),
       consigna: new FormControl(),
       enlace: new FormControl(),
       valorAprobacion: new FormControl(),
@@ -43,6 +45,7 @@ export class CursosComponent implements AfterViewInit{
       //Forms cuando modifico
       name: new FormControl(),
       description: new FormControl(),
+      actionImprovement: new FormControl(),
       task: new FormControl(),
       link: new FormControl(),
       aprobacion: new FormControl()
@@ -51,10 +54,12 @@ export class CursosComponent implements AfterViewInit{
 
   ngAfterViewInit() {
     this.api.getCursos().subscribe((elements) => {
+   
       this.dataSource = new MatTableDataSource(elements)
-      this.dataSource.paginator = this.paginator
       this.ordenar(this.dataSource.data)
+      this.dataSource.paginator = this.paginator
     });
+
   }
 
   ordenar(array: CursoModel[]) {
@@ -71,10 +76,12 @@ export class CursosComponent implements AfterViewInit{
 
   crearCurso() {
    if (this.cursoForm.value.nombre !== null && this.cursoForm.value.descripcion !== null
-     && this.cursoForm.value.valorAprobacion && this.cursoForm.value.consigna !== null && this.cursoForm.value.enlace !== null) {
+     && this.cursoForm.value.valorAprobacion && this.cursoForm.value.consigna !== null
+    && this.cursoForm.value.enlace !== null && this.cursoForm.value.accionMejora !== null) {
     this.api.crearCurso({
       nombre:this.cursoForm.value.nombre,
       descripcion:this.cursoForm.value.descripcion,
+      accionMejora:this.cursoForm.value.accionMejora,
       consigna:this.cursoForm.value.consigna,
       enlace:this.cursoForm.value.enlace,
       aprobacion:this.cursoForm.value.valorAprobacion
@@ -83,9 +90,13 @@ export class CursosComponent implements AfterViewInit{
       //this.dataSource.push(elementos)
       let cursoAux = this.dataSource.data
       cursoAux.push(cursoagregado)
+      this.ordenar(cursoAux)
       this.dataSource.data = cursoAux;
     })
-
+   
+     
+ 
+    
    } else {
     Swal.fire({
       icon: 'error',
@@ -115,8 +126,9 @@ export class CursosComponent implements AfterViewInit{
         )
         this.api.deleteCurso(id).subscribe();
         this.dataSource.data = this.dataSource.data.filter((cursos:any) => cursos.id !== id)
-
-        this.ordenar(this.dataSource.data)
+        let cursoAux = this.dataSource.data
+        this.ordenar(cursoAux)
+        this.dataSource.data = cursoAux;
       }
     })
   }
@@ -162,6 +174,9 @@ export class CursosComponent implements AfterViewInit{
       this.cursoForm.value.description = curso[0].descripcion
       this.descripcion = curso[0].descripcion
 
+      this.cursoForm.value.actionImprovement = curso[0].accionMejora
+      this.accionMejora = curso[0].accionMejora
+
       this.cursoForm.value.task = curso[0].consigna
       this.consigna = curso[0].consigna
 
@@ -183,6 +198,7 @@ export class CursosComponent implements AfterViewInit{
     //Condicional para que no se borren los datos si modifico solo un input
     if (this.cursoForm.value.name == null) {this.cursoForm.value.name = this.nombre }
     if (this.cursoForm.value.description == null) {this.cursoForm.value.description = this.descripcion }
+    if (this.cursoForm.value.actionImprovement == null) {this.cursoForm.value.actionImprovement = this.accionMejora }
     if (this.cursoForm.value.task == null) {this.cursoForm.value.task = this.consigna }
     if (this.cursoForm.value.link == null) {this.cursoForm.value.link = this.enlace }
     if (this.cursoForm.value.aprobacion == null) {this.cursoForm.value.aprobacion = this.valorAprobacion }
@@ -190,6 +206,7 @@ export class CursosComponent implements AfterViewInit{
     this.api.modificarCurso(cursoId,{
       nombre:this.cursoForm.value.name,
       descripcion:this.cursoForm.value.description,
+      accionMejora:this.cursoForm.value.actionImprovement,
       consigna:this.cursoForm.value.task,
       enlace:this.cursoForm.value.link,
       aprobacion:this.cursoForm.value.aprobacion
@@ -197,13 +214,16 @@ export class CursosComponent implements AfterViewInit{
 
     //Al modificar elimino el curso que aparece en la tabla y pongo el nuevo modificado
       this.dataSource = this.dataSource.data.filter((elementos:any) => elementos.id !== cursoId)
-      this.dataSource.push(elementos)
-      this.ordenar(this.dataSource.data)
+        let cursoAux = this.dataSource
+        cursoAux.push(elementos)
+        this.ordenar(cursoAux)
+        this.dataSource.data = cursoAux;
     })
 
     //Limpio los datos luego de modificar
     this.nombre = ""
     this.descripcion = ""
+    this.accionMejora = ""
     this.consigna = ""
     this.enlace = ""
     this.valorAprobacion = 0

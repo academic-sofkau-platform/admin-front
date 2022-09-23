@@ -62,7 +62,7 @@ export class ApiService {
   }
 
   quitarRuta(id:string, rutaId:string){
-    return this.http.post(environment.apiBase + '/rutaAprendizaje/delete/route/', [id, rutaId])
+    return this.http.post(environment.apiBase + '/rutaAprendizaje/delete/route/' + id, rutaId)
   }
 
   agregarRuta(id:string , command: AgregarRutaCommand){

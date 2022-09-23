@@ -46,6 +46,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cursos.component';
+import { InformacionCalificacionAprendizComponent } from './pages/Informacion-calificacion-aprendiz/Informacion-calificacion-aprendiz.component';
+
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cur
     StdInfoComponent,
     ListaRutaAprendizajeComponent,
     FooterComponent,
-    ResultadoCursosComponent
+    ResultadoCursosComponent,
+    InformacionCalificacionAprendizComponent
   ],
   imports: [
     ReactiveFormsModule,
