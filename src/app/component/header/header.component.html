@@ -1,7 +1,7 @@
 <mat-toolbar>
   <div class="logo">
-    <span >
-      <a (click)="clickeado(auth.isLoggedIn)" >
+    <span>
+      <a (click)="clickeado(auth.isLoggedIn)">
         <img width="100px" height="37px"
           src="https://ik.imagekit.io/vpvzuhxi3/Sofka/logo-sofkau_blanco_5wK-vAh4g.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1661194626415"
           data-src="https://www.sofka.com.co/wp-content/uploads/2020/09/logo-sofka-blanco-1.png"
@@ -10,13 +10,15 @@
     </span>
   </div>
 
-  <div class="listas" style="display: flex;">
-    <li><a routerLink="home">Home</a></li>
-    <li><a routerLink="list-ruta-aprendizaje">Lista Ruta de Aprendiz</a></li>
-    <li><a routerLink="lista-training-activos">Lista de Trainings</a></li>
+  <div *ngIf="auth.isLoggedIn" class="listas" style="display: flex;">
+   
+      <a routerLink="home">Home</a>
+      <a routerLink="list-ruta-aprendizaje">Lista Ruta de Aprendiz</a>
+      <a routerLink="lista-training-activos">Lista de Trainings</a>
+    
   </div>
   <div class="menu">
-   
+
     <button *ngIf="auth.isLoggedIn" [matMenuTriggerFor]="menu" mat-icon-button class="main-icono favorite-icon"
       title="Menú" aria-label="Example icon-button with heart icon">
       <img class="img-round" src="{{ auth.user.photoURL }}" referrerpolicy="no-referrer" alt="Avatar" />

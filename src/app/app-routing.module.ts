@@ -19,8 +19,8 @@ import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprend
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },//borrar por ser reduntante ++
-  { path: 'listas', component: ListasComponent},
   { path: '', component: LoginComponent },
+  { path: 'listas', component: ListasComponent},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
   { path: 'std-info/:id/:email', component: StdInfoComponent},
