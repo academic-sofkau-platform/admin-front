@@ -41,3 +41,11 @@ span{
 a :hover {
   cursor: pointer;
 }
+.listas{
+  margin-left: auto;
+  margin-right: auto;
+}
+li a {
+  text-decoration: none;
+  color: white;
+}

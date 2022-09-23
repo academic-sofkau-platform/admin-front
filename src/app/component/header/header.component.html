@@ -10,8 +10,13 @@
     </span>
   </div>
 
-
+  <div class="listas" style="display: flex;">
+    <li><a routerLink="home">Home</a></li>
+    <li><a routerLink="list-ruta-aprendizaje">Lista Ruta de Aprendiz</a></li>
+    <li><a routerLink="lista-training-activos">Lista de Trainings</a></li>
+  </div>
   <div class="menu">
+   
     <button *ngIf="auth.isLoggedIn" [matMenuTriggerFor]="menu" mat-icon-button class="main-icono favorite-icon"
       title="Menú" aria-label="Example icon-button with heart icon">
       <img class="img-round" src="{{ auth.user.photoURL }}" referrerpolicy="no-referrer" alt="Avatar" />
