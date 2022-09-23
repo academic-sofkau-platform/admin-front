@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -23,7 +23,8 @@ export class AgregarAprendicesTrainingActivoComponent implements OnInit {
     public api: ApiService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
@@ -31,8 +32,8 @@ export class AgregarAprendicesTrainingActivoComponent implements OnInit {
   ngAfterViewInit() {
     this.route.params.subscribe((params) => {
       this.idTraining = params['id']
-    })
-
+    });
+    this.changeDetectorRef.detectChanges();
   }
 
   public miFormulario: FormGroup = this.formBuilder.group({
@@ -72,7 +73,6 @@ export class AgregarAprendicesTrainingActivoComponent implements OnInit {
       this.idTraining,
       this.aprendices)
       .subscribe((response: any) => {
-        //this.router.navigate(['/list-aprendices'], { queryParams: {file: response } });
         this.router.navigate(['/list-aprendices/' + this.idTraining]);
       });
 

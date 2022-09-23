@@ -1,13 +1,10 @@
 <div class="contenedorimagen">
-  <!-- <div class="flechas">
-    <button class="flecha zoomf" routerLink="/home" mat-raised-button>
+  <div class="flechas">
+    <button class="flecha zoomf" routerLink="/list-aprendices/{{idTraining}}" mat-raised-button>
       <mat-icon>keyboard_backspace</mat-icon>
     </button>
-    <span class="example-spacer"></span>
-    <button class="flecha zoomf" routerLink="/lista-training-activos" mat-raised-button>
-      <mat-icon class="material-icons">arrow_forward</mat-icon>
-    </button>
-  </div> -->
+    <p>{{idTraining}}</p>
+  </div>
   <h1>Agregar aprendices</h1>
   <form [formGroup]="miFormulario" (ngSubmit)="agregarAprendices()">
     <div class="form__group field">
