@@ -9,12 +9,12 @@
 
     <div class="inj">
       <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        <mat-label>Búsqueda</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Aprendiz o Training" #input>
       </mat-form-field>
       <table mat-table  [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre de Aprendiz</th>
+          <th mat-header-cell *matHeaderCellDef>Nombre de Aprendiz</th>
           <td mat-cell *matCellDef="let row">
             {{ row.aprendiz.name }}
           </td>
@@ -25,12 +25,12 @@
           <td mat-cell *matCellDef="let row">{{ row.trainingName }}</td>
         </ng-container>
         <ng-container matColumnDef="curso">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cursos</th>
+          <th mat-header-cell *matHeaderCellDef>Curso</th>
           <td mat-cell *matCellDef="let row">{{ row.curso.nombre }}</td>
         </ng-container>
 
         <ng-container matColumnDef="accion">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let row">
             <button
               mat-icon-button
@@ -51,7 +51,7 @@
         </tr>
       </table>
       <mat-paginator
-        [pageSizeOptions]="[5, 10]"
+        [pageSizeOptions]="[5, 10, 20]"
         showFirstLastButtons
         aria-label="Select page of periodic elements"
       >

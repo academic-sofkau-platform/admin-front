@@ -29,6 +29,8 @@ export class ResultadoCursosComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource(element)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = (data: any, filter: string) => data.aprendiz.name.includes(filter) || data.trainingName.includes(filter)
+
       });
     }
   constructor(private api: ApiService, private router: Router) {
@@ -37,8 +39,8 @@ export class ResultadoCursosComponent implements AfterViewInit, OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
+    this.dataSource.filter = filterValue;
+    console.log(filterValue);
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
