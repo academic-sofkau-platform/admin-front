@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -13,7 +13,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   templateUrl: './resultado-cursos.component.html',
   styleUrls: ['./resultado-cursos.component.css']
 })
-export class ResultadoCursosComponent implements AfterViewInit, OnInit {
+export class ResultadoCursosComponent implements AfterViewInit {
   control = new FormControl('');
   training: string[] = ['C1', 'C2', 'C3', 'C4'];
   filteredTraining!: Observable<string[]>;
@@ -46,19 +46,17 @@ export class ResultadoCursosComponent implements AfterViewInit, OnInit {
     }
   }
 
-   ngOnInit() {
-
-    this.filteredTraining = this.control.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-  }
-  private _filter(value: string): string[] {
-    const filterValue = this._normalizeValue(value);
-    return this.training.filter(training => this._normalizeValue(training).includes(filterValue));
-  }
-  private _normalizeValue(value: string): string {
-    return value.toLowerCase().replace(/\s/g, '');
-  }
+  calificarAprendiz(aprendiz:any, nombreCurso:string){
+    this.router.navigate(['informacion-calificacion-aprendiz'],
+    {queryParams: {
+      name: aprendiz.name,
+      lastname: aprendiz.lastName,
+      phoneNumber: aprendiz.phoneNumber,
+      email: aprendiz.email,
+      photo: aprendiz.photo,
+      nombreCurso: nombreCurso,
+      tareas: aprendiz.tareas[0].contenido,
+    }} );
+  };
 
 }

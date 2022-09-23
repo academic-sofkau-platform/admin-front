@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'informacion-calificacion-aprendiz', component: InformacionCalificacionAprendizComponent},
   //cualquier otra cosa me redirectea a 404
   { path: '**', redirectTo:'login'}, //++
-  
+
 ];
 //, canActivate: [AuthGuard]
 @NgModule({

@@ -1,6 +1,6 @@
 <div class="contenedorimagen">
   <div class="prueba">
-    <button class="flecha zoomf" routerLink="/cursos" mat-raised-button>
+    <button class="flecha zoomf" routerLink="/home" mat-raised-button>
       <mat-icon>keyboard_backspace</mat-icon>
     </button>
     <div>
@@ -36,9 +36,9 @@
               mat-icon-button
               color="primary"
               class="zoom"
-              (click)="(row.id)"
+              (click)="calificarAprendiz(row.aprendiz, row.curso.nombre)"
             >
-              <mat-icon>edit</mat-icon>
+              <mat-icon>visibility</mat-icon>
             </button>
           </td>
         </ng-container>
