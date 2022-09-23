@@ -46,17 +46,28 @@ export class ResultadoCursosComponent implements AfterViewInit {
     }
   }
 
-  calificarAprendiz(aprendiz:any, nombreCurso:string){
-    this.router.navigate(['informacion-calificacion-aprendiz'],
-    {queryParams: {
-      name: aprendiz.name,
-      lastname: aprendiz.lastName,
-      phoneNumber: aprendiz.phoneNumber,
-      email: aprendiz.email,
-      photo: aprendiz.photo,
-      nombreCurso: nombreCurso,
-      tareas: aprendiz.tareas[0].contenido,
-    }} );
-  };
+  calificarAprendiz(aprendiz:any, nombreCurso:string, cursoId: string){
+     var tareaAprendiz: any = ""
+
+     aprendiz.tareas.forEach((tarea:any) => {
+        if(tarea.cursoId == cursoId){
+          tareaAprendiz = tarea
+        }
+    })
+
+    if(tareaAprendiz){
+      this.router.navigate(['informacion-calificacion-aprendiz'], { queryParams: {
+        name: aprendiz.name,
+        lastname: aprendiz.lastName,
+        phoneNumber: aprendiz.phoneNumber,
+        email: aprendiz.email,
+        photo: aprendiz.photo,
+        nombreCurso: nombreCurso,
+        tareas: tareaAprendiz.contenido
+      }});
+    }
+
+
+  }
 
 }
