@@ -4,7 +4,7 @@
     <h1>Creación de Curso</h1>
     <!--Tabla-->
     <form [formGroup]="cursoForm" (ngSubmit)="crearCurso()">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [style.width.%]="">
+      <table mat-table [dataSource]="dataSource">
 
         <!--Container Nombre-->
         <ng-container id= "nombre" matColumnDef="nombre">

@@ -15,6 +15,7 @@ import { ModificarRutaAprendizajeCommand } from '../commands/modificarRutaAprend
 import { AgregarRutaCommand } from '../commands/agregarRutaCommand';
 import { AgregarAprendicesListCommand } from '../commands/agregarAprendicesListCommand';
 import { ActiveTraining } from '../models/active-training';
+import { UpdateNotaTareaCommand } from '../commands/updateNotaTareaCommand';
 
 @Injectable({
   providedIn: 'root'
@@ -114,6 +115,9 @@ export class ApiService {
     return this.http.get(environment.apiBase + '/trainings/getResultadoCursos');
   }
 
+  updateNotaTarea(trainingId:string, email:string, command:UpdateNotaTareaCommand) {
+    return this.http.post(environment.apiBase + '/trainings/updateNotaTarea/' + trainingId + '/' + email , command)
+  }
 
   //RESULTADO DE LOS CURSOS
   // getResultadoCursos(): Observable<ResultadoCursosModel[]> {

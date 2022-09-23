@@ -1,25 +1,28 @@
-<div class=" std-data-display">
+<div class="contenedorimagen">
+  <button class="flecha zoomf" routerLink="/resultado-cursos" mat-raised-button><mat-icon>keyboard_backspace</mat-icon></button>
+<div class="contenedor">
   <div class="std-data">
     <img src="{{std.photo}} " alt="std-photo" />
-
     <div class="pinfo">
       <h2>{{ std.name }} {{ std.lastName }}</h2>
       <p>
-        {{ std.email }} <br />
-        {{ std.phoneNumber }} <br />
+        EMAIL: {{ std.email }} <br />
+        CEL: {{ std.phoneNumber }} <br />
         {{ std.city }}
       </p>
     </div>
   </div>
   <div class="std-calificacion">
-    <h2>Resultado del Curso: {{std.nombreCurso}}</h2>
+    <h3>Tarea del Curso: {{std.nombreCurso}}</h3>
     <div class="cuadro">
       <p *ngIf="std.tareas"> {{std.tareas}}</p>
       <p *ngIf="std.tareas == null"> No ingresó contenido</p>
     </div>
-
-    <label>Puntaje</label>
-    <input class="puntaje" type="number" min="0">
+    <form [formGroup]="puntajeForm" (ngSubmit)="calificar()">
+      <!-- <label>Puntaje</label> -->
+      <input placeholder="PUNTAJE 0/100" class="puntaje" type="number" min="0" formControlName="puntaje">
+      <button class="btn-calificar" mat-raised-button color="primary" type="submit"> Calificar</button>
+    </form>
   </div>
-
+</div>
 </div>
