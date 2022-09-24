@@ -17,7 +17,21 @@
         <input type="text" class="form__field" placeholder="Email"
           name="email" formControlName="email"/>
         <label for="email" class="form__label"></label>
+        <input type="text" class="form__field" placeholder="Ciudad"
+          name="city" formControlName="city"/>
+        <label for="city" class="form__label"></label>
+        <input type="text" class="form__field" placeholder="Teléfono"
+        name="phoneNumber" formControlName="phoneNumber"/>
+        <label for="phoneNumber" class="form__label"></label>
+        <div>
+          Género:
+          <input type="radio" formControlName="gender" value="M"> Masculino
+          <input type="radio" formControlName="gender" value="F" > Femenino
         </div>
+        <label for="bilingual">Bilingüe</label>
+        <input type="checkbox" placeholder="bilingual"
+        name="bilingual" formControlName="bilingual"/>
+      </div>
       <br>
       <div class="cargarbutton">
         <button mat-flat-button color="primary" class="zoom" role="button" type="submit" [disabled]="miFormulario.invalid">
@@ -26,5 +40,4 @@
       </div>
     </form>
   </div>
-
 </div>

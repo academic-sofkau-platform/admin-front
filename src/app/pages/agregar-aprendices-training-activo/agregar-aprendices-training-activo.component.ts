@@ -40,6 +40,10 @@ export class AgregarAprendicesTrainingActivoComponent implements OnInit {
     name: [, [Validators.required, Validators.minLength(3)]],
     lastname: [, [Validators.required, Validators.minLength(3)]],
     email: [, [Validators.required, Validators.email]],
+    city: [],
+    phoneNumber: [],
+    gender: [],
+    bilingual: []
   })
 
   ngOnInit() {
@@ -49,12 +53,12 @@ export class AgregarAprendicesTrainingActivoComponent implements OnInit {
     let aprendiz: StudentModel | any = {
       name: this.miFormulario.value.name,
       lastName: this.miFormulario.value.lastname,
-      city: null,
-      gender: null,
+      city: this.miFormulario.value.city,
+      gender: this.miFormulario.value.gender,
       email: this.miFormulario.value.email,
-      phoneNumber: null,
+      phoneNumber: this.miFormulario.value.phoneNumber,
       photo: null,
-      bilingual: null
+      bilingual: this.miFormulario.value.bilingual
     }
     return aprendiz;
   }
@@ -72,7 +76,7 @@ export class AgregarAprendicesTrainingActivoComponent implements OnInit {
     this.api.agregarApredicesByTrainingId(
       this.idTraining,
       this.aprendices)
-      .subscribe((response: any) => {
+      .subscribe(() => {
         this.router.navigate(['/list-aprendices/' + this.idTraining]);
       });
 

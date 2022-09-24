@@ -24,10 +24,7 @@ export class ListaAprendicesComponent implements AfterViewInit {
       this.api.aprendicesByTrainingId(this.idTraining).subscribe((elements) => {
         this.dataSource = new MatTableDataSource(elements)
         this.dataSource.paginator = this.paginator
-        console.log(elements)
       });
-
-
     })
 
   }
@@ -53,8 +50,14 @@ export class ListaAprendicesComponent implements AfterViewInit {
           'Borrado!',
           'completo'
         )
-        this.api.deleteAprendizByEmail(this.idTraining, email).subscribe();
-        this.dataSource = this.dataSource.filter((aprendiz:any) => aprendiz.email !== email)
+        this.api.deleteAprendizByEmail(this.idTraining, email).subscribe((element: any) =>{
+          console.log(element);
+          this.dataSource = element.apprentices;
+        });
+        // this.dataSource = this.dataSource.filter((aprendiz:any) =>
+        //   aprendiz.email !== email)
+
+//.filteredData
       }
     })
 
