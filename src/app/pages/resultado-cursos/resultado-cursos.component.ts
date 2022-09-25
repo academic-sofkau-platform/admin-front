@@ -14,9 +14,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./resultado-cursos.component.css']
 })
 export class ResultadoCursosComponent implements AfterViewInit {
-  control = new FormControl('');
   training: string[] = ['C1', 'C2', 'C3', 'C4'];
-  filteredTraining!: Observable<string[]>;
   displayedColumns: string[] = ['nombre', 'training', 'accion'];
   dataSource: any;
 
