@@ -119,9 +119,19 @@ export class ApiService {
     return this.http.post(environment.apiBase + '/trainings/updateNotaTarea/' + trainingId + '/' + email , command)
   }
 
+  getAllAprendicesParaCalificar(): Observable<any[]>{
+    return this.http.get<any[]>(environment.apiBase + '/trainings/getAllAprendiz');
+  }
+
+  getAllTareasByEmail(trainingId:string, email:string): Observable<any[]>{
+    return this.http.get<any[]>(environment.apiBase + '/trainings/getTareaAprendiz/' + trainingId + '/' + email);
+  }
+
+
+  }
+
   //RESULTADO DE LOS CURSOS
   // getResultadoCursos(): Observable<ResultadoCursosModel[]> {
   //   return this.http.get<ResultadoCursosModel[]>(environment.apiBase + '//////');
   // }
 
-}
