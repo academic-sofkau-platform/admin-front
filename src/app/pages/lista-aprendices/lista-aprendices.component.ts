@@ -34,7 +34,7 @@ export class ListaAprendicesComponent implements AfterViewInit {
     private api: ApiService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   eliminar(email: string) {
     Swal.fire({
@@ -50,14 +50,18 @@ export class ListaAprendicesComponent implements AfterViewInit {
           'Borrado!',
           'completo'
         )
-        this.api.deleteAprendizByEmail(this.idTraining, email).subscribe((element: any) =>{
-          console.log(element);
-          this.dataSource = element.apprentices;
-        });
-        // this.dataSource = this.dataSource.filter((aprendiz:any) =>
-        //   aprendiz.email !== email)
+        this.api.deleteAprendizByEmail(this.idTraining, email).subscribe((element:any) => {
+          // this.dataSource = this.dataSource
+            console.log(element)
+            this.api.aprendicesByTrainingId(this.idTraining).subscribe((elements) => {
+              this.dataSource = new MatTableDataSource(elements)
+              this.dataSource.paginator = this.paginator
+              console.log(elements)
+            });
+          }
+        );
 
-//.filteredData
+
       }
     })
 
