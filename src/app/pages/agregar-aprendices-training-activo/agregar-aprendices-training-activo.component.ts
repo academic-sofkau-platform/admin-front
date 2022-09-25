@@ -7,8 +7,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { StudentModel } from 'src/app/shared/models/student'
 import { ActivatedRoute, Router } from '@angular/router';
 
-//path: agregar-aprendices/:id
-
 @Component({
   selector: 'app-agregar-aprendices-training-activo',
   templateUrl: './agregar-aprendices-training-activo.component.html',
@@ -70,17 +68,12 @@ export class AgregarAprendicesTrainingActivoComponent implements OnInit {
   agregarAprendices() {
     let aprendiz = this.crearAprendiz();
     this.agregarAprendizALaListaParaEnviar(aprendiz);
-    console.log("id:", this.idTraining);
-    console.log("list aprendices []: " + this.aprendices);
-    console.log(this.aprendices);
     this.api.agregarApredicesByTrainingId(
       this.idTraining,
       this.aprendices)
       .subscribe(() => {
         this.router.navigate(['/list-aprendices/' + this.idTraining]);
       });
-
-      //limpiar lista aprendices
       this.aprendices = [];
   }
 }

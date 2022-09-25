@@ -94,6 +94,9 @@ export class ApiService {
   agregarApredicesByTrainingId(trainingId: string, command: AgregarAprendicesListCommand) {
     return this.http.put(environment.apiBase + '/trainings/agregarAprendices/' + trainingId, command)
   }
+  agregarTareasAprendices(trainingId: string) {
+    return this.http.post(environment.apiBase + '/trainings/agregarTareasAprendices',trainingId)
+  }
 
 
   //TRAINING

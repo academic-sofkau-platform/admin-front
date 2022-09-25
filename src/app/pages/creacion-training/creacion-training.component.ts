@@ -60,7 +60,9 @@ export class CreacionTrainingComponent {
       apprentices: this.miFormulario.value.csvBase64,
       rutaId: this.miFormulario.value.ruta
     }).subscribe((response: any) => {
-      this.router.navigate(['/lista-training-activos'], { queryParams: {file: response } });
+      this.api.agregarTareasAprendices(response.trainingId).subscribe((response: any) => {
+        this.router.navigate(['/lista-training-activos'], { queryParams: {file: response } });
+      });
     });
   }
 }
