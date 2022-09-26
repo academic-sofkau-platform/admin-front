@@ -49,6 +49,7 @@ import { ResultadoCursosComponent } from './pages/resultado-cursos/resultado-cur
 import { InformacionCalificacionAprendizComponent } from './pages/Informacion-calificacion-aprendiz/Informacion-calificacion-aprendiz.component';
 
 import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprendices-training-activo/agregar-aprendices-training-activo.component';
+import { TareaAprendizComponent } from './pages/tarea-aprendiz/tarea-aprendiz.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AgregarAprendicesTrainingActivoComponent } from './pages/agregar-aprend
     FooterComponent,
     ResultadoCursosComponent,
     InformacionCalificacionAprendizComponent,
-    AgregarAprendicesTrainingActivoComponent
+    AgregarAprendicesTrainingActivoComponent,
+    TareaAprendizComponent
   ],
   imports: [
     ReactiveFormsModule,

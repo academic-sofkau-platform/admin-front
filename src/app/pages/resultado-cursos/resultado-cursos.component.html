@@ -12,21 +12,20 @@
         <mat-label>Búsqueda</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Aprendiz o Training" #input>
       </mat-form-field>
+
+      <!--  Nombre  -->
       <table mat-table  [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="nombre">
           <th mat-header-cell *matHeaderCellDef>Nombre de Aprendiz</th>
           <td mat-cell *matCellDef="let row">
-            {{ row.aprendiz.name }}
+           <strong> {{ row.nombreAprendiz }} {{row.apellido}} </strong> 
           </td>
         </ng-container>
 
+         <!--  Training  -->
         <ng-container matColumnDef="training">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Training</th>
           <td mat-cell *matCellDef="let row">{{ row.trainingName }}</td>
-        </ng-container>
-        <ng-container matColumnDef="curso">
-          <th mat-header-cell *matHeaderCellDef>Curso</th>
-          <td mat-cell *matCellDef="let row">{{ row.curso.nombre }}</td>
         </ng-container>
 
         <ng-container matColumnDef="accion">
@@ -36,7 +35,7 @@
               mat-icon-button
               color="primary"
               class="zoom"
-              (click)="calificarAprendiz(row.aprendiz, row.curso.nombre, row.curso.id)"
+              (click)="verTareas(row.nombreAprendiz, row.apellido, row.email , row.trainingId, row.trainingName)"
             >
               <mat-icon>visibility</mat-icon>
             </button>

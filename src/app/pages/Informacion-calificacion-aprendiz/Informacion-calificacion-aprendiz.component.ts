@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { StudentModel } from 'src/app/shared/models/student';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,9 +10,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./Informacion-calificacion-aprendiz.component.css']
 })
 export class InformacionCalificacionAprendizComponent implements OnInit {
-  stdEmail: string = 'lauratatis3791@gmail.com';
-  std: any;
-  trainingId: string = '04f51240-2965-4501-8bfb-b2f87f805a2a';
+  dataSource: any;
+  dataAprendiz:any
   puntaje: number = 0;
   puntajeForm: FormGroup;
 
@@ -20,27 +19,37 @@ export class InformacionCalificacionAprendizComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) {
 
-    this.route.queryParams.subscribe(params => {
-      this.std = params;
-      console.log(this.std);
-    });
-
     this.puntajeForm = new FormGroup({
       puntaje:new FormControl()
     })
-
-
+    this.route.queryParams.subscribe((datos: any) => {
+      this.api.getAprendiceByTrainingAndMail(datos.trainingId, datos.email).subscribe((aprendiz) => {
+        this.dataAprendiz = aprendiz;
+      });
+      this.dataSource = datos;
+    });
   }
 
-  ngOnInit() {
-
+  ngOnInit(){
   }
 
   calificar(){
-    this.api.updateNotaTarea(this.trainingId,this.stdEmail, {
+    this.api.updateNotaTarea(this.dataSource.trainingId, this.dataSource.email, this.dataSource.cursoId, {
       nota: this.puntajeForm.value.puntaje
     }).subscribe()
-    this.router.navigate(["resultado-cursos"])
+    setTimeout(()=>{
+      this.volver();
+    },0)
+
   }
 
+  volver(){
+    this.router.navigate(['tareas-aprendiz'], { queryParams: {
+      nombreAprendiz: this.dataSource.nombreAprendiz,
+      apellido: this.dataSource.apellido,
+      email: this.dataSource.email,
+      trainingId: this.dataSource.trainingId,
+      trainingName: this.dataSource.trainingName
+    }});
+  }
 }

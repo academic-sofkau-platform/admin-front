@@ -118,8 +118,19 @@ export class ApiService {
     return this.http.get(environment.apiBase + '/trainings/getResultadoCursos');
   }
 
-  updateNotaTarea(trainingId:string, email:string, command:UpdateNotaTareaCommand) {
-    return this.http.post(environment.apiBase + '/trainings/updateNotaTarea/' + trainingId + '/' + email , command)
+  updateNotaTarea(trainingId:string, email:string, cursoId:string, command:UpdateNotaTareaCommand) {
+    return this.http.post(environment.apiBase + '/trainings/updateNotaTarea/' + trainingId + '/' + email + '/' + cursoId , command)
+  }
+
+  getAllAprendicesParaCalificar(): Observable<any[]>{
+    return this.http.get<any[]>(environment.apiBase + '/trainings/getAllAprendiz');
+  }
+
+  getAllTareasByEmail(trainingId:string, email:string): Observable<any[]>{
+    return this.http.get<any[]>(environment.apiBase + '/trainings/getTareaAprendiz/' + trainingId + '/' + email);
+  }
+
+
   }
 
   //RESULTADO DE LOS CURSOS
@@ -127,4 +138,3 @@ export class ApiService {
   //   return this.http.get<ResultadoCursosModel[]>(environment.apiBase + '//////');
   // }
 
-}
