@@ -17,6 +17,11 @@ h1 {
 
 /* Form */
 
+.tabla {
+  width: 100%;
+  overflow: auto;
+}
+
 .example-form-field{
     margin-left: 2vw;
 }
