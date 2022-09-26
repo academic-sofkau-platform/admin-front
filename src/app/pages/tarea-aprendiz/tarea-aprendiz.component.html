@@ -34,9 +34,13 @@
               <p *ngIf="element.tarea.entregado && (element.tarea.nota == null)">
                 <button (click)="calificarAprendiz(element.nombreCurso, element.tarea.contenido, element.tarea.cursoId)" class="zoom button-64">Calificar</button>
               </p>
-              <p *ngIf="element.tarea.entregado && (element.tarea.nota !== null)">
-                  {{element.tarea.nota}}
-              </p>
+              <div *ngIf="element.tarea.entregado && (element.tarea.nota !== null)" class="">
+                    <p >
+                      {{element.tarea.nota}}
+                    </p>
+                    <button (click)="calificarAprendiz(element.nombreCurso, element.tarea.contenido, element.tarea.cursoId)" class="zoom button-64">Modificar</button>
+              </div>
+              
           </td>
 
       </ng-container>
