@@ -115,8 +115,8 @@ export class ApiService {
     return this.http.get(environment.apiBase + '/trainings/getResultadoCursos');
   }
 
-  updateNotaTarea(trainingId:string, email:string, command:UpdateNotaTareaCommand) {
-    return this.http.post(environment.apiBase + '/trainings/updateNotaTarea/' + trainingId + '/' + email , command)
+  updateNotaTarea(trainingId:string, email:string, cursoId:string, command:UpdateNotaTareaCommand) {
+    return this.http.post(environment.apiBase + '/trainings/updateNotaTarea/' + trainingId + '/' + email + '/' + cursoId , command)
   }
 
   getAllAprendicesParaCalificar(): Observable<any[]>{

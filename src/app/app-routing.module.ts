@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'ruta-aprendizaje/:id', component: RutaAprendizajeComponent},
   { path: 'resultado-cursos', component: ResultadoCursosComponent},
   { path: 'informacion-calificacion-aprendiz', component: InformacionCalificacionAprendizComponent},
-  { path: 'tareas-aprendiz/:nombreAprendiz/:apellido/:email/:trainingId/:trainingName', component: TareaAprendizComponent},
+  { path: 'tareas-aprendiz', component: TareaAprendizComponent},
   { path: 'agregar-aprendices/:id', component: AgregarAprendicesTrainingActivoComponent},
   //cualquier otra cosa me redirectea a 404
   { path: '**', redirectTo:'login'}, //++

@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -21,19 +21,19 @@ export class ResultadoCursosComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
+
+  constructor(private api: ApiService, private router: Router) {
+
+  }
+
   ngAfterViewInit() {
+
     this.api.getAllAprendicesParaCalificar().subscribe((element:any) => {
       this.dataSource = new MatTableDataSource(element)
       this.dataSource.paginator = this.paginator
       this.dataSource.sort = this.sort;
-      this.dataSource.filterPredicate = (data: any, filter: string) => data.aprendiz.name.includes(filter) || data.trainingName.includes(filter)
-
-      console.log(element)
 
       });
-    }
-  constructor(private api: ApiService, private router: Router) {
-
   }
 
   applyFilter(event: Event) {
@@ -45,9 +45,15 @@ export class ResultadoCursosComponent implements AfterViewInit {
   }
 
   verTareas(nombreAprendiz: string, apellido: string, email:string , trainingId:string , trainingName:string ) {
+    //this.router.navigate(['tareas-aprendiz/' + nombreAprendiz + '/' + apellido + '/' + email + '/' + trainingId + '/' + trainingName])
 
-    this.router.navigate(['tareas-aprendiz/' + nombreAprendiz + '/' + apellido + '/' + email + '/' + trainingId + '/' + trainingName])
-
+    this.router.navigate(['tareas-aprendiz'], { queryParams: {
+      nombreAprendiz: nombreAprendiz,
+      apellido: apellido,
+      email: email,
+      trainingId: trainingId,
+      trainingName: trainingName
+    }});
   }
 
 }
