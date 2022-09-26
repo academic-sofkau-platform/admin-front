@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { StudentModel } from 'src/app/shared/models/student';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -39,7 +38,7 @@ export class InformacionCalificacionAprendizComponent implements OnInit {
     }).subscribe()
     setTimeout(()=>{
       this.volver();
-    },0)
+    },500)
 
   }
 
