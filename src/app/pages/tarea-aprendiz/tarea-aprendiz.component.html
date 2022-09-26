@@ -32,7 +32,7 @@
                 Sin entregar
               </a>
               <p *ngIf="element.tarea.entregado && (element.tarea.nota == null)">
-                <button (click)="calificarAprendiz(element.nombreCurso, element.tarea.contenido, element.tarea.cursoId)" class="zoom">Calificar</button>
+                <button (click)="calificarAprendiz(element.nombreCurso, element.tarea.contenido, element.tarea.cursoId)" class="zoom button-64">Calificar</button>
               </p>
               <p *ngIf="element.tarea.entregado && (element.tarea.nota !== null)">
                   {{element.tarea.nota}}
